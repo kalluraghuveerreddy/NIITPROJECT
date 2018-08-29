@@ -85,12 +85,12 @@ public class AppTest {
 			vendor.setVendor_password("rishi123");
 			
 			
-			/*laptop.setHarddisk("1TB");
+			laptop.setHarddisk("1TB");
 			laptop.setLaptopName("MacBoook");
 			laptop.setProcessor("i7");
 			laptop.setRam("8GB");
 			laptop.setProduct_name("laptop");
-			laptop.setProduct_price(50000);*/
+			laptop.setProduct_price(50000);
 			
 	       HashSet<Address> addresses=new HashSet<Address>();
 			address1.setCity("bangalore");
