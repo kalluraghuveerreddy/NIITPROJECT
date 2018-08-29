@@ -88,11 +88,12 @@ public class Vendor
 	public void setAddress(Set<Address> address) {
 		this.address = address;
 	}
+	
 	@Override
 	public String toString() {
 		return "Vendor [vendor_id=" + vendor_id + ", vendor_name=" + vendor_name + ", vendor_email=" + vendor_email
 				+ ", vendor_password=" + vendor_password + ", vendor_mobile=" + vendor_mobile + ", company_name="
-				+ company_name + ", products=" + products + "]";
+				+ company_name + ", address=" + address + "]";
 	}
 	@Override
 	public int hashCode() {

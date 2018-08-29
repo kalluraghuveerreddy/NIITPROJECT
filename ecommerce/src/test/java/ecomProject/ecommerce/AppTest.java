@@ -44,9 +44,9 @@ public class AppTest {
 		private Laptop laptop;
 		@Autowired
 	     private Customer customer;
-		@Autowired
+	
 		private Address address1;
-		@Autowired
+	
 		private Address address2;
 		
 		@Autowired
@@ -84,55 +84,64 @@ public class AppTest {
 			vendor.setVendor_mobile("8978513016");
 			vendor.setVendor_password("rishi123");
 			
-			
+			/*
 			laptop.setHarddisk("1TB");
 			laptop.setLaptopName("MacBoook");
 			laptop.setProcessor("i7");
 			laptop.setRam("8GB");
 			laptop.setProduct_name("laptop");
 			laptop.setProduct_price(50000);
+			*/
 			
 	       HashSet<Address> addresses=new HashSet<Address>();
+	        address1=new Address();
 			address1.setCity("bangalore");
 			address1.setStreetName("marathali");
 			address1.setPincode(250065);
+		    address1.setVendor(vendor);
 			addresses.add(address1);
 			
-			
+			address2=new Address();
 			address2.setCity("hyderabad");
 			address2.setStreetName("Champapet");
 			address2.setPincode(500059);
+			address2.setVendor(vendor);
 			addresses.add(address2);
 		
-           vendor.setAddress(addresses);
-	
-		   
-	       
+		
+             vendor.setAddress(addresses);
+           
+          
+           
+  
 		}
   
-	  @Test
+	 /* @Test
 		public void addVendorTest()
 		{
 		  
 		   assertEquals("Vendor Insertion Failed",true,vendorDaoService.addVendor(vendor));
 		   //deleteVendor();
 		}	
-	
-/*		@Test
+	*/
+	 
+        @Test
 		public void getVendorTest() {
-			 vendorDaoService.addVendor(vendor);
-			 assertEquals("Vendor Insertion Failed",vendor,vendorDaoService.getVendor(vendor.getVendor_id()));
-			 deleteVendor();
+			// vendorDaoService.addVendor(vendor);
+			// assertEquals("Vendor Insertion Failed",vendor,vendorDaoService.getVendor(vendor.getVendor_id()));
+			 System.out.println(vendorDaoService.getVendor(40));
+			// deleteVendor();
 		}
-		@Test
+        
+		/*@Test
 		public void updateVenodorTest() {
 			 vendorDaoService.addVendor(vendor);
 			 vendor.setVendor_email("rishi@yahoo.com");
 			 assertEquals("Vendor Insertion Failed",true,vendorDaoService.updateVendor(vendor));
 			deleteVendor();
 			
-		}*/
-		
+		}
+		*/
 	
 		/*@Test
 		public void addLaptop()
