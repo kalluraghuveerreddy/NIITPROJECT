@@ -15,8 +15,8 @@ import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.model.Login;
 import ecomProject.ecommerce.model.Vendor;
 
-@Controller
-public class IndexController {
+   @Controller
+   public class IndexController {
 	@Autowired
 	private VendorDaoService vendorDaoService;
 	@Autowired
@@ -35,11 +35,11 @@ public class IndexController {
 		model.addAttribute("vendor", new Vendor());
 		return "signup";
 	}
+	
 	@PostMapping("registerprocess")
 	public String addVendor(@ModelAttribute("vendor")Vendor vendor) {
 		if(vendorDaoService.addVendor(vendor)) {
 			return "redirect:login";
-			
 		}
 		else {
 			return "signup";
@@ -56,30 +56,29 @@ public class IndexController {
 	{
 	   if((vendorDaoService.login(login.getEmail(),login.getPassword()))!=null) {
 		   
-		    /*  Vendor vendor=vendorDaoService.login(login.getEmail(),login.getPassword());
+		    Vendor vendor=vendorDaoService.login(login.getEmail(),login.getPassword());
 		      model.addAttribute("vendorDetails", vendor);
-	
-		      return "vendordetails";*/
+	          return "vendordetails";
+		     // return "redirect:update";
 		   
-		      return "home";
+		      //return "home";
 	   }
 	   else {
-		   return "login";
+		   return "redirect:login";
 	   }
 		
 	}
-	
-	@GetMapping("updatevendor")
-	public String  updateVendor(Model model)
-	{
-		model.addAttribute("login", new Login());
-		return "login";
+	@GetMapping("update")
+	public String update(Model model) {
+		model.addAttribute("vendor",new  Vendor());
+		return "update";
 	}
 	
-	
+
 	@PostMapping("updateprocess")
 	public String updateProcess(@ModelAttribute("vendor")Vendor vendor) {
-		if(vendorDaoService.updateVendor(vendor)) {
+		if(vendorDaoService.updateVendor(vendor))
+		{
 			return "index";
 			
 		}

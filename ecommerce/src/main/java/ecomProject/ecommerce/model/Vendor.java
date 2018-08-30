@@ -1,6 +1,5 @@
 package ecomProject.ecommerce.model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -30,18 +29,18 @@ public class Vendor
 	@Column(unique=true)
     private String company_name;
 	
-	@OneToMany(mappedBy="vendor")
-	private List<Product> products;
+	@OneToMany(mappedBy="vendor",cascade=CascadeType.ALL)
+	private Set<Product> products;
 	
 	@OneToMany(mappedBy="vendor", cascade=CascadeType.ALL)
-	private  Set<Address> address;
+	private  Set<Address> addresses;
 	
 	
 
-	public List<Product> getProducts() {
+	public Set<Product> getProducts() {
 		return products;
 	}
-	public void setProducts(List<Product> products) {
+	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
 	public int getVendor_id() {
@@ -80,25 +79,26 @@ public class Vendor
 	public void setCompany_name(String company_name) {
 		this.company_name = company_name;
 	}
+
+
 	
-	
-	public Set<Address> getAddress() {
-		return address;
+	public Set<Address> getAddresses() {
+		return addresses;
 	}
-	public void setAddress(Set<Address> address) {
-		this.address = address;
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
-	
-	@Override
+	/*@Override
 	public String toString() {
 		return "Vendor [vendor_id=" + vendor_id + ", vendor_name=" + vendor_name + ", vendor_email=" + vendor_email
 				+ ", vendor_password=" + vendor_password + ", vendor_mobile=" + vendor_mobile + ", company_name="
-				+ company_name + ", address=" + address + "]";
-	}
-	@Override
+				+ company_name + ", address=" + addresses + "]";
+	}*/
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((addresses == null) ? 0 : addresses.hashCode());
 		result = prime * result + ((company_name == null) ? 0 : company_name.hashCode());
 		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		result = prime * result + ((vendor_email == null) ? 0 : vendor_email.hashCode());
@@ -117,18 +117,28 @@ public class Vendor
 		if (getClass() != obj.getClass())
 			return false;
 		Vendor other = (Vendor) obj;
+		if (addresses == null) {
+			if (other.addresses != null)
+				return false;
+		} else if (!addresses.equals(other.addresses))
+			return false;
 		if (company_name == null) {
 			if (other.company_name != null)
 				return false;
 		} else if (!company_name.equals(other.company_name))
 			return false;
-		
+		if (products == null) {
+			if (other.products != null)
+				return false;
+		} else if (!products.equals(other.products))
+			return false;
 		if (vendor_email == null) {
 			if (other.vendor_email != null)
 				return false;
 		} else if (!vendor_email.equals(other.vendor_email))
 			return false;
-	
+		if (vendor_id != other.vendor_id)
+			return false;
 		if (vendor_mobile == null) {
 			if (other.vendor_mobile != null)
 				return false;
@@ -145,7 +155,7 @@ public class Vendor
 		} else if (!vendor_password.equals(other.vendor_password))
 			return false;
 		return true;
-	}
+	}*/
 	
 	
 	

@@ -1,6 +1,7 @@
 package ecomProject.ecommerce.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -85,6 +86,11 @@ public class Address {
 			} else if (!streetName.equals(other.streetName))
 				return false;
 			return true;
+		}
+		@Override
+		public String toString() {
+			return "Address [addressId=" + addressId + ", city=" + city + ", streetName=" + streetName + ", pincode="
+					+ pincode + "]";
 		}
 		
 		

@@ -78,11 +78,11 @@ public class AppTest {
 			//AnnotationConfigApplicationContext annotationConfigApplicationContext= new AnnotationConfigApplicationContext(Persistanceconfig.class);
 			
 			
-			vendor.setVendor_name("Rishikesa");
+			vendor.setVendor_name("shiva");
 			vendor.setCompany_name("niit");
-			vendor.setVendor_email("rishi@gmail.com");
-			vendor.setVendor_mobile("8978513016");
-			vendor.setVendor_password("rishi123");
+			vendor.setVendor_email("shiva@gmail.com");
+			vendor.setVendor_mobile("8978989816");
+			vendor.setVendor_password("shiva123");
 			
 			/*
 			laptop.setHarddisk("1TB");
@@ -95,41 +95,38 @@ public class AppTest {
 			
 	       HashSet<Address> addresses=new HashSet<Address>();
 	        address1=new Address();
-			address1.setCity("bangalore");
-			address1.setStreetName("marathali");
-			address1.setPincode(250065);
+			address1.setCity("New York");
+			address1.setStreetName("Time sqare");
+			address1.setPincode(596333);
 		    address1.setVendor(vendor);
 			addresses.add(address1);
 			
 			address2=new Address();
-			address2.setCity("hyderabad");
-			address2.setStreetName("Champapet");
-			address2.setPincode(500059);
+			address2.setCity("Mumbai");
+			address2.setStreetName("streeat5");
+			address2.setPincode(500058);
 			address2.setVendor(vendor);
 			addresses.add(address2);
 		
 		
-             vendor.setAddress(addresses);
+             vendor.setAddresses(addresses);
            
-          
-           
-  
 		}
   
-	 /* @Test
+	 @Test
 		public void addVendorTest()
 		{
 		  
 		   assertEquals("Vendor Insertion Failed",true,vendorDaoService.addVendor(vendor));
 		   //deleteVendor();
 		}	
-	*/
+	
 	 
         @Test
 		public void getVendorTest() {
-			// vendorDaoService.addVendor(vendor);
+			 vendorDaoService.addVendor(vendor);
 			// assertEquals("Vendor Insertion Failed",vendor,vendorDaoService.getVendor(vendor.getVendor_id()));
-			 System.out.println(vendorDaoService.getVendor(40));
+		    System.out.println(vendorDaoService.getVendor(vendor.getVendor_id()));
 			// deleteVendor();
 		}
         
