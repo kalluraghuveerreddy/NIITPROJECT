@@ -9,7 +9,10 @@
 
 <%-- <img src="${images}java.png"> --%>
 
-<img src="<spring:url value="/resources/images/java.png"></spring:url>">
+<%-- <img src="<spring:url value="/resources/images/java.png"></spring:url>"> --%>
+<a href="signup">Register</a>
+<a href ="login">Login</a>
+<a href="updatevendor">Update Vendor</a>
 
 </body>
 </html>

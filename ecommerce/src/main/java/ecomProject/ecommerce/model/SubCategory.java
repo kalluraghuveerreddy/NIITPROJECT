@@ -16,8 +16,6 @@ public class SubCategory {
 	private int subCategory_id;
 	private String subCategory_name;
 	
-	
-
 	@ManyToOne
 	private Category category;
 	

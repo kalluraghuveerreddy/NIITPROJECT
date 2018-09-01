@@ -1,6 +1,7 @@
 package ecomProject.ecommerce;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashSet;
 
@@ -73,37 +74,28 @@ public class AppTest {
 		
 		
 		@Before
-		public void setVendor()
+		public void setUp()
 		{
 			//AnnotationConfigApplicationContext annotationConfigApplicationContext= new AnnotationConfigApplicationContext(Persistanceconfig.class);
 			
 			
-			vendor.setVendor_name("shiva");
-			vendor.setCompany_name("niit");
-			vendor.setVendor_email("shiva@gmail.com");
-			vendor.setVendor_mobile("8978989816");
-			vendor.setVendor_password("shiva123");
-			
-			/*
-			laptop.setHarddisk("1TB");
-			laptop.setLaptopName("MacBoook");
-			laptop.setProcessor("i7");
-			laptop.setRam("8GB");
-			laptop.setProduct_name("laptop");
-			laptop.setProduct_price(50000);
-			*/
+			vendor.setVendor_name("Raghuveer Reddy");
+			vendor.setCompany_name("Amazon");
+			vendor.setVendor_email("kalluraghureddy@outlook.com");
+			vendor.setVendor_mobile("8978513016");
+			vendor.setVendor_password("raghu123");
 			
 	       HashSet<Address> addresses=new HashSet<Address>();
 	        address1=new Address();
 			address1.setCity("New York");
 			address1.setStreetName("Time sqare");
-			address1.setPincode(596333);
+			address1.setPincode(5000098);
 		    address1.setVendor(vendor);
 			addresses.add(address1);
 			
 			address2=new Address();
 			address2.setCity("Mumbai");
-			address2.setStreetName("streeat5");
+			address2.setStreetName("Electronic street");
 			address2.setPincode(500058);
 			address2.setVendor(vendor);
 			addresses.add(address2);
@@ -116,57 +108,34 @@ public class AppTest {
 	 @Test
 		public void addVendorTest()
 		{
-		  
-		   assertEquals("Vendor Insertion Failed",true,vendorDaoService.addVendor(vendor));
-		   //deleteVendor();
+		   assertEquals("Vendor Insertion Failed",true,vendorDaoService.register(vendor));
 		}	
 	
+       @Test
+		public void getVendorByIdTest() {
+			
+    	   vendorDaoService.register(vendor);
+			 assertEquals("Vendor Insertion Failed",vendor,vendorDaoService.getVendorById(vendor.getVendor_id()));
+		}
 	 
-        @Test
-		public void getVendorTest() {
-			 vendorDaoService.addVendor(vendor);
-			// assertEquals("Vendor Insertion Failed",vendor,vendorDaoService.getVendor(vendor.getVendor_id()));
-		    System.out.println(vendorDaoService.getVendor(vendor.getVendor_id()));
-			// deleteVendor();
-		}
+	  @Test
+      public void getVendorByEmailTest() {
+     	
+		  vendorDaoService.register(vendor);
+          assertEquals(vendor,vendorDaoService.getVendorByEmail(vendor.getVendor_email())); 
+      }
         
-		/*@Test
+		@Test
 		public void updateVenodorTest() {
-			 vendorDaoService.addVendor(vendor);
-			 vendor.setVendor_email("rishi@yahoo.com");
-			 assertEquals("Vendor Insertion Failed",true,vendorDaoService.updateVendor(vendor));
-			deleteVendor();
-			
+			 vendorDaoService.register(vendor);
+			 assertEquals("Vendor updation Failed",true,vendorDaoService.updateVendor(vendor));
+			 
 		}
-		*/
-	
-		/*@Test
-		public void addLaptop()
-		{
 		
-			subCategory=subCategoryDaoService.getSubCategory(1);
-			vendorDaoService.addVendor(vendor);
-			laptop.setVendor(vendor);
-			laptop.setSubCategory(subCategory);
-		
-			assertEquals("Test Insertion laptop failed",true,laptopDaoService.addLaptop(laptop));
-		
-			deleteLaptop();
-			deleteVendor();
-			
-		}*/
-	
-		private void deleteLaptop() {
-			
-			laptopDaoService.deleteLaptop(laptop);
-			
-		}
-
+        @After
 		public void deleteVendor()
 		{
 			vendorDaoService.deleteVendor(vendor);
 		}
-		
-	
-		
+	 
 }

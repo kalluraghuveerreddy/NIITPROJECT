@@ -80,29 +80,18 @@ public class Vendor
 		this.company_name = company_name;
 	}
 
-
-	
 	public Set<Address> getAddresses() {
 		return addresses;
 	}
 	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
 	}
-	/*@Override
-	public String toString() {
-		return "Vendor [vendor_id=" + vendor_id + ", vendor_name=" + vendor_name + ", vendor_email=" + vendor_email
-				+ ", vendor_password=" + vendor_password + ", vendor_mobile=" + vendor_mobile + ", company_name="
-				+ company_name + ", address=" + addresses + "]";
-	}*/
-	/*@Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((addresses == null) ? 0 : addresses.hashCode());
 		result = prime * result + ((company_name == null) ? 0 : company_name.hashCode());
-		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		result = prime * result + ((vendor_email == null) ? 0 : vendor_email.hashCode());
-		result = prime * result + vendor_id;
 		result = prime * result + ((vendor_mobile == null) ? 0 : vendor_mobile.hashCode());
 		result = prime * result + ((vendor_name == null) ? 0 : vendor_name.hashCode());
 		result = prime * result + ((vendor_password == null) ? 0 : vendor_password.hashCode());
@@ -117,27 +106,15 @@ public class Vendor
 		if (getClass() != obj.getClass())
 			return false;
 		Vendor other = (Vendor) obj;
-		if (addresses == null) {
-			if (other.addresses != null)
-				return false;
-		} else if (!addresses.equals(other.addresses))
-			return false;
 		if (company_name == null) {
 			if (other.company_name != null)
 				return false;
 		} else if (!company_name.equals(other.company_name))
 			return false;
-		if (products == null) {
-			if (other.products != null)
-				return false;
-		} else if (!products.equals(other.products))
-			return false;
 		if (vendor_email == null) {
 			if (other.vendor_email != null)
 				return false;
 		} else if (!vendor_email.equals(other.vendor_email))
-			return false;
-		if (vendor_id != other.vendor_id)
 			return false;
 		if (vendor_mobile == null) {
 			if (other.vendor_mobile != null)
@@ -155,9 +132,8 @@ public class Vendor
 		} else if (!vendor_password.equals(other.vendor_password))
 			return false;
 		return true;
-	}*/
-	
-	
+	}
+
 	
 	
 }

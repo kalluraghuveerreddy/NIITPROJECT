@@ -5,5 +5,5 @@ import ecomProject.ecommerce.model.SubCategory;
 public interface SubCategoryDaoService {
 
 	
-	public SubCategory getSubCategory(int subCategoryId);
+	public SubCategory getSubCategoryId(int subCategoryId);
 }

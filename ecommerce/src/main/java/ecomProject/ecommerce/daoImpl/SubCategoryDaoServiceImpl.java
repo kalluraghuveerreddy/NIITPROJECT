@@ -22,7 +22,7 @@ public class SubCategoryDaoServiceImpl implements SubCategoryDaoService{
 		private SessionFactory sessionFactory;
 	
 	@Override
-	public SubCategory getSubCategory(int subcategory_Id) {
+	public SubCategory getSubCategoryId(int subcategory_Id) {
 		
 		try {
 			
