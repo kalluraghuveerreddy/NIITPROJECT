@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Vendor
 	@OneToMany(mappedBy="vendor",cascade=CascadeType.ALL)
 	private Set<Product> products;
 	
-	@OneToMany(mappedBy="vendor", cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="vendor", cascade=CascadeType.ALL)
 	private  Set<Address> addresses;
 	
 	

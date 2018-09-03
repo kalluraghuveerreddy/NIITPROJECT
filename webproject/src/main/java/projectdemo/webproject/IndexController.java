@@ -99,7 +99,7 @@ import ecomProject.ecommerce.model.Vendor;
 		   
 		      Vendor vendor=vendorDaoService.login(login.getEmail(),login.getPassword());
 		      session.setAttribute("vendorDetails", vendor);
-	          return "redirect:update";
+	          return "redirect:edit";
 	         
 	    }
 	    else {
@@ -107,25 +107,20 @@ import ecomProject.ecommerce.model.Vendor;
 	     }
 	}
 	
-	@GetMapping(value= {"update"})
-	public String updatevendor(Model model)
+	@GetMapping(value= {"edit"})
+	public String updatevendor(HttpSession httpSession,Model model)
 	{
-		model.addAttribute("vendor", new Vendor());
-		return "update";
+		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
+		return "edit";
 	}
 	
 	@PostMapping("updateprocess")
-	public String updateProcessVendor(@ModelAttribute("vendor")Vendor vendor) {
-	
-		/*if((vendorDaoService.getVendorByEmail(vendor.getVendor_email()))!=null) {
-		
-			 return "redirect:signup";
-			
-		}*/
-		//else {
+	public String updateProcessVendor(@ModelAttribute("vendor")Vendor vendor,HttpSession session) {
+
+		    session.setAttribute("vendorDetails", vendor);
 			vendorDaoService.updateVendor(vendor);
-			return "redirect:login";
-		//}
+			return "redirect:vendordetails";
+		
 	}
 	
 }

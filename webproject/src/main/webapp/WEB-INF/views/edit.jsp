@@ -14,33 +14,34 @@
     
        <tr>
       <td><springform:label path="vendor_id">Id:</springform:label></td>
-      <td><springform:input path="vendor_id" value="${vendorDetails.getVendor_id() }"  readonly="true"/></td>
+      <td><springform:input path="vendor_id"  readonly="true"/></td>
       </tr>
       <tr>
       <td><springform:label path="vendor_name">Name:</springform:label></td>
-      <td><springform:input path="vendor_name" value="${vendorDetails.getVendor_name() }"/></td>
+      <td><springform:input path="vendor_name" /></td>
       </tr>
       
         <tr>
       <td><springform:label path="vendor_email">Email:</springform:label></td>
-      <td> <springform:input path="vendor_email" value="${vendorDetails.getVendor_email() }"/></td>
+      <td> <springform:input path="vendor_email" /></td>
       </tr>
      
         <tr>
       <td><springform:label path="vendor_mobile">Mobile:</springform:label></td>
-      <td>    <springform:input path="vendor_mobile" value="${vendorDetails.getVendor_mobile() }"/></td>
+      <td>    <springform:input path="vendor_mobile" /></td>
       </tr>
       
      
        <tr>
       <td><springform:label path="company_name">Company Name:</springform:label></td>
-      <td>    <springform:input path="company_name"   value="${vendorDetails.getCompany_name()}" /></td>
+      <td>  <springform:input path="company_name"   /></td>
       </tr>
        <tr>
        
-      <td><springform:label path="vendor_password">Password:</springform:label></td>
-      <td>   <springform:input path="vendor_password" value="${vendorDetails.getVendor_password() }"/></td>
-      </tr>
+      <%--   <tr>
+      <td>Password:</td>
+      <td>  <springform:/></td>
+      </tr>  --%>
     
        <tr><td><input type="submit" value="update"/></td></tr>
       

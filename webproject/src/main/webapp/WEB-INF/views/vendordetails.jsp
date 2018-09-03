@@ -15,17 +15,17 @@
               
                     <tr>
                         <td>Name:</td>
-                        <td>${vendorDetails.getVendor_name()}</td>
+                        <td>${vendorDetails.vendor_name}</td>
                      </tr>
                      <tr>
                          <td>Email:</td>
-                        <td>${vendorDetails.getVendor_email()}</td>
+                        <td>${vendorDetails.vendor_mobile}</td>
                 
                     </tr>
                     
                       <tr>
                          <td>Mobile:</td>
-                        <td>${vendorDetails.getVendor_mobile()}</td>
+                        <td>${vendorDetails.vendor_email}</td>
                         
                       </tr>
 
