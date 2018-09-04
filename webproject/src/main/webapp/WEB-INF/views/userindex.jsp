@@ -23,10 +23,10 @@
                         <ul class="nav">
                                
                                 <li class="nav-item">
-                                <a class="nav-link" href="register">Register</a>
+                                <a class="nav-link" href="vendordetails">Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="login">Login</a>
+                                <a class="nav-link" href="edit">Edit profile</a>
                                 </li>
                        </ul>
                 </nav>
@@ -60,10 +60,9 @@
                                  <li class="nav-item">
                                  <a class="nav-link" href="#">laptops</a>
                                  </li>
+                               
                         </ul>
                     </nav>
-                    
-                    <img src="/resources/images/main.jpg" width="100%"/>
         </header>
            
     </body>

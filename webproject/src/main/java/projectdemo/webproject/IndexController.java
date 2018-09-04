@@ -24,8 +24,6 @@ import ecomProject.ecommerce.model.Vendor;
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
-	
 	@GetMapping(value= {"/"})
 	public ModelAndView indexPage()
 	{
@@ -33,7 +31,7 @@ import ecomProject.ecommerce.model.Vendor;
 	    return modelAndView;
 	}
 	
-	@GetMapping(value= {"signup"})
+	@GetMapping(value= {"register"})
 	public String signup(Model model)
 	{
 		model.addAttribute("vendor", new Vendor());
@@ -45,7 +43,7 @@ import ecomProject.ecommerce.model.Vendor;
 	
 		if((vendorDaoService.getVendorByEmail(vendor.getVendor_email()))!=null) {
 		
-			 return "redirect:signup";
+			 return "signup";
 			
 		}
 		else {
@@ -66,13 +64,21 @@ import ecomProject.ecommerce.model.Vendor;
 	   if((vendorDaoService.login(login.getEmail(),login.getPassword()))!=null) {
 		   
 		      Vendor vendor=vendorDaoService.login(login.getEmail(),login.getPassword());
+		     
 		      session.setAttribute("vendorDetails", vendor);
-	          return "redirect:vendordetails";
+	         
+		     return "redirect:home";
 	         
 	    }
 	    else {
-		   return "redirect:login";
+		   return "login";
 	     }
+	}
+	
+    @GetMapping("home")
+	public  String homePage() {
+		
+		return "home";
 	}
 	
 	@GetMapping("vendordetails")
@@ -81,7 +87,7 @@ import ecomProject.ecommerce.model.Vendor;
 	   return "vendordetails";
 	}
 
-	@GetMapping("updatevendor")
+	/*@GetMapping("updatevendor")
 	public String updateVendor() {
 		return "redirect:updatelogin";
 	}
@@ -105,7 +111,7 @@ import ecomProject.ecommerce.model.Vendor;
 	    else {
 		   return "redirect:updatelogin";
 	     }
-	}
+	}*/
 	
 	@GetMapping(value= {"edit"})
 	public String updatevendor(HttpSession httpSession,Model model)
@@ -119,7 +125,7 @@ import ecomProject.ecommerce.model.Vendor;
 
 		    session.setAttribute("vendorDetails", vendor);
 			vendorDaoService.updateVendor(vendor);
-			return "redirect:vendordetails";
+			return "redirect:home";
 		
 	}
 	

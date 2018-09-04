@@ -9,19 +9,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <h1>This is login page</h1>
+   <h1>Login </h1>
    <spring:form  action="loginprocess"  method="post" modelAttribute="login">
-   
-       <tr>
+   <table>
+      
+      <tr>
       <td><spring:label path="email">Email:</spring:label></td>
       <td> <spring:input path="email"/></td>
-      </tr>
-       <tr>
+       </tr>
+       
+      <tr>
       <td><spring:label path="password">Password:</spring:label></td>
       <td>   <spring:input path="password"/></td>
       </tr>
-    
+      
+    </tr>
      <tr><td><input type="submit" value="login"/></td></tr>
+   
+   </table>
+       
      
    </spring:form>
   

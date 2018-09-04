@@ -38,6 +38,12 @@
       </tr>
        <tr>
        
+       <tr>
+         <td><springform:label path="vendor_password">password:</springform:label></td>
+      <td>  <springform:input path="vendor_password"   type="hidden" /></td>
+       </tr>
+        
+       
       <%--   <tr>
       <td>Password:</td>
       <td>  <springform:/></td>
