@@ -21,18 +21,23 @@
               <th>name</th>
               <th>email</th>
               <th>mobile</th>
+              <th>role</th>
               <th>status</th>
+              <th>accept</th>
+              <th>reject</th>
            </tr>
            
-           <c:forEach  items="${userList }"  var="vendor">
+           <c:forEach  items="${userList }"  var="user">
            
                  <tr>
-                      <td><c:out value="${vendor.vendor_id }"></c:out></td>
-                      <td><c:out value="${vendor.vendor_name }"></c:out></td>
-                      <td><c:out value="${vendor.vendor_email}"></c:out></td>
-                      <td><c:out value="${vendor.vendor_mobile}"></c:out></td>
-                      <td><c:out value="${vendor.company_name}"></c:out></td>
-                       <td><c:out value="${vendor.status }"></c:out></td>
+                      <td><c:out value="${user.user_id }"></c:out></td>
+                      <td><c:out value="${user.userName }"></c:out></td>
+                      <td><c:out value="${user.email}"></c:out></td>
+                      <td><c:out value="${user.mobile}"></c:out></td>
+                      <td><c:out value="${user.role}"></c:out></td>
+                       <td><c:out value="${user.status }"></c:out></td>   
+                    <td><a href="accept/${user.user_id }"><input type="button" value="accept" />  </a><td>
+                    <td> <a href="reject/${user.user_id }"><input type="button" value="reject" />  </a><td>
                            
                  </tr>
            

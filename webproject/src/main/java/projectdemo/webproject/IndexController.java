@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -114,15 +115,35 @@ import ecomProject.ecommerce.model.User;
 		
 	}
 	
-	/*@GetMapping("userdetails")
+	@GetMapping("userdetails")
 	public String getUserDetails(Map<String ,Object> user) {
 		user.put("userList", userDaoService.getAllUserDetails());
 		return "userdetails";
-	}*/
+	}
 	
 	@GetMapping("userprofile")
 	public String getUserDetails() {
 		return "userprofile";
+	}
+	
+	@GetMapping("accept/{user_id}")
+	public String acceptUser(@PathVariable("user_id")int user_id) {
+		
+		User user=userDaoService.getUserDetails(user_id);
+		user.setStatus(true);
+		userDaoService.updateUser(user);
+		return "adminindex";
+		
+	}
+	
+	@GetMapping("reject/{user_id}")
+	public String rejectUser(@PathVariable("user_id")int user_id) {
+		
+		User user=userDaoService.getUserDetails(user_id);
+		user.setStatus(false);
+		userDaoService.updateUser(user);
+		return "adminindex";
+		
 	}
 	
 	

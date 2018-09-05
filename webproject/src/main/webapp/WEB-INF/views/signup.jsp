@@ -34,13 +34,15 @@
       </tr>
       
        <tr>
-        <td><springform:label path="role">Role:</springform:label></td>
-         <td>
-            <springform:select path="role">
-                    <springform:options>vendor</springform:options>
-                     <springform:options>customer</springform:options>
-            </springform:select>
-         <td>
+           	<td><form:label path="role">Role: </form:label></td>
+				<td>
+					<form:select path="role">
+				
+						<form:option value="vendor" label="vendor"/>
+						<form:option value="customer" label="customer"/>
+						
+					</form:select>
+			</td>
        </tr>
        
     

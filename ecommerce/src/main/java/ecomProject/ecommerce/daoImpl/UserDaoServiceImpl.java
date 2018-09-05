@@ -72,9 +72,7 @@ public class UserDaoServiceImpl  implements UserDaoService{
 		} catch (Exception e) {
 
           return null;
-		}
-		
-				
+		}	
 	}
 
 	@Override
