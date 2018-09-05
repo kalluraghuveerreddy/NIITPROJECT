@@ -13,17 +13,23 @@
               
                     <tr>
                         <td>Name:</td>
-                        <td>${vendorDetails.vendor_name}</td>
+                        <td>${userDetails.userName}</td>
                      </tr>
                      <tr>
                          <td>Email:</td>
-                        <td>${vendorDetails.vendor_mobile}</td>
+                        <td>${userDetails.mobile}</td>
                 
                     </tr>
                     
                       <tr>
                          <td>Mobile:</td>
-                        <td>${vendorDetails.vendor_email}</td>
+                        <td>${userDetails.email}</td>
+                        
+                      </tr>
+                      
+                        <tr>
+                         <td>role:</td>
+                        <td>${userDetails.role}</td>
                         
                       </tr>
 

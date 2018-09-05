@@ -21,7 +21,7 @@ public class Address {
 		private long pincode;
 		
 		@ManyToOne
-		private Vendor vendor;
+		private User user;
 		
 		public String getCity() {
 			return city;
@@ -47,52 +47,16 @@ public class Address {
 		public void setAddressId(int addressId) {
 			this.addressId = addressId;
 		}
-		public Vendor getVendor() {
-			return vendor;
+		
+		public User getUser() {
+			return user;
 		}
-		public void setVendor(Vendor vendor) {
-			this.vendor = vendor;
+		public void setUser(User user) {
+			this.user = user;
 		}
 		
 		
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((city == null) ? 0 : city.hashCode());
-			result = prime * result + (int) (pincode ^ (pincode >>> 32));
-			result = prime * result + ((streetName == null) ? 0 : streetName.hashCode());
-			return result;
-		}
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Address other = (Address) obj;
-			if (city == null) {
-				if (other.city != null)
-					return false;
-			} else if (!city.equals(other.city))
-				return false;
-			if (pincode != other.pincode)
-				return false;
-			if (streetName == null) {
-				if (other.streetName != null)
-					return false;
-			} else if (!streetName.equals(other.streetName))
-				return false;
-			return true;
-		}
-		@Override
-		public String toString() {
-			return "Address [addressId=" + addressId + ", city=" + city + ", streetName=" + streetName + ", pincode="
-					+ pincode + "]";
-		}
-		
+	
 		
 		
 

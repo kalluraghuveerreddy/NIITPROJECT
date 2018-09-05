@@ -2,6 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
  <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +19,7 @@
        
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#">Electro</a>
+            <a class="navbar-brand text-danger" href="#">Electro</a>
           
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -27,14 +30,29 @@
             <div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Home</a>
+                  <a class="nav-link text-white" href="home">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="register">Sign up</a>
+                  <a class="nav-link text-white" href="userprofile">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="login">Sign in</a>
+                  <a class="nav-link text-white" href="edit">Edit Profile</a>
                 </li>
+
+
+                 <!-- Dropdown -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Add Products
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">add laptops</a>
+          <a class="dropdown-item" href="#">add mobiles</a>
+          <a class="dropdown-item" href="#">add Televisions</a>
+        </div>
+      </li>
+
+               
 
                  <!-- Dropdown -->
     <li class="nav-item dropdown">

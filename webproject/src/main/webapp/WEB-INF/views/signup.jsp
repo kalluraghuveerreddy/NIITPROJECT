@@ -9,32 +9,40 @@
 </head>
 <body>
 
-  <springform:form  action="registerprocess" method="post" modelAttribute="vendor">
+  <springform:form  action="registerprocess" method="post" modelAttribute="user">
     <table>
+    
+       
       <tr>
-      <td><springform:label path="vendor_name">Name:</springform:label></td>
-      <td><springform:input path="vendor_name"/></td>
+      <td><springform:label path="userName">Name:</springform:label></td>
+      <td><springform:input path="userName"/></td>
       </tr>
       
         <tr>
-      <td><springform:label path="vendor_email">Email:</springform:label></td>
-      <td> <springform:input path="vendor_email"/></td>
+      <td><springform:label path="email">Email:</springform:label></td>
+      <td> <springform:input path="email"/></td>
       </tr>
      
         <tr>
-      <td><springform:label path="vendor_mobile">Mobile:</springform:label></td>
-      <td>    <springform:input path="vendor_mobile"/></td>
+      <td><springform:label path="mobile">Mobile:</springform:label></td>
+      <td>    <springform:input path="mobile"/></td>
       </tr>
-      
-      <tr>
-      <td><springform:label path="company_name">Company Name:</springform:label></td>
-      <td>    <springform:input path="company_name"/></td>
+     
+       <tr>
+      <td><springform:label path="password">Password:</springform:label></td>
+      <td>   <springform:input path="password"/></td>
       </tr>
       
        <tr>
-      <td><springform:label path="vendor_password">Password:</springform:label></td>
-      <td>   <springform:input path="vendor_password"/></td>
-      </tr>
+        <td><springform:label path="role">Role:</springform:label></td>
+         <td>
+            <springform:select path="role">
+                    <springform:options>vendor</springform:options>
+                     <springform:options>customer</springform:options>
+            </springform:select>
+         <td>
+       </tr>
+       
     
        <tr><td><input type="submit" value="signup"/></td></tr>
       

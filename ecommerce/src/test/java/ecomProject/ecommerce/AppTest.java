@@ -16,18 +16,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ecomProject.ecommerce.dao.AddressDaoService;
 import ecomProject.ecommerce.dao.CategoryDaoService;
-import ecomProject.ecommerce.dao.CustomerDaoService;
-import ecomProject.ecommerce.dao.ProductDaoService;
+
+
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
-import ecomProject.ecommerce.dao.VendorDaoService;
+import ecomProject.ecommerce.dao.UserDaoService;
+
 import ecomProject.ecommerce.dao.products.LaptopDaoService;
 import ecomProject.ecommerce.daoImpl.SubCategoryDaoServiceImpl;
 import ecomProject.ecommerce.model.Address;
 import ecomProject.ecommerce.model.Category;
-import ecomProject.ecommerce.model.Customer;
-import ecomProject.ecommerce.model.Product;
+
+
 import ecomProject.ecommerce.model.SubCategory;
-import ecomProject.ecommerce.model.Vendor;
+import ecomProject.ecommerce.model.User;
+
 import ecomProject.ecommerce.model.products.Laptop;
 
 
@@ -35,16 +37,12 @@ import ecomProject.ecommerce.model.products.Laptop;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppTest {
 		
-		@Autowired
-	    private	Vendor vendor;
-	
+
 		@Autowired
 		private SubCategory subCategory;
 		
 		@Autowired
 		private Laptop laptop;
-		@Autowired
-	     private Customer customer;
 	
 		private Address address1;
 	
@@ -54,88 +52,57 @@ public class AppTest {
 		private Category category;
 		
 		@Autowired
+		private User user;
+		
+		@Autowired
 		private SubCategoryDaoService subCategoryDaoService;
 		@Autowired
 		private CategoryDaoService categoryDaoService;
 		@Autowired
-		private CustomerDaoService customerDaoService;
-		@Autowired
-		private VendorDaoService vendorDaoService;
-		@Autowired
-		private ProductDaoService productDaoService;
-		
-		@Autowired
 		private  LaptopDaoService laptopDaoService;
 		@Autowired
 		private AddressDaoService addressDaoService;
+		@Autowired
+		private UserDaoService userDaoService;
 	
 	
-	
-		
-		
 		@Before
 		public void setUp()
 		{
 			//AnnotationConfigApplicationContext annotationConfigApplicationContext= new AnnotationConfigApplicationContext(Persistanceconfig.class);
 			
-			
-			vendor.setVendor_name("Raghuveer Reddy");
-			vendor.setCompany_name("Amazon");
-			vendor.setVendor_email("kalluraghureddy@outlook.com");
-			vendor.setVendor_mobile("8978513016");
-			vendor.setVendor_password("raghu123");
+		
+			user.setUserName("Akhil");
+			user.setEmail("akhil@gmail.com");
+			user.setMobile("6549871236");
+			user.setPassword("123456");
+			user.setRole("admin");
 			
 	       HashSet<Address> addresses=new HashSet<Address>();
 	        address1=new Address();
 			address1.setCity("New York");
 			address1.setStreetName("Time sqare");
 			address1.setPincode(5000098);
-		    address1.setVendor(vendor);
+		     address1.setUser(user);
 			addresses.add(address1);
 			
 			address2=new Address();
 			address2.setCity("Mumbai");
 			address2.setStreetName("Electronic street");
 			address2.setPincode(500058);
-			address2.setVendor(vendor);
+			address2.setUser(user);
 			addresses.add(address2);
-		
-		
-             vendor.setAddresses(addresses);
-           
-		}
-  
-	 @Test
-		public void addVendorTest()
-		{
-		   assertEquals("Vendor Insertion Failed",true,vendorDaoService.register(vendor));
-		}	
-	
-       @Test
-		public void getVendorByIdTest() {
 			
-    	   vendorDaoService.register(vendor);
-			 assertEquals("Vendor Insertion Failed",vendor,vendorDaoService.getVendorById(vendor.getVendor_id()));
-		}
-	 
-	  @Test
-      public void getVendorByEmailTest() {
-     	
-		  vendorDaoService.register(vendor);
-          assertEquals(vendor,vendorDaoService.getVendorByEmail(vendor.getVendor_email())); 
-      }
-        
-		@Test
-		public void updateVenodorTest() {
-			 vendorDaoService.register(vendor);
-			 assertEquals("Vendor updation Failed",true,vendorDaoService.updateVendor(vendor));
-			 
+			user.setAddresses(addresses);
+		
+		   
+
 		}
 		
-        @After
-		public void deleteVendor()
-		{
-			vendorDaoService.deleteVendor(vendor);
+		@Test
+		public void addUserTest() {
+			 assertEquals("user Insertion Failed",true,userDaoService.registerUser(user));
 		}
-	 
+	
+  
 }

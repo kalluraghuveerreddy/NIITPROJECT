@@ -16,7 +16,7 @@
        
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#">Electro</a>
+            <a class="navbar-brand  text-danger" href="#">Electro</a>
           
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -27,14 +27,15 @@
             <div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Home</a>
+                  <a class="nav-link text-white" href="home">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="register">Sign up</a>
+                  <a class="nav-link text-white" href="userprofile">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="login">Sign in</a>
+                  <a class="nav-link text-white" href="edit">Edit Profile</a>
                 </li>
+               
 
                  <!-- Dropdown -->
     <li class="nav-item dropdown">

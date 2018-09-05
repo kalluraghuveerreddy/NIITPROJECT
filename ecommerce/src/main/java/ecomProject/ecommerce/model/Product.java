@@ -25,7 +25,7 @@ public class Product {
 	private int  product_price;
 	
 	@ManyToOne
-	private Vendor vendor;
+	private User user;
 	
 	@ManyToOne
     private SubCategory subCategory;
@@ -36,12 +36,7 @@ public class Product {
 	public void setSubCategory(SubCategory subCategory) {
 		this.subCategory = subCategory;
 	}
-	public Vendor getVendor() {
-		return vendor;
-	}
-	public void setVendor(Vendor vendor) {
-		this.vendor = vendor;
-	}
+	
 	public int  getProduct_id() {
 		return product_id;
 	}
@@ -65,6 +60,12 @@ public class Product {
 	}
 	public void setProduct_price(int product_price) {
 		this.product_price = product_price;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	} 
 	
 	

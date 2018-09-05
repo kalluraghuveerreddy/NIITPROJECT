@@ -9,50 +9,42 @@
 </head>
 <body>
 
-  <springform:form  action="updateprocess" method="post" modelAttribute="vendor">
+  <springform:form  action="updateprocess" method="post" modelAttribute="user">
     <table>
     
        <tr>
-      <td><springform:label path="vendor_id">Id:</springform:label></td>
-      <td><springform:input path="vendor_id"  readonly="true"/></td>
+      <td><springform:label path="user_id">Id:</springform:label></td>
+      <td><springform:input path="user_id"  readonly="true"/></td>
       </tr>
       <tr>
-      <td><springform:label path="vendor_name">Name:</springform:label></td>
-      <td><springform:input path="vendor_name" /></td>
+      <td><springform:label path="userName">Name:</springform:label></td>
+      <td><springform:input path="userName" /></td>
       </tr>
       
         <tr>
-      <td><springform:label path="vendor_email">Email:</springform:label></td>
-      <td> <springform:input path="vendor_email" /></td>
+      <td><springform:label path="email">Email:</springform:label></td>
+      <td> <springform:input path="email" /></td>
       </tr>
      
         <tr>
-      <td><springform:label path="vendor_mobile">Mobile:</springform:label></td>
-      <td>    <springform:input path="vendor_mobile" /></td>
+      <td><springform:label path="mobile">Mobile:</springform:label></td>
+      <td>    <springform:input path="mobile" /></td>
       </tr>
       
-     
-       <tr>
-      <td><springform:label path="company_name">Company Name:</springform:label></td>
-      <td>  <springform:input path="company_name"   /></td>
+      <tr>
+      <td><springform:label path="role">Role:</springform:label></td>
+      <td>    <springform:input path="role" /></td>
       </tr>
-       <tr>
+      
+
        
        <tr>
-         <td><springform:label path="vendor_password">password:</springform:label></td>
-      <td>  <springform:input path="vendor_password"   type="hidden" /></td>
+         <td><springform:label path="password">password:</springform:label></td>
+      <td>  <springform:input path="password"   type="hidden" /></td>
        </tr>
        
-        <tr>
-         <td><springform:label path="status">Status:</springform:label></td>
-      <td>  <springform:input path="status"   type="hidden" /></td>
-       </tr>
-        
-       
-      <%--   <tr>
-      <td>Password:</td>
-      <td>  <springform:/></td>
-      </tr>  --%>
+      
+  
     
        <tr><td><input type="submit" value="update"/></td></tr>
       
