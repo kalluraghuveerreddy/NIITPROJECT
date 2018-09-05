@@ -22,24 +22,24 @@
                 <nav class ="navbar navbar-expand-sm bg-dark justify-content-end">
                         <ul class="nav">
                                
-                                <li class="nav-item">
-                                <a class="nav-link text-white" href="register">Register</a>
+                                <li class="nav-item" >
+                                <a class="nav-link text-white" href="vendorprofile" >Profile</a>
                                 </li>
-                                <li class="nav-item">
-                                <a class="nav-link text-white" href="login">Login</a>
+                                <li class="nav-item ">
+                                <a class="nav-link  text-white" href="edit"  >Edit profile</a>
                                 </li>
                        </ul>
                 </nav>
                
                 <nav class ="navbar navbar-expand-sm bg-dark ">
-                    <span class="navbar-brand text-warning ">electro store</span>
+                    <span class="navbar-brand text-warning">electro store</span>
                     <ul class="nav">
                     
                              <li class="nav-item">
-                             <a class="nav-link  text-white" href="#">your wishlist</a>
+                             <a class="nav-link  text-white" href="#" >your wishlist</a>
                              </li>
                              <li class="nav-item">
-                             <a class="nav-link text-white" href="#">your cart</a>
+                             <a class="nav-link  text-white" href="#">your cart</a>
                              </li>
                     </ul>
                 </nav>
@@ -60,10 +60,12 @@
                                  <li class="nav-item">
                                  <a class="nav-link" href="#">laptops</a>
                                  </li>
+                                    <li class="nav-item">
+                                 <a class="nav-link" href="vendordetails">vendors</a>
+                                 </li>
+                               
                         </ul>
                     </nav>
-                    
-                    <img src="/resources/images/main.jpg" width="100%"/>
         </header>
            
     </body>

@@ -1,6 +1,8 @@
 package projectdemo.webproject;
 
 import java.util.Date;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,10 +83,10 @@ import ecomProject.ecommerce.model.Vendor;
 		return "home";
 	}
 	
-	@GetMapping("vendordetails")
+	@GetMapping("vendorprofile")
 	public String vendorDetails() {
 		
-	   return "vendordetails";
+	   return "vendorprofile";
 	}
 
 	/*@GetMapping("updatevendor")
@@ -127,6 +129,12 @@ import ecomProject.ecommerce.model.Vendor;
 			vendorDaoService.updateVendor(vendor);
 			return "redirect:home";
 		
+	}
+	
+	@GetMapping("vendordetails")
+	public String getVendorDetails(Map<String ,Object> vendor) {
+		vendor.put("userList", vendorDaoService.getAllVendorsDetails());
+		return "vendordetails";
 	}
 	
 }

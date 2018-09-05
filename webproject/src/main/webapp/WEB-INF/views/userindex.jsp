@@ -22,24 +22,24 @@
                 <nav class ="navbar navbar-expand-sm bg-dark justify-content-end">
                         <ul class="nav">
                                
-                                <li class="nav-item">
-                                <a class="nav-link" href="vendordetails">Profile</a>
+                                <li class="nav-item" >
+                                <a class="nav-link text-white" href="vendorprofile" >Profile</a>
                                 </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="edit">Edit profile</a>
+                                <li class="nav-item ">
+                                <a class="nav-link  text-white" href="edit"  >Edit profile</a>
                                 </li>
                        </ul>
                 </nav>
                
                 <nav class ="navbar navbar-expand-sm bg-dark ">
-                    <span class="navbar-brand text-white ">electro store</span>
+                    <span class="navbar-brand text-warning">electro store</span>
                     <ul class="nav">
                     
                              <li class="nav-item">
-                             <a class="nav-link" href="#">your wishlist</a>
+                             <a class="nav-link  text-white" href="#" >your wishlist</a>
                              </li>
                              <li class="nav-item">
-                             <a class="nav-link" href="#">your cart</a>
+                             <a class="nav-link  text-white" href="#">your cart</a>
                              </li>
                     </ul>
                 </nav>

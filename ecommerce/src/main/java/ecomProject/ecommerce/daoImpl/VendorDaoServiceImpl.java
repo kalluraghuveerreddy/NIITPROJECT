@@ -1,5 +1,7 @@
 package ecomProject.ecommerce.daoImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
@@ -91,6 +93,18 @@ public class VendorDaoServiceImpl implements VendorDaoService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public List<Vendor>getAllVendorsDetails() {
+		try {
+			return sessionFactory.getCurrentSession().createCriteria(Vendor.class).list();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 }

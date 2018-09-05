@@ -29,6 +29,7 @@ public class Vendor
 	private String vendor_mobile;
 	@Column(unique=true)
     private String company_name;
+	private boolean status=false;
 	
 	@OneToMany(mappedBy="vendor",cascade=CascadeType.ALL)
 	private Set<Product> products;
@@ -86,6 +87,12 @@ public class Vendor
 	}
 	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	@Override
 	public int hashCode() {
