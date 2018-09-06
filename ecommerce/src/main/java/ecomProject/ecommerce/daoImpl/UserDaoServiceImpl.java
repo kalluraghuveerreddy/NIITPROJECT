@@ -76,9 +76,10 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public List<User> getAllUserDetails() {
+	public List<User> getVendorDetails() {
 		try {
-			return sessionFactory.getCurrentSession().createCriteria(User.class).list();
+			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor'",User.class);
+			return query.getResultList();
 		}
 	   catch (Exception e) {
 		     e.printStackTrace();

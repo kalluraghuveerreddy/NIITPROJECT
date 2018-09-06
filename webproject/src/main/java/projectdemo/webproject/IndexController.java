@@ -117,7 +117,7 @@ import ecomProject.ecommerce.model.User;
 	
 	@GetMapping("userdetails")
 	public String getUserDetails(Map<String ,Object> user) {
-		user.put("userList", userDaoService.getAllUserDetails());
+		user.put("userList", userDaoService.getVendorDetails());
 		return "userdetails";
 	}
 	

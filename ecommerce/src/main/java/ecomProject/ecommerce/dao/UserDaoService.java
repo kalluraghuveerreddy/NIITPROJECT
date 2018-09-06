@@ -12,6 +12,6 @@ public interface UserDaoService {
 	public User getUserDetails(int user_id);
 	public User getUserDetailsByEmail(String email);
 	public User loginUser(String email,String password);
-	public List<User>  getAllUserDetails();
+	public List<User>  getVendorDetails();
 	
 }
