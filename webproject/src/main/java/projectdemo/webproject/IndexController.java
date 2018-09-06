@@ -53,7 +53,7 @@ import ecomProject.ecommerce.model.User;
 		}
 		else {
 			userDaoService.registerUser(user);
-			return "redirect:login";
+			return "index";
 		}
 	}
 	
@@ -132,7 +132,7 @@ import ecomProject.ecommerce.model.User;
 		User user=userDaoService.getUserDetails(user_id);
 		user.setStatus(true);
 		userDaoService.updateUser(user);
-		return "adminindex";
+		return "redirect:/userdetails";
 		
 	}
 	
@@ -142,7 +142,7 @@ import ecomProject.ecommerce.model.User;
 		User user=userDaoService.getUserDetails(user_id);
 		user.setStatus(false);
 		userDaoService.updateUser(user);
-		return "adminindex";
+		return "redirect:/userdetails";
 		
 	}
 	

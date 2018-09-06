@@ -35,8 +35,14 @@ public class UserDaoServiceImpl  implements UserDaoService{
 
 	@Override
 	public boolean updateUser(User user) {
+		   
+		try {
+			sessionFactory.getCurrentSession().update(user);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 		
-		return false;
 	}
 
 	@Override

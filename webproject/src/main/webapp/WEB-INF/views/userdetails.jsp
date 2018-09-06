@@ -31,12 +31,11 @@
               <th>mobile</th>
               <th>role</th>
               <th>status</th>
-              <th>accept</th>
-              <th>reject</th>
+              <th>operation</th>
+              
            </tr>
         
         </thead>
-          
            
            <c:forEach  items="${userList }"  var="user">
            <tbody>
@@ -48,10 +47,23 @@
                       <td><c:out value="${user.mobile}"></c:out></td>
                       <td><c:out value="${user.role}"></c:out></td>
                        <td><c:out value="${user.status }"></c:out></td>   
-                    <td><a href="accept/${user.user_id }"><input type="button" value="accept" />  </a></td>
-                    <td> <a href="reject/${user.user_id }"><input type="button" value="reject" />  </a></td>
+                       
+                       
+                       <c:set var = "status" scope = "session" value = "${user.status}"/>
+                       <c:choose>
+                       <c:when test="${ status == false}">
+                       <td><a href="accept/${user.user_id }"><input type="button" value="Activate"></a></td>
+                       </c:when>
+                       <c:when test="${ status == true}">
+                       <td><a href="reject/${user.user_id}"><input type="button" value="Deactivate"></a></td>
+                       </c:when>
+                       </c:choose>
+                       
+                       
+                    <%-- <td><a href="accept/${user.user_id }"><input type="button" value="accept" />  </a></td>
+                    <td> <a href="reject/${user.user_id }"><input type="button" value="reject" />  </a></td> --%>
                            
-                 </tr>
+                </tr>
            </tbody>
              
            
