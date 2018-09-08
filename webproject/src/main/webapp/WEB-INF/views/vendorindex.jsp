@@ -43,12 +43,12 @@
                  <!-- Dropdown -->
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Add Products
+          Products
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">add laptops</a>
-          <a class="dropdown-item" href="#">add mobiles</a>
-          <a class="dropdown-item" href="#">add Televisions</a>
+          <a class="dropdown-item" href="">add products</a>
+          <a class="dropdown-item" href="#">delete products</a>
+          <a class="dropdown-item" href="#">update products</a>
         </div>
       </li>
 

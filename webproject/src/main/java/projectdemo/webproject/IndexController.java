@@ -41,7 +41,8 @@ import ecomProject.ecommerce.model.User;
 	public String signup(Model model)
 	{
 		model.addAttribute("user", new User());
-		return "signup";
+		//return "signup";
+		return "register";
 	}
 	
 	@PostMapping("registerprocess")
@@ -116,7 +117,7 @@ import ecomProject.ecommerce.model.User;
 	}
 	
 	@GetMapping("userdetails")
-	public String getUserDetails(Map<String ,Object> user) {
+	public String getVendorDetails(Map<String ,Object> user) {
 		user.put("userList", userDaoService.getVendorDetails());
 		return "userdetails";
 	}
@@ -145,6 +146,12 @@ import ecomProject.ecommerce.model.User;
 		return "redirect:/userdetails";
 		
 	}
+	
+/*	@GetMapping("activevendordetails")
+	public String getActiveVendorDetails(Map<String ,Object> user) {
+		user.put("userList", userDaoService.getActiveVendorDetails());
+		return "activevendordetails";
+	}*/
 	
 	
 }

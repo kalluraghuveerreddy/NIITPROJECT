@@ -13,5 +13,8 @@ public interface UserDaoService {
 	public User getUserDetailsByEmail(String email);
 	public User loginUser(String email,String password);
 	public List<User>  getVendorDetails();
+	public List<User>  getActiveVendorDetails();
+	
+	
 	
 }

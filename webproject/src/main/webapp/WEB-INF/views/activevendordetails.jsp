@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@page isELIgnored="false" %>
+<%@page isELIgnored="false" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags"  prefix="springtag"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -18,70 +18,61 @@
 
 </head>
 <body>
-       
-<h1>Deactivated</h1>
-<table class="table">
-<thead>
-          <tr>
-              <th>user-id</th>
-              <th>userName</th>
+      
+  
+     
+     <c:if test="${!empty userList }">
+        <table  class="table table-bordered table-sm">
+        <thead>
+            <tr>
+              <th>userid</th>
+              <th>name</th>
               <th>email</th>
               <th>mobile</th>
               <th>role</th>
               <th>status</th>
-              <th>Activate/Deactivate</th>
+              <th>operation</th>
               
            </tr>
-</thead>
-<tbody>
-  <c:forEach items="${userList}" var="user">
-      <c:if test="${user.status == false}">
-          <tr>
+        
+        </thead>
+           
+           <c:forEach  items="${userList }"  var="user">
+           <tbody>
+           
+               <tr>
                       <td><c:out value="${user.user_id }"></c:out></td>
                       <td><c:out value="${user.userName }"></c:out></td>
                       <td><c:out value="${user.email}"></c:out></td>
                       <td><c:out value="${user.mobile}"></c:out></td>
                       <td><c:out value="${user.role}"></c:out></td>
-                       <td><c:out value="${user.status }"></c:out></td>  
+                       <td><c:out value="${user.status }"></c:out></td>   
+                       
+                       
+                       <c:set var = "status" scope = "session" value = "${user.status}"/>
+                       <c:choose>
+                       <c:when test="${ status == false}">
                        <td><a href="accept/${user.user_id }"><input type="button" value="Activate"></a></td>
-        </tr>
-     </c:if>
-  </c:forEach>
-</tbody>
-</table>
-
-
-<h1>Activated</h1>
-
-<table class="table">
-<thead>
-          <tr>
-              <th>user_id</th>
-              <th>userName</th>
-              <th>email</th>
-              <th>mobile</th>
-              <th>role</th>
-              <th>status</th>
-              <th>Activate/Deactivate</th>
-              
-           </tr>
-</thead>
-<tbody>
-  <c:forEach items="${userList}" var="user">
-  <c:if test="${user.status == true }">
-          <tr>
-                      <td><c:out value="${user.user_id }"></c:out></td>
-                      <td><c:out value="${user.userName }"></c:out></td>
-                      <td><c:out value="${user.email}"></c:out></td>
-                      <td><c:out value="${user.mobile}"></c:out></td>
-                      <td><c:out value="${user.role}"></c:out></td>
-                       <td><c:out value="${user.status }"></c:out></td>  
+                       </c:when>
+                       <c:when test="${ status == true}">
                        <td><a href="reject/${user.user_id}"><input type="button" value="Deactivate"></a></td>
-        </tr>
- </c:if>
-  </c:forEach>
-</tbody>
-</table>
+                       </c:when>
+                       </c:choose>
+                       
+                       
+                    <%-- <td><a href="accept/${user.user_id }"><input type="button" value="accept" />  </a></td>
+                    <td> <a href="reject/${user.user_id }"><input type="button" value="reject" />  </a></td> --%>
+                           
+                </tr>
+           </tbody>
+             
+           
+           </c:forEach>
+        
+        </table>
+        
+        </c:if>
+      
      
 </body>
 </html>
