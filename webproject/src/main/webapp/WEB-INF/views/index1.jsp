@@ -25,7 +25,7 @@
         <a class="nav-link text-danger" href="" >Sign up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link  text-danger" href="signin.html" data-toggle="model" data-target="#loginModal">Sign in</a>
+        <a class="nav-link  text-danger" href="loginmodal" data-toggle="model" data-target="#loginModal">Sign in</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-dnager" href="#">cart</a>

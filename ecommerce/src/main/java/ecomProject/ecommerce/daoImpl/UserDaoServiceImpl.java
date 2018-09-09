@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ecomProject.ecommerce.dao.UserDaoService;
-import ecomProject.ecommerce.model.User;
+import ecomProject.ecommerce.model.Customer;
 
 
 @Component
@@ -21,7 +21,7 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	private SessionFactory sessionFactory;
 
 	@Override
-	public boolean registerUser(User user) {
+	public boolean registerUser(Customer user) {
 	
 		try {
 			
@@ -34,7 +34,7 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public boolean updateUser(User user) {
+	public boolean updateUser(Customer user) {
 		   
 		try {
 			sessionFactory.getCurrentSession().update(user);
@@ -46,7 +46,7 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public boolean deleteUser(User user) {
+	public boolean deleteUser(Customer user) {
 		try {
 			sessionFactory.getCurrentSession().delete(user);
 			return true;
@@ -57,9 +57,9 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public User getUserDetails(int user_id) {
+	public Customer getUserDetails(int user_id) {
 		try {
-			User user=sessionFactory.getCurrentSession().get(User.class, user_id);
+			Customer user=sessionFactory.getCurrentSession().get(Customer.class, user_id);
 			return user;
 		} catch (Exception e) {
 			return null;
@@ -68,10 +68,10 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public User loginUser(String email, String password) {
+	public Customer loginUser(String email, String password) {
 		
 		try {
-			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where email=:email and password=:password" , User.class);
+			Query<Customer> query=sessionFactory.getCurrentSession().createQuery("from User where email=:email and password=:password" , Customer.class);
 			query.setParameter("email", email);
 			query.setParameter("password", password);
 			return query.getSingleResult();
@@ -82,9 +82,9 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public List<User> getVendorDetails() {
+	public List<Customer> getVendorDetails() {
 		try {
-			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor'",User.class);
+			Query<Customer> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor'",Customer.class);
 			return query.getResultList();
 		}
 	   catch (Exception e) {
@@ -95,9 +95,9 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public User getUserDetailsByEmail(String email) {
+	public Customer getUserDetailsByEmail(String email) {
 		try {
-			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where email=:email", User.class);
+			Query<Customer> query=sessionFactory.getCurrentSession().createQuery("from User where email=:email", Customer.class);
 			query.setParameter("email", email);
 			return query.getSingleResult();
 		} catch (Exception e) {
@@ -107,9 +107,9 @@ public class UserDaoServiceImpl  implements UserDaoService{
 	}
 
 	@Override
-	public List<User> getActiveVendorDetails() {
+	public List<Customer> getActiveVendorDetails() {
 		try {
-			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor' and status=true",User.class);
+			Query<Customer> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor' and status=true",Customer.class);
 			return query.getResultList();
 		}
 	   catch (Exception e) {

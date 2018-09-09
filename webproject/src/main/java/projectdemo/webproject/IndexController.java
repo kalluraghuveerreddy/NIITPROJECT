@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ecomProject.ecommerce.dao.UserDaoService;
-
+import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.model.Login;
-import ecomProject.ecommerce.model.User;
+import ecomProject.ecommerce.model.Vendor;
+import ecomProject.ecommerce.model.Customer;
 
 
    @Controller
@@ -26,34 +27,34 @@ import ecomProject.ecommerce.model.User;
 	   
 	   
 	@Autowired
-	private UserDaoService userDaoService;
+	private VendorDaoService vendorDaoService;
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@GetMapping(value= {"/"})
 	public ModelAndView indexPage()
 	{
-		ModelAndView modelAndView=new ModelAndView("index");
+		ModelAndView modelAndView=new ModelAndView("index1");
 	    return modelAndView;
 	}
 	
 	@GetMapping(value= {"register"})
 	public String signup(Model model)
 	{
-		model.addAttribute("user", new User());
-		//return "signup";
+		model.addAttribute("vendor", new Vendor());
+		
 		return "register";
 	}
 	
 	@PostMapping("registerprocess")
-	public String registerVendor(@ModelAttribute("user")User user) {
+	public String registerVendor(@ModelAttribute("vendor")Vendor vendor) {
 	
-		if((userDaoService.getUserDetailsByEmail(user.getEmail()))!=null) {
+		if((vendorDaoService.getVendorByEmail(vendor.getVendor_email()))!=null) {
 		
 			 return "signup";
 		}
 		else {
-			userDaoService.registerUser(user);
+			vendorDaoService.registerVendor(vendor);
 			return "index";
 		}
 	}
@@ -65,25 +66,17 @@ import ecomProject.ecommerce.model.User;
 		return "login";
 	}
 	@PostMapping("loginprocess")
-	public  String  loginUser(@ModelAttribute("login")Login login,HttpSession session)
+	public  String  loginVendor(@ModelAttribute("login")Login login,HttpSession session)
 	{
-	   if((userDaoService.loginUser(login.getEmail(),login.getPassword()))!=null) {
+	   if((vendorDaoService.loginVendor(login.getEmail(),login.getPassword()))!=null) {
 		   
-		   User user=userDaoService.loginUser(login.getEmail(),login.getPassword());
+		   Vendor vendor=vendorDaoService.loginVendor(login.getEmail(),login.getPassword());
 		   
-		   session.setAttribute("userDetails",user);
+		   session.setAttribute("vendorDetails",vendor);
 		   
-		    // return "redirect:userprofile";
+		    return "redirect:vendorindex";
 		   
-		   if(user.getRole().equalsIgnoreCase("admin")) {
-			   return  "adminindex";
-		   }else 
-		   if(user.getRole().equalsIgnoreCase("vendor")) {
-			   return  "vendorindex";
-		   } else
 		  
-			   return  "customerindex";
-		   
 	   }
 	   else {
 		   
@@ -95,63 +88,47 @@ import ecomProject.ecommerce.model.User;
 	@GetMapping(value= {"edit"})
 	public String updateUser(HttpSession httpSession,Model model)
 	{
-		model.addAttribute("user", httpSession.getAttribute("userDetails"));
+		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
 		return "edit";
 	}
 	
 	@PostMapping("updateprocess")
-	public String userUpdateProcess(@ModelAttribute("user")User user,HttpSession session) {
+	public String vendorUpdateProcess(@ModelAttribute("vendor")Vendor vendor,HttpSession session) {
 
-		    session.setAttribute("userDetails", user);
-			userDaoService.updateUser(user);
-			
-			  if(user.getRole().equalsIgnoreCase("admin")) {
-				   return  "adminindex";
-			   }else 
-			   if(user.getRole().equalsIgnoreCase("vendor")) {
-				   return  "vendorindex";
-			   } else
-			  
-				   return  "customerindex";
-		
+		    session.setAttribute("userDetails", vendor);
+			vendorDaoService.update(vendor);
+		    return  "vendorindex";
+			 
 	}
 	
 	@GetMapping("userdetails")
 	public String getVendorDetails(Map<String ,Object> user) {
-		user.put("userList", userDaoService.getVendorDetails());
-		return "userdetails";
+		user.put("vendorList", vendorDaoService.getAllVendorDetails());
+		return "vendordetails";
 	}
 	
-	@GetMapping("userprofile")
-	public String getUserDetails() {
+	@GetMapping("vendorprofile")
+	public String getVendorDetails() {
 		return "userprofile";
 	}
 	
 	@GetMapping("accept/{user_id}")
-	public String acceptUser(@PathVariable("user_id")int user_id) {
+	public String acceptUser(@PathVariable("user_id")int vendor_id) {
 		
-		User user=userDaoService.getUserDetails(user_id);
-		user.setStatus(true);
-		userDaoService.updateUser(user);
-		return "redirect:/userdetails";
+		Vendor vendor=vendorDaoService.getVendorById(vendor_id);
+		vendor.setStatus(true);
+		vendorDaoService.update(vendor);
+		return "redirect:/vendordetails";
 		
 	}
 	
 	@GetMapping("reject/{user_id}")
-	public String rejectUser(@PathVariable("user_id")int user_id) {
+	public String rejectUser(@PathVariable("user_id")int vendor_id) {
 		
-		User user=userDaoService.getUserDetails(user_id);
-		user.setStatus(false);
-		userDaoService.updateUser(user);
-		return "redirect:/userdetails";
+		Vendor vendor=vendorDaoService.getVendorById(vendor_id);
+		vendor.setStatus(false);
+		vendorDaoService.update(vendor);
+		return "redirect:/vendordetails";
 		
 	}
-	
-/*	@GetMapping("activevendordetails")
-	public String getActiveVendorDetails(Map<String ,Object> user) {
-		user.put("userList", userDaoService.getActiveVendorDetails());
-		return "activevendordetails";
-	}*/
-	
-	
 }

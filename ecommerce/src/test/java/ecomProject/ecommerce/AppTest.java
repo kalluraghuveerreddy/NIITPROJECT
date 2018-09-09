@@ -14,22 +14,22 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import ecomProject.ecommerce.dao.AddressDaoService;
+import ecomProject.ecommerce.dao.VendorAddressDaoService;
 import ecomProject.ecommerce.dao.CategoryDaoService;
 
 
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
 import ecomProject.ecommerce.dao.UserDaoService;
-
+import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.dao.products.LaptopDaoService;
 import ecomProject.ecommerce.daoImpl.SubCategoryDaoServiceImpl;
-import ecomProject.ecommerce.model.Address;
+import ecomProject.ecommerce.model.VendorAddress;
 import ecomProject.ecommerce.model.Category;
 
 
 import ecomProject.ecommerce.model.SubCategory;
-import ecomProject.ecommerce.model.User;
-
+import ecomProject.ecommerce.model.Customer;
+import ecomProject.ecommerce.model.Vendor;
 import ecomProject.ecommerce.model.products.Laptop;
 
 
@@ -41,18 +41,18 @@ public class AppTest {
 		@Autowired
 		private SubCategory subCategory;
 		
-		@Autowired
-		private Laptop laptop;
+		private VendorAddress address1;
 	
-		private Address address1;
-	
-		private Address address2;
+		private VendorAddress address2;
 		
 		@Autowired
 		private Category category;
 		
 		@Autowired
-		private User user;
+		private Customer customer;
+		
+		@Autowired
+		private Vendor vendor;
 		
 		@Autowired
 		private SubCategoryDaoService subCategoryDaoService;
@@ -61,9 +61,11 @@ public class AppTest {
 		@Autowired
 		private  LaptopDaoService laptopDaoService;
 		@Autowired
-		private AddressDaoService addressDaoService;
+		private VendorAddressDaoService addressDaoService;
 		@Autowired
-		private UserDaoService userDaoService;
+		private UserDaoService customerDaoService;
+		@Autowired
+		private VendorDaoService vendorDaoService;
 	
 	
 		@Before
@@ -72,37 +74,26 @@ public class AppTest {
 			//AnnotationConfigApplicationContext annotationConfigApplicationContext= new AnnotationConfigApplicationContext(Persistanceconfig.class);
 			
 		
-			user.setUserName("Akhil");
-			user.setEmail("akhil@gmail.com");
-			user.setMobile("6549871236");
-			user.setPassword("123456");
-			user.setRole("admin");
+			customer.setUserName("Akhil");
+			customer.setEmail("akhil@gmail.com");
+			customer.setMobile("6549871236");
+			customer.setPassword("123456");
 			
-	       HashSet<Address> addresses=new HashSet<Address>();
-	        address1=new Address();
-			address1.setCity("New York");
-			address1.setStreetName("Time sqare");
-			address1.setPincode(5000098);
-		     address1.setUser(user);
-			addresses.add(address1);
 			
-			address2=new Address();
-			address2.setCity("Mumbai");
-			address2.setStreetName("Electronic street");
-			address2.setPincode(500058);
-			address2.setUser(user);
-			addresses.add(address2);
-			
-			user.setAddresses(addresses);
+			vendor.setVendor_name("ashok");
+			vendor.setVendor_mobile("9874563310");
+			vendor.setVendor_email("ashok@gmail.com");
+			vendor.setVendor_password("12345");
+			vendor.setCompany_name("flipkart");
 		
-		   
-
+		
 		}
 		
 		@Test
-		public void addUserTest() {
-			 assertEquals("user Insertion Failed",true,userDaoService.registerUser(user));
+		public void  registerVendorTest() {
+			 assertEquals("vendor Insertion Failed",true,vendorDaoService.registerVendor(vendor));
 		}
+		
 	
   
 }
