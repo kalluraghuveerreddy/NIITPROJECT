@@ -19,57 +19,58 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int user_id;
-	private String userName;
+	private int customer_id;
+	private String customer_name;
 	@Column(unique = true)
-	private String email;
-	private String password;
+	private String customer_email;
+	private String customer_password;
 	@Column(unique = true)
-	private String mobile;
+	private String customer_mobile;
 	
 	
-	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
 	private Set<CustomerAddress> customerAddress;
 
 	
-	public int getUser_id() {
-		return user_id;
+	
+	public int getCustomer_id() {
+		return customer_id;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getCustomer_name() {
+		return customer_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getCustomer_email() {
+		return customer_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCustomer_email(String customer_email) {
+		this.customer_email = customer_email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getCustomer_password() {
+		return customer_password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCustomer_password(String customer_password) {
+		this.customer_password = customer_password;
 	}
 
-	public String getMobile() {
-		return mobile;
+	public String getCustomer_mobile() {
+		return customer_mobile;
 	}
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
+	public void setCustomer_mobile(String customer_mobile) {
+		this.customer_mobile = customer_mobile;
 	}
 
 	public Set<CustomerAddress> getCustomerAddress() {

@@ -16,10 +16,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ecomProject.ecommerce.dao.VendorAddressDaoService;
 import ecomProject.ecommerce.dao.CategoryDaoService;
-
-
+import ecomProject.ecommerce.dao.CustomerDaoService;
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
-import ecomProject.ecommerce.dao.UserDaoService;
+
 import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.dao.products.LaptopDaoService;
 import ecomProject.ecommerce.daoImpl.SubCategoryDaoServiceImpl;
@@ -37,33 +36,12 @@ import ecomProject.ecommerce.model.products.Laptop;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppTest {
 		
-
-		@Autowired
-		private SubCategory subCategory;
-		
-		private VendorAddress address1;
+		private VendorAddress vendorAddress1;
 	
-		private VendorAddress address2;
-		
-		@Autowired
-		private Category category;
-		
-		@Autowired
-		private Customer customer;
+		private VendorAddress vendorAddress2;
 		
 		@Autowired
 		private Vendor vendor;
-		
-		@Autowired
-		private SubCategoryDaoService subCategoryDaoService;
-		@Autowired
-		private CategoryDaoService categoryDaoService;
-		@Autowired
-		private  LaptopDaoService laptopDaoService;
-		@Autowired
-		private VendorAddressDaoService addressDaoService;
-		@Autowired
-		private UserDaoService customerDaoService;
 		@Autowired
 		private VendorDaoService vendorDaoService;
 	
@@ -74,10 +52,7 @@ public class AppTest {
 			//AnnotationConfigApplicationContext annotationConfigApplicationContext= new AnnotationConfigApplicationContext(Persistanceconfig.class);
 			
 		
-			customer.setUserName("Akhil");
-			customer.setEmail("akhil@gmail.com");
-			customer.setMobile("6549871236");
-			customer.setPassword("123456");
+			
 			
 			
 			vendor.setVendor_name("ashok");
@@ -85,8 +60,26 @@ public class AppTest {
 			vendor.setVendor_email("ashok@gmail.com");
 			vendor.setVendor_password("12345");
 			vendor.setCompany_name("flipkart");
-		
-		
+			
+			HashSet<VendorAddress> vendorAddresses=new HashSet<VendorAddress>();
+			vendorAddress1=new VendorAddress();
+			vendorAddress1.setCity("Hyderabad");
+			vendorAddress1.setStreetName("Bhanu nagar colony");
+			vendorAddress1.setPincode(500059);
+			vendorAddress1.setVendor(vendor);
+			vendorAddresses.add(vendorAddress1);
+			
+			vendorAddress2=new VendorAddress();
+			vendorAddress2.setCity("Hyderabad");
+			vendorAddress2.setStreetName("RTCcolony");
+			vendorAddress2.setPincode(500059);
+			vendorAddress2.setVendor(vendor);
+			vendorAddresses.add(vendorAddress2);
+			
+			vendor.setVendorAddress(vendorAddresses);
+			
+	        
+
 		}
 		
 		@Test

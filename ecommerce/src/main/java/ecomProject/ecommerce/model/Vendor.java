@@ -1,5 +1,6 @@
 package ecomProject.ecommerce.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -27,10 +28,12 @@ public class Vendor {
 	private String company_name;
 	@Column(nullable = false)
 	private boolean status;
-	
-	@OneToMany(mappedBy="vendor", cascade=CascadeType.ALL)
-	private Set<VendorAddress>  vendorAddress;
-	
+
+	@OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
+	private Set<VendorAddress> vendorAddress;
+
+	@OneToMany(mappedBy = "vendor")
+	private List<Product> product;
 
 	public int getVendor_id() {
 		return vendor_id;
@@ -95,6 +98,15 @@ public class Vendor {
 	public void setVendorAddress(Set<VendorAddress> vendorAddress) {
 		this.vendorAddress = vendorAddress;
 	}
-    
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
 	
+	
+
 }

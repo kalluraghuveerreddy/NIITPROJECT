@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.model.Vendor;
+
 @Component
 @Transactional
 public class VendorDaoServiceImpl  implements VendorDaoService{

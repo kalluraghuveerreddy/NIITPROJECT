@@ -15,43 +15,46 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ecomProject.ecommerce.dao.UserDaoService;
+import ecomProject.ecommerce.dao.CustomerDaoService;
+
 import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.model.Login;
 import ecomProject.ecommerce.model.Vendor;
 import ecomProject.ecommerce.model.Customer;
 
 
-   @Controller
+ @Controller
  public class IndexController {
 	   
 	   
 	@Autowired
 	private VendorDaoService vendorDaoService;
 	@Autowired
+	private CustomerDaoService customerDaoService;
+	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@GetMapping(value= {"/"})
 	public ModelAndView indexPage()
 	{
-		ModelAndView modelAndView=new ModelAndView("index1");
+		ModelAndView modelAndView=new ModelAndView("index");
 	    return modelAndView;
 	}
 	
-	@GetMapping(value= {"register"})
-	public String signup(Model model)
+	@GetMapping(value= {"vendorsignup"})
+	public String signupVendor(Model model)
 	{
 		model.addAttribute("vendor", new Vendor());
 		
-		return "register";
+		return "vendorsignup";
 	}
 	
 	@PostMapping("registerprocess")
-	public String registerVendor(@ModelAttribute("vendor")Vendor vendor) {
+	public String singupVendorProcess(@ModelAttribute("vendor")Vendor vendor) {
 	
 		if((vendorDaoService.getVendorByEmail(vendor.getVendor_email()))!=null) {
 		
-			 return "signup";
+			 return "vendorsignup";
 		}
 		else {
 			vendorDaoService.registerVendor(vendor);
@@ -59,15 +62,17 @@ import ecomProject.ecommerce.model.Customer;
 		}
 	}
 	
-	@GetMapping("login")
+	@GetMapping("vendorsignin")
 	public String login(Model model)
 	{
 		model.addAttribute("login", new Login());
-		return "login";
+		return "vendorsignin";
 	}
+	
 	@PostMapping("loginprocess")
 	public  String  loginVendor(@ModelAttribute("login")Login login,HttpSession session)
 	{
+		
 	   if((vendorDaoService.loginVendor(login.getEmail(),login.getPassword()))!=null) {
 		   
 		   Vendor vendor=vendorDaoService.loginVendor(login.getEmail(),login.getPassword());
@@ -75,27 +80,26 @@ import ecomProject.ecommerce.model.Customer;
 		   session.setAttribute("vendorDetails",vendor);
 		   
 		    return "redirect:vendorindex";
-		   
-		  
+		 
 	   }
 	   else {
 		   
-		   return "login";
+		   return "vendorsignin";
 	   }
 	}
 	
 
-	@GetMapping(value= {"edit"})
-	public String updateUser(HttpSession httpSession,Model model)
+	/*@GetMapping(value= {"editvendor"})
+	public String updateVendor(HttpSession httpSession,Model model)
 	{
 		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
-		return "edit";
+		return "editvendor";
 	}
 	
-	@PostMapping("updateprocess")
+	@PostMapping("vendorupdateprocess")
 	public String vendorUpdateProcess(@ModelAttribute("vendor")Vendor vendor,HttpSession session) {
 
-		    session.setAttribute("userDetails", vendor);
+		    session.setAttribute("vendorDetails", vendor);
 			vendorDaoService.update(vendor);
 		    return  "vendorindex";
 			 
@@ -109,7 +113,7 @@ import ecomProject.ecommerce.model.Customer;
 	
 	@GetMapping("vendorprofile")
 	public String getVendorDetails() {
-		return "userprofile";
+		return "vendorprofile";
 	}
 	
 	@GetMapping("accept/{user_id}")
@@ -130,5 +134,5 @@ import ecomProject.ecommerce.model.Customer;
 		vendorDaoService.update(vendor);
 		return "redirect:/vendordetails";
 		
-	}
+	}*/
 }
