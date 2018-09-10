@@ -3,6 +3,7 @@ package projectdemo.webproject;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ import ecomProject.ecommerce.model.Customer;
 		return "vendorsignup";
 	}
 	
-	@PostMapping("registerprocess")
+	@PostMapping("vendorregisterprocess")
 	public String singupVendorProcess(@ModelAttribute("vendor")Vendor vendor) {
 	
 		if((vendorDaoService.getVendorByEmail(vendor.getVendor_email()))!=null) {
@@ -63,19 +64,18 @@ import ecomProject.ecommerce.model.Customer;
 	}
 	
 	@GetMapping("vendorsignin")
-	public String login(Model model)
+	public String login()
 	{
-		model.addAttribute("login", new Login());
 		return "vendorsignin";
 	}
 	
-	@PostMapping("loginprocess")
-	public  String  loginVendor(@ModelAttribute("login")Login login,HttpSession session)
+	@PostMapping("vendorloginprocess")
+	public  String  loginVendor(HttpServletRequest request,HttpSession session)
 	{
 		
-	   if((vendorDaoService.loginVendor(login.getEmail(),login.getPassword()))!=null) {
+	   if((vendorDaoService.loginVendor(request.getParameter("vendor_email"),request.getParameter("vendor_password")))!=null) {
 		   
-		   Vendor vendor=vendorDaoService.loginVendor(login.getEmail(),login.getPassword());
+		   Vendor vendor=vendorDaoService.loginVendor(request.getParameter("vendor_email"),request.getParameter("vendor_password"));
 		   
 		   session.setAttribute("vendorDetails",vendor);
 		   
@@ -85,6 +85,54 @@ import ecomProject.ecommerce.model.Customer;
 	   else {
 		   
 		   return "vendorsignin";
+	   }
+	}
+	
+	
+	@GetMapping(value= {"customersignup"})
+	public String signupCustomer(Model model)
+	{
+		model.addAttribute("customer", new Customer());
+		
+		return "customersignup";
+	}
+	
+	@PostMapping("customerregisterprocess")
+	public String singupVendorProcess(@ModelAttribute("customer")Customer customer) {
+	
+		if((customerDaoService.getCustomerByEmail(customer.getCustomer_email()))!=null) {
+		
+			 return "customersignup";
+		}
+		else {
+			customerDaoService.registerCustomer(customer);
+			return "index";
+		}
+	}
+	
+	@GetMapping("customersignin")
+	public String loginCustomer(Model model)
+	{
+		model.addAttribute("login", new Login());
+		return "customersignin";
+	}
+	
+	@PostMapping("customerloginprocess")
+	public  String  loginCustomerProcess(HttpServletRequest request,HttpSession session)
+	{
+		
+	   if((customerDaoService.loginCustomer(request.getParameter("customer_email"),request.getParameter("customer_password")))!=null) {
+		   
+		   Customer customer=customerDaoService.loginCustomer(request.getParameter("customer_email"),request.getParameter("customer_password"));
+		   
+		   session.setAttribute("customerDetails",customer);
+		   
+		    return "redirect:customerindex";
+		 
+	   }
+	   else {
+		   
+		   return "customersignin";
 	   }
 	}
 	

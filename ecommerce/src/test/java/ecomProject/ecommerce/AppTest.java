@@ -28,6 +28,7 @@ import ecomProject.ecommerce.model.Category;
 
 import ecomProject.ecommerce.model.SubCategory;
 import ecomProject.ecommerce.model.Customer;
+import ecomProject.ecommerce.model.Product;
 import ecomProject.ecommerce.model.Vendor;
 import ecomProject.ecommerce.model.products.Laptop;
 
@@ -44,6 +45,10 @@ public class AppTest {
 		private Vendor vendor;
 		@Autowired
 		private VendorDaoService vendorDaoService;
+		@Autowired
+		private CustomerDaoService customerDaoService;
+		@Autowired
+		private Product product;
 	
 	
 		@Before
@@ -55,7 +60,7 @@ public class AppTest {
 			
 			
 			
-			vendor.setVendor_name("ashok");
+			vendor.setVendor_name("ashok ");
 			vendor.setVendor_mobile("9874563310");
 			vendor.setVendor_email("ashok@gmail.com");
 			vendor.setVendor_password("12345");
@@ -85,6 +90,11 @@ public class AppTest {
 		@Test
 		public void  registerVendorTest() {
 			 assertEquals("vendor Insertion Failed",true,vendorDaoService.registerVendor(vendor));
+		}
+		
+		@After
+		public void  deleteVendorTest() {
+			 assertEquals("vendor deletion Failed",true,vendorDaoService.delete(vendor));
 		}
 		
 	

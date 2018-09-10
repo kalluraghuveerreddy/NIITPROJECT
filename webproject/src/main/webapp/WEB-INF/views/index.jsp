@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
+
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%-- <spring:url value="/resources/images" var="images" ></spring:url> --%>
 <html>
+
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <meta charset="utf-8">
@@ -32,7 +38,7 @@
 				<button type="button" class="btn btn-primary dropdown-toggle"
 					data-toggle="dropdown">Sign up</button>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">As Customer</a> <a
+					<a class="dropdown-item" href="customersignup">As Customer</a> <a
 						class="dropdown-item" href="vendorsignup">As Vendor</a>
 
 				</div>
@@ -41,14 +47,14 @@
 				<button type="button" class="btn btn-primary dropdown-toggle"
 					data-toggle="dropdown">Sign in</button>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">As Customer</a> <a
+					<a class="dropdown-item" href="customersignin">As Customer</a> <a
 						class="dropdown-item" href="vendorsignin">As Vendor</a>
 
 				</div>
 			</div>
 	</div>
-	
-	
+
+
 	</ul>
 	</div>
 	</nav>
@@ -89,14 +95,13 @@
 				<!-- The slideshow -->
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="carousal4.jpg" alt="Los Angeles" width="1100"
-							height="500">
+						<img src="/resources/images/carousal4.jpg" >
 					</div>
 					<div class="carousel-item">
-						<img src="carousal5.jpg" alt="Chicago" width="1100" height="500">
+						<img src="/resources/images/carousal5.jpg" >
 					</div>
 					<div class="carousel-item">
-						<img src="carousal6.jpg" alt="New York" width="1100" height="500">
+						<img src="/resources/images/carousal6.jpg" >
 					</div>
 				</div>
 
@@ -111,6 +116,6 @@
 		</div>
 		<div class="col-1"></div>
 	</div>
-	
+
 </body>
 </html>

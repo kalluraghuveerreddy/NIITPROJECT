@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
 <title>Register Page</title>
@@ -18,40 +18,38 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<form class="form-container">
-						<div class="form-group">
-						<label for="exampleInputEmail1">Name</label> <input
-							type="email" class="form-control" id="exampleInputEmail1"
-							aria-describedby="emailHelp" placeholder="Enter email"> 
-					</div>
-						<div class="form-group">
-						<label for="email">Email address</label> <input
-							type="email" class="form-control" id="exampleInputEmail1"
-							aria-describedby="emailHelp" placeholder="Enter email"> 
-					</div>
-					
+				<spring:form class="form-container" action="vendorregisterprocess"
+					method="post" modelAttribute="vendor">
+					<h2>Register</h2>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Mobile</label> <input
-							type="email" class="form-control" id="exampleInputEmail1"
-							aria-describedby="emailHelp" placeholder="Enter email"> 
+						<spring:label path="vendor_name">Name</spring:label>
+						<spring:input type="text" class="form-control" path="vendor_name"
+							placeholder="Enter  name" />
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> <input
-							type="password" class="form-control" id="exampleInputPassword1"
-							placeholder="Password">
+						<spring:label path="vendor_email">Email</spring:label>
+						<spring:input type="email" class="form-control"
+							path="vendor_email" placeholder="Enter email" />
 					</div>
-						<div class="form-group">
-						<label for="exampleInputEmail1">Company Name</label> <input
-							type="email" class="form-control" id="exampleInputEmail1"
-							aria-describedby="emailHelp" placeholder="Enter email"> 
+
+					<div class="form-group">
+						<spring:label path="vendor_mobile">Mobile</spring:label>
+						<spring:input type="phone" class="form-control"
+							path="vendor_mobile" placeholder="Enter mobile number" />
 					</div>
-					<div class="form-group form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1">Check
-							me out</label>
+					<div class="form-group">
+						<spring:label path="vendor_password">Password</spring:label>
+						<spring:input type="password" class="form-control"
+							path="vendor_password" placeholder="Enter Password" />
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">Submit</button>
-				</form>
+					<div class="form-group">
+						<spring:label path="company_name">Company Name</spring:label>
+						<spring:input type="text" class="form-control"
+							path="company_name" placeholder="Enter compnay name" />
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-block">Register</button>
+				</spring:form>
 			</section>
 		</section>
 	</section>
