@@ -39,7 +39,7 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${vendorList}" var="vendor">
-				<c:if test="${venodr.status == false}">
+				<c:if test="${vendor.status == false}">
 					<tr>
 						<td><c:out value="${vendor.vendor_id }"></c:out></td>
 						<td><c:out value="${vendor.vendor_name }"></c:out></td>
@@ -73,7 +73,7 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${vendorList}" var="vendor">
-				<c:if test="${venodr.status == true}">
+				<c:if test="${vendor.status == true}">
 					<tr>
 						<td><c:out value="${vendor.vendor_id }"></c:out></td>
 						<td><c:out value="${vendor.vendor_name }"></c:out></td>
