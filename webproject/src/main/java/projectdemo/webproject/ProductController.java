@@ -27,5 +27,9 @@ public class ProductController {
 		return "subcategory";
 		
 	}
+	@PostMapping("getModel")
+	public String  addProducts() {
+		
+	}
 	
 }
