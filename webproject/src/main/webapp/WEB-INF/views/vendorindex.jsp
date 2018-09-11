@@ -19,43 +19,40 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-md bg-primary navbar-primary"> <a
-		class="navbar-brand text-warning" href="#">Shoppy</a>
+	<nav class="navbar navbar-expand-md bg-danger  navbar-danger"> <a
+		class="navbar-brand  text-white" href="#">Shoppy</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	 <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      Dropdown button
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Link 1</a>
-      <a class="dropdown-item" href="#">Link 2</a>
-      <a class="dropdown-item" href="#">Link 3</a>
-    </div>
-  </div>
-   <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      Dropdown button
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Link 1</a>
-      <a class="dropdown-item" href="#">Link 2</a>
-      <a class="dropdown-item" href="#">Link 3</a>
-    </div>
-  </div>
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav">
+			 <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+      Products
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="categories"> Add Product</a>
+        <a class="dropdown-item" href="#"> Delete Product</a>
+        <a class="dropdown-item" href="#">Update Product</a>
+      </div>
+    </li>
+			<li class="nav-item"><a class="nav-link text-white" href="vendorprofile">Profile</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Cart</a></li>
+		</ul>
+	</div>
 	</nav>
 
-	<nav class="navbar navbar-expand-sm bg-light navbar-light">
+	<nav class="navbar navbar-expand-sm bg-danger navbar-danger">
 	<ul class="navbar-nav">
 		<li class="nav-item active"><a class="nav-link text-body"
 			href="#">Electronic</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Tv
+		<li class="nav-item"><a class="nav-link text-white" href="#">Tv
 				& Applinaces</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Men</a>
+		<li class="nav-item"><a class="nav-link text-white" href="#">Men</a>
 		</li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Women</a>
+		<li class="nav-item"><a class="nav-link text-white" href="#">Women</a>
 		</li>
 		<li class="nav-item"><a class="nav-link text-body" href="#">Baby
 				& Kids</a></li>

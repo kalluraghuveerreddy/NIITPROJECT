@@ -15,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ecomProject.ecommerce.dao.VendorAddressDaoService;
+import ecomProject.ecommerce.dao.AdminDaoService;
 import ecomProject.ecommerce.dao.CategoryDaoService;
 import ecomProject.ecommerce.dao.CustomerDaoService;
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
@@ -23,6 +24,7 @@ import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.dao.products.LaptopDaoService;
 import ecomProject.ecommerce.daoImpl.SubCategoryDaoServiceImpl;
 import ecomProject.ecommerce.model.VendorAddress;
+import ecomProject.ecommerce.model.AdminPerson;
 import ecomProject.ecommerce.model.Category;
 
 
@@ -49,6 +51,10 @@ public class AppTest {
 		private CustomerDaoService customerDaoService;
 		@Autowired
 		private Product product;
+		@Autowired
+		private AdminDaoService adminDaoService;
+		@Autowired
+		private AdminPerson adminPerson;
 	
 	
 		@Before
@@ -83,7 +89,7 @@ public class AppTest {
 			
 			vendor.setVendorAddress(vendorAddresses);
 			
-	        
+	      
 
 		}
 		
@@ -91,6 +97,8 @@ public class AppTest {
 		public void  registerVendorTest() {
 			 assertEquals("vendor Insertion Failed",true,vendorDaoService.registerVendor(vendor));
 		}
+
+		
 		
 		@After
 		public void  deleteVendorTest() {

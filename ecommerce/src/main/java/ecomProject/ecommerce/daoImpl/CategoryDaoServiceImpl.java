@@ -1,9 +1,12 @@
 package ecomProject.ecommerce.daoImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +32,18 @@ public class CategoryDaoServiceImpl implements CategoryDaoService{
 				return false;
 			}
 			
+		}
+
+		@Override
+		public List<Category> getCategories() {
+			try {
+				Query<Category> query=sessionFactory.getCurrentSession().createQuery("from Category ",Category.class );
+				return query.getResultList();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+	
 		}
 
 }

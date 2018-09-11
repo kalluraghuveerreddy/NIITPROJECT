@@ -2,10 +2,11 @@
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 
-
-
+<%-- <spring:url value="/resources/images/" var="images" ></spring:url>
+ --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%-- <spring:url value="/resources/images" var="images" ></spring:url> --%>
+
+ 
 <html>
 
 <head>
@@ -25,55 +26,74 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-md bg-primary navbar-primary"> <a
-		class="navbar-brand text-warning" href="#">Shoppy</a>
+  <nav class="navbar navbar-expand-sm bg navbar justify-content-end">
+ 
+  <!-- Links -->
+  <ul class="navbar-nav">
+   <li class="nav-item">
+      <a class="nav-link text-danger" href="adminsignin">Admin</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-danger" href="#">Support</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-danger" href="#">Contact us</a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Sell on Shoppy
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item  text-danger" href="vendorsignup">Sign up</a>
+        <a class="dropdown-item text-danger" href="vendorsignin">Sign in</a> 
+      </div>
+    </li>
+  </ul>
+</nav>
+  
+
+
+	<nav class="navbar navbar-expand-md bg  navbar"> <a
+		class="navbar-brand  text-danger" href="#">Shoppy</a>
+
+   
+	<form class="form-inline" action="">
+		<input class="form-control mr-sm" type="text" placeholder="Search">
+		<button class="btn btn-danger  text-white" type="submit">Search</button>
+	</form>
+  
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse  justify-content-end"
+
+	<div class="collapse navbar-collapse justify-content-end"
 		id="collapsibleNavbar">
-		<ul class="navbar-nav ">
-			<div class="dropdown">
-				<button type="button" class="btn btn-primary dropdown-toggle"
-					data-toggle="dropdown">Sign up</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="customersignup">As Customer</a> <a
-						class="dropdown-item" href="vendorsignup">As Vendor</a>
-
-				</div>
-			</div>
-			<div class="dropdown">
-				<button type="button" class="btn btn-primary dropdown-toggle"
-					data-toggle="dropdown">Sign in</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="customersignin">As Customer</a> <a
-						class="dropdown-item" href="vendorsignin">As Vendor</a>
-
-				</div>
-			</div>
-	</div>
-
-
-	</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link text-danger" href="customersignup">Register</a></li>
+			<li class="nav-item"><a class="nav-link text-danger" href="customersignin">Login</a></li>
+			<li class="nav-item"><a class="nav-link text-danger" href="#">Cart</a></li>
+		</ul>
 	</div>
 	</nav>
 
-	<nav class="navbar navbar-expand-sm bg-light navbar-light">
+	<nav class="navbar navbar-expand-sm bg-danger navbar-danger">
 	<ul class="navbar-nav">
-		<li class="nav-item active"><a class="nav-link text-body"
+		<li class="nav-item active"><a class="nav-link text-white"
 			href="#">Electronic</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Tv
+		<li class="nav-item"><a class="nav-link text-white" href="#">Tv
 				& Applinaces</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Men</a>
+		<li class="nav-item"><a class="nav-link text-white" href="#">Men</a>
 		</li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Women</a>
+		<li class="nav-item"><a class="nav-link text-white" href="#">Women</a>
 		</li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Baby
+		<li class="nav-item"><a class="nav-link text-white" href="#">Baby
 				& Kids</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Home
+		<li class="nav-item"><a class="nav-link text-white" href="#">Home
 				& Furniture</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Sprots
+		<li class="nav-item"><a class="nav-link text-white" href="#">Sprots
 				& Books,More</a></li>
 	</ul>
 	</nav>
@@ -95,13 +115,13 @@
 				<!-- The slideshow -->
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="/resources/images/carousal4.jpg" >
+						<img src="${images}carousal4.jpg">
 					</div>
 					<div class="carousel-item">
-						<img src="/resources/images/carousal5.jpg" >
+						<img src="${images}carousal5.jpg">
 					</div>
 					<div class="carousel-item">
-						<img src="/resources/images/carousal6.jpg" >
+						<img src="${images}carousal6.jpg">
 					</div>
 				</div>
 
@@ -119,3 +139,5 @@
 
 </body>
 </html>
+
+

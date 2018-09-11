@@ -14,45 +14,40 @@
 
     <body>
        
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <!-- Brand -->
-            <a class="navbar-brand  text-danger" href="#">Electro</a>
-          
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="home">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="userprofile">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="edit">Edit Profile</a>
-                </li>
-               
-
-                 <!-- Dropdown -->
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Categories
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Laptops</a>
-          <a class="dropdown-item" href="#">Mobiles</a>
-          <a class="dropdown-item" href="#">Televisions</a>
-        </div>
-      </li>
-              </ul>
-            </div>
-          </nav>  
+      <nav class="navbar navbar-expand-md bg navbar"> <a
+		class="navbar-brand  text-danger" href="#">Shoppy</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link text-danger" href="customerprofile">Profile</a></li>
+			<li class="nav-item"><a class="nav-link text-danger" href="editcustomerprofile">Edit profile</a></li>
+			<li class="nav-item"><a class="nav-link text-danger" href="#">Wishlet</a></li>
+			<li class="nav-item"><a class="nav-link text-danger" href="#">Cart</a></li>
+		</ul>
+	</div>
+	</nav>
        
-    
+    	<nav class="navbar navbar-expand-sm bg-light navbar-light">
+	<ul class="navbar-nav">
+		<li class="nav-item active"><a class="nav-link text-body"
+			href="#">Electronic</a></li>
+		<li class="nav-item"><a class="nav-link text-body" href="#">Tv
+				& Applinaces</a></li>
+		<li class="nav-item"><a class="nav-link text-body" href="#">Men</a>
+		</li>
+		<li class="nav-item"><a class="nav-link text-body" href="#">Women</a>
+		</li>
+		<li class="nav-item"><a class="nav-link text-body" href="#">Baby
+				& Kids</a></li>
+		<li class="nav-item"><a class="nav-link text-body" href="#">Home
+				& Furniture</a></li>
+		<li class="nav-item"><a class="nav-link text-body" href="#">Sprots
+				& Books,More</a></li>
+	</ul>
+	</nav>
            
     </body>
 </html>

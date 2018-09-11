@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ecomProject.ecommerce.dao.AdminDaoService;
+import ecomProject.ecommerce.dao.CategoryDaoService;
 import ecomProject.ecommerce.dao.CustomerDaoService;
-
+import ecomProject.ecommerce.dao.SubCategoryDaoService;
 import ecomProject.ecommerce.dao.VendorDaoService;
-import ecomProject.ecommerce.model.Login;
+
 import ecomProject.ecommerce.model.Vendor;
+import ecomProject.ecommerce.model.AdminPerson;
 import ecomProject.ecommerce.model.Customer;
 
 
@@ -32,6 +35,12 @@ import ecomProject.ecommerce.model.Customer;
 	private VendorDaoService vendorDaoService;
 	@Autowired
 	private CustomerDaoService customerDaoService;
+	@Autowired
+	private AdminDaoService adminDaoService;
+	@Autowired
+	private CategoryDaoService categoryDaoService;
+	@Autowired
+	private SubCategoryDaoService subCategoryDaoService;
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -79,7 +88,7 @@ import ecomProject.ecommerce.model.Customer;
 		   
 		   session.setAttribute("vendorDetails",vendor);
 		   
-		    return "redirect:vendorindex";
+		    return "vendorindex";
 		 
 	   }
 	   else {
@@ -111,9 +120,9 @@ import ecomProject.ecommerce.model.Customer;
 	}
 	
 	@GetMapping("customersignin")
-	public String loginCustomer(Model model)
+	public String loginCustomer()
 	{
-		model.addAttribute("login", new Login());
+		
 		return "customersignin";
 	}
 	
@@ -136,8 +145,34 @@ import ecomProject.ecommerce.model.Customer;
 	   }
 	}
 	
+	@GetMapping("adminsignin")
+	public String loginAdmin()
+	{
+		
+		return "adminsignin";
+	}
+	
+	@PostMapping("adminloginprocess")
+	public  String  loginAdminProcess(HttpServletRequest request,HttpSession session)
+	{
+		
+	   if((adminDaoService.login(request.getParameter("email"),request.getParameter("password")))!=null) {
+		   
+		   AdminPerson adminPerson=adminDaoService.login(request.getParameter("email"),request.getParameter("password"));
+		   
+		   session.setAttribute("adminDetails",adminPerson);
+		   
+		    return "adminindex";
+		 
+	   }
+	   else {
+		   
+		   return "adminsignin";
+	   }
+	}
+	
 
-	/*@GetMapping(value= {"editvendor"})
+	@GetMapping(value= {"editvendor"})
 	public String updateVendor(HttpSession httpSession,Model model)
 	{
 		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
@@ -153,9 +188,9 @@ import ecomProject.ecommerce.model.Customer;
 			 
 	}
 	
-	@GetMapping("userdetails")
-	public String getVendorDetails(Map<String ,Object> user) {
-		user.put("vendorList", vendorDaoService.getAllVendorDetails());
+	@GetMapping("vendordetails")
+	public String getVendorDetails(Map<String ,Object> vendors) {
+		vendors.put("vendorList", vendorDaoService.getAllVendorDetails());
 		return "vendordetails";
 	}
 	
@@ -164,8 +199,18 @@ import ecomProject.ecommerce.model.Customer;
 		return "vendorprofile";
 	}
 	
-	@GetMapping("accept/{user_id}")
-	public String acceptUser(@PathVariable("user_id")int vendor_id) {
+	@GetMapping("customerprofile")
+	public String getCustomerDetails() {
+		return "customerprofile";
+	}
+	
+	@GetMapping("adminprofile")
+	public String getAdminDetails() {
+		return "adminprofile";
+	}
+	
+	@GetMapping("accept/{vendor_id}")
+	public String acceptUser(@PathVariable("vendor_id")int vendor_id) {
 		
 		Vendor vendor=vendorDaoService.getVendorById(vendor_id);
 		vendor.setStatus(true);
@@ -175,12 +220,18 @@ import ecomProject.ecommerce.model.Customer;
 	}
 	
 	@GetMapping("reject/{user_id}")
-	public String rejectUser(@PathVariable("user_id")int vendor_id) {
+	public String rejectUser(@PathVariable("vendor_id")int vendor_id) {
 		
 		Vendor vendor=vendorDaoService.getVendorById(vendor_id);
 		vendor.setStatus(false);
 		vendorDaoService.update(vendor);
 		return "redirect:/vendordetails";
 		
-	}*/
+	}
+	
+	@GetMapping("categories")
+	public String getCategories(Map<String,Object> categories) {
+		categories.put("categoryList", categoryDaoService.getCategories());
+		return "categories";
+	}
 }
