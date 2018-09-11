@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<%-- <spring:url value="/resources/images/" var="images" ></spring:url>--%>
+<spring:url value="/resources/images/" var="images"></spring:url>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
- 
+
 <html>
 
 <head>
@@ -26,44 +26,34 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-sm bg navbar justify-content-end">
- 
-  <!-- Links -->
-  <ul class="navbar-nav">
-   <li class="nav-item">
-      <a class="nav-link text-danger" href="adminsignin">Admin</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-danger" href="#">Support</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-danger" href="#">Contact us</a>
-    </li>
+	<nav
+		class="navbar navbar-expand-sm bg navbar justify-content-end ">
 
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Sell on Shoppy
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item  text-danger" href="vendorsignup">Sign up</a>
-        <a class="dropdown-item text-danger" href="vendorsignin">Sign in</a> 
-      </div>
-    </li>
-  </ul>
-</nav>
-  
+	<!-- Links -->
+	<ul class="navbar-nav">
+		<li class="nav-item"><a class="nav-link text-danger"
+			href="adminsignin">Admin</a></li>
+		<li class="nav-item"><a class="nav-link text-danger" href="#">Support</a>
+		</li>
+		<li class="nav-item"><a class="nav-link text-danger" href="#">Contact
+				us</a></li>
+
+		<!-- Dropdown -->
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbardrop" data-toggle="dropdown"> Sell on Shoppy </a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item  text-danger" href="vendorsignup">Sign
+					up</a> <a class="dropdown-item text-danger" href="vendorsignin">Sign
+					in</a>
+			</div></li>
+	</ul>
+	</nav>
 
 
-	<nav class="navbar navbar-expand-md bg  navbar"> <a
+
+	<nav class="navbar navbar-expand-md bg  navbar "> <a
 		class="navbar-brand  text-danger" href="#">Shoppy</a>
 
-   
-	<form class="form-inline" action="">
-		<input class="form-control mr-sm" type="text" placeholder="Search">
-		<button class="btn btn-danger  text-white" type="submit">Search</button>
-	</form>
-  
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
@@ -71,31 +61,48 @@
 
 	<div class="collapse navbar-collapse justify-content-end"
 		id="collapsibleNavbar">
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link text-danger" href="customersignup">Register</a></li>
-			<li class="nav-item"><a class="nav-link text-danger" href="customersignin">Login</a></li>
+
+		<ul class="navbar-nav ">
+
+			<li class="nav-item"><a class="nav-link text-danger"
+				href="customersignup">Register</a></li>
+			<li class="nav-item"><a class="nav-link text-danger"
+				href="customersignin">Login</a></li>
 			<li class="nav-item"><a class="nav-link text-danger" href="#">Cart</a></li>
 		</ul>
 	</div>
 	</nav>
 
-	<nav class="navbar navbar-expand-sm bg-danger navbar-danger">
-	<ul class="navbar-nav">
-		<li class="nav-item active"><a class="nav-link text-white"
-			href="#">Electronic</a></li>
-		<li class="nav-item"><a class="nav-link text-white" href="#">Tv
-				& Applinaces</a></li>
-		<li class="nav-item"><a class="nav-link text-white" href="#">Men</a>
-		</li>
-		<li class="nav-item"><a class="nav-link text-white" href="#">Women</a>
-		</li>
-		<li class="nav-item"><a class="nav-link text-white" href="#">Baby
-				& Kids</a></li>
-		<li class="nav-item"><a class="nav-link text-white" href="#">Home
-				& Furniture</a></li>
-		<li class="nav-item"><a class="nav-link text-white" href="#">Sprots
-				& Books,More</a></li>
-	</ul>
+	<nav class="navbar navbar-expand-sm bg-danger navbar-danger ">
+
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse " id="collapsibleNavbar">
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link text-white"
+				href="#">Electronic</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Tv
+					& Applinaces</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Men</a>
+			</li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Women</a>
+			</li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Baby
+					& Kids</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Home
+					& Furniture</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Sprots
+					& Books,More</a></li>
+
+			<form class="form-inline" action="">
+				<input class="form-control mr-sm" type="text" placeholder="Search">
+				<button class="btn btn-danger  text-white" type="submit">Search</button>
+			</form>
+		</ul>
+	</div>
 	</nav>
 	<br>
 

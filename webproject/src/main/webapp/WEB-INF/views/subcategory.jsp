@@ -12,7 +12,7 @@
 				<div class="form-group">
 					<label for="sel1">SubCategories</label> 
 					<select class="form-control "
-						id="sel1" >
+						id="sel1"  name="subCategory_name">
 						<c:forEach items="${subCategoryList}" var="subcategory">
 							<option value="${subcategory.subCategory_name}">${subcategory.subCategory_name }</option>
 
