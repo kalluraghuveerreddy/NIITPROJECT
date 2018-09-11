@@ -46,4 +46,16 @@ public class CategoryDaoServiceImpl implements CategoryDaoService{
 	
 		}
 
+		@Override
+		public Category getCategoryById(int category_id) {
+			
+			try {
+				return sessionFactory.getCurrentSession().get(Category.class,category_id);
+			} catch (Exception e) {
+	             e.printStackTrace();
+	             return null;
+			}
+			
+		}
+
 }

@@ -10,4 +10,6 @@ public interface CategoryDaoService {
 	
 	public List<Category> getCategories();
 	
+	public Category getCategoryById(int category_id);
+	
 }

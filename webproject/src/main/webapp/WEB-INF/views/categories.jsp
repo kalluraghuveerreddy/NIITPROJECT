@@ -19,24 +19,18 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-sm bg-danger navbar-danger">
-
-
-		<ul class="navbar-nav">
-			<li class="nav-item">
+         <form action="subcategory" method="post">
 				<div class="form-group">
-					<label for="sel1">Categories</label> <select class="form-control "
-						id="sel1">
+					<label for="sel1">Categories</label> 
+					<select class="form-control "
+						id="sel1"  name="category">
 						<c:forEach items="${categoryList}" var="category">
-							<option value="${category.category_name }">${category.category_name }</option>
+							<option value="${category.category_id}">${category.category_name }</option>
 
 						</c:forEach>
 					</select>
+					<input type="submit" value="Go"/>
 				</div>
-			</li>
-		</ul>
-
-	</nav>
-
+		</form>
 </body>
 </html>

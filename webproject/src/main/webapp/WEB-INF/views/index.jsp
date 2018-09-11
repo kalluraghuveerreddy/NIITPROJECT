@@ -2,8 +2,8 @@
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 
-<%-- <spring:url value="/resources/images/" var="images" ></spring:url>
- --%>
+<%-- <spring:url value="/resources/images/" var="images" ></spring:url>--%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
  
