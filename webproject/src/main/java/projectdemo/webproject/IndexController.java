@@ -136,7 +136,7 @@ import ecomProject.ecommerce.model.Customer;
 		   
 		   session.setAttribute("customerDetails",customer);
 		   
-		    return "redirect:customerindex";
+		    return "customerindex";
 		 
 	   }
 	   else {

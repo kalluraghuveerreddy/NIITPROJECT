@@ -21,12 +21,12 @@
 				<form class="form-container" action="customerloginprocess" method="post" >
 					<h2>Login</h2>
 					<div class="form-group">
-						<label for="email">Email address</label> <input type="email"
-							class="form-control" id="email" placeholder="Enter email">
+						<label for="customer_email">Email </label> <input type="email"
+							class="form-control" id="customer_email" name="customer_email" placeholder="Enter email">
 					</div>
 					<div class="form-group">
-						<label for="Password">Password</label> <input type="password"
-							class="form-control" id="Password" placeholder="Enter Password">
+						<label for="customer_password">Password</label> <input type="password"
+							class="form-control" id="customer_password" name="customer_password"placeholder="Enter Password">
 					</div>
 
 					<button type="submit" class="btn btn-primary btn-block">Login</button>

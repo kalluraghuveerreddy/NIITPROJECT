@@ -28,7 +28,7 @@
 			</tr>
 
 			<tr>
-				<td>role:</td>
+				<td>Company Name:</td>
 				<td>${vendorDetails.company_name}</td>
 
 			</tr>
