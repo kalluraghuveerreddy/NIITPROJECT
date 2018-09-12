@@ -1,7 +1,10 @@
 package ecomProject.ecommerce.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,8 +36,8 @@ public class Product {
 	@ManyToOne
 	private SubCategory subCategory;
 
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private NoOfProducts noOfProducts;
+	@OneToMany(mappedBy = "product", fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	private List<NoOfProducts> noOfProducts;
 
 	public SubCategory getSubCategory() {
 		return subCategory;
@@ -84,11 +87,13 @@ public class Product {
 		this.vendor = vendor;
 	}
 
-	public NoOfProducts getNoOfProducts() {
+	
+
+	public List<NoOfProducts> getNoOfProducts() {
 		return noOfProducts;
 	}
 
-	public void setNoOfProducts(NoOfProducts noOfProducts) {
+	public void setNoOfProducts(List<NoOfProducts> noOfProducts) {
 		this.noOfProducts = noOfProducts;
 	}
 

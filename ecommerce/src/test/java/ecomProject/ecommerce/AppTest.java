@@ -62,10 +62,6 @@ public class AppTest {
 		{
 			//AnnotationConfigApplicationContext annotationConfigApplicationContext= new AnnotationConfigApplicationContext(Persistanceconfig.class);
 			
-		
-			
-			
-			
 			vendor.setVendor_name("ashok ");
 			vendor.setVendor_mobile("9874563310");
 			vendor.setVendor_email("ashok@gmail.com");

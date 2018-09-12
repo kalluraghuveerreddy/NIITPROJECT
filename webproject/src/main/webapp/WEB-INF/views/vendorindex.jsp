@@ -37,6 +37,8 @@
 					<a class="dropdown-item" href="categories"> Add Product</a> <a
 						class="dropdown-item" href="#"> Delete Product</a> <a
 						class="dropdown-item" href="#">Update Product</a>
+						 <a
+						class="dropdown-item" href="productdetails">view Products</a>
 				</div></li>
 			<li class="nav-item"><a class="nav-link text-white"
 				href="vendorprofile">Profile</a></li>

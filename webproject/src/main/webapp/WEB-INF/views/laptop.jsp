@@ -69,7 +69,13 @@
 						<spring:input type="text" class="form-control" path="harddisk"
 							placeholder="Enter harddisk size" />
 					</div>
-
+					<div class="form-group">
+						<spring:label path="numberOfProducts">Number Of Products</spring:label>
+						<spring:input type="text" class="form-control" path="numberOfProducts"
+							placeholder="Enter no of products" />
+					</div>
+					
+                     
 
 					<button type="submit" class="btn btn-primary btn-block">AddLaptop</button>
 				</spring:form>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ecomProject.ecommerce.dao.VendorDaoService;
+import ecomProject.ecommerce.model.Product;
 import ecomProject.ecommerce.model.Vendor;
 
 @Component
@@ -96,6 +97,18 @@ public class VendorDaoServiceImpl  implements VendorDaoService{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	@Override
+	public List<Product> getProducts(int Vendor_id) {
+		
+		try {
+			Query<Product> query=sessionFactory.getCurrentSession().createQuery("form Product where vendor_vendor_id=:id", Product.class);
+			return query.getResultList();
+		} catch (Exception e) {
+		e.printStackTrace();
+		return null;
 		}
 	}
 
