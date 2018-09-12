@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<spring:url value="/resources/images/" var="images"></spring:url>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,26 +20,26 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-md bg-danger  navbar-danger"> <a
-		class="navbar-brand  text-white" href="#">Shoppy</a>
+	<nav
+		class="navbar navbar-expand-md bg-danger  navbar-danger ">
+	<a class="navbar-brand  text-white" href="#">Shoppy</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+	<div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
 		<ul class="navbar-nav">
-			 <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-      Products
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="categories"> Add Product</a>
-        <a class="dropdown-item" href="#"> Delete Product</a>
-        <a class="dropdown-item" href="#">Update Product</a>
-      </div>
-    </li>
-			<li class="nav-item"><a class="nav-link text-white" href="vendorprofile">Profile</a></li>
+			<!-- Dropdown -->
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
+				data-toggle="dropdown"> Products </a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="categories"> Add Product</a> <a
+						class="dropdown-item" href="#"> Delete Product</a> <a
+						class="dropdown-item" href="#">Update Product</a>
+				</div></li>
+			<li class="nav-item"><a class="nav-link text-white"
+				href="vendorprofile">Profile</a></li>
 			<li class="nav-item"><a class="nav-link text-white" href="#">Cart</a></li>
 		</ul>
 	</div>
@@ -46,7 +47,7 @@
 
 	<nav class="navbar navbar-expand-sm bg-danger navbar-danger">
 	<ul class="navbar-nav">
-		<li class="nav-item active"><a class="nav-link text-body"
+		<li class="nav-item active"><a class="nav-link text-white"
 			href="#">Electronic</a></li>
 		<li class="nav-item"><a class="nav-link text-white" href="#">Tv
 				& Applinaces</a></li>
@@ -54,11 +55,11 @@
 		</li>
 		<li class="nav-item"><a class="nav-link text-white" href="#">Women</a>
 		</li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Baby
+		<li class="nav-item"><a class="nav-link text-white" href="#">Baby
 				& Kids</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Home
+		<li class="nav-item"><a class="nav-link text-white" href="#">Home
 				& Furniture</a></li>
-		<li class="nav-item"><a class="nav-link text-body" href="#">Sprots
+		<li class="nav-item"><a class="nav-link text-white" href="#">Sprots
 				& Books,More</a></li>
 	</ul>
 	</nav>
@@ -80,14 +81,14 @@
 				<!-- The slideshow -->
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="carousal4.jpg" alt="Los Angeles" width="1100"
+						<img src="${images}carousal4.jpg" alt="Los Angeles" width="1100"
 							height="500">
 					</div>
 					<div class="carousel-item">
-						<img src="carousal5.jpg" alt="Chicago" width="1100" height="500">
+						<img src="${images}carousal5.jpg" alt="Chicago" width="1100" height="500">
 					</div>
 					<div class="carousel-item">
-						<img src="carousal6.jpg" alt="New York" width="1100" height="500">
+						<img src="${images}carousal6.jpg" alt="New York" width="1100" height="500">
 					</div>
 				</div>
 

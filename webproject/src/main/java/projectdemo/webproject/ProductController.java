@@ -1,21 +1,22 @@
 package projectdemo.webproject;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import ecomProject.ecommerce.dao.CategoryDaoService;
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
 import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.dao.products.LaptopDaoService;
 import ecomProject.ecommerce.dao.products.MobileDaoService;
 import ecomProject.ecommerce.dao.products.RefrigeratorDaoService;
+import ecomProject.ecommerce.model.NoOfProducts;
 import ecomProject.ecommerce.model.SubCategory;
 import ecomProject.ecommerce.model.Vendor;
 import ecomProject.ecommerce.model.products.Laptop;
@@ -55,8 +56,8 @@ public class ProductController {
 	   
 		SubCategory subCategory=subCategoryDaoService.getSubCategoryId(Integer.parseInt(request.getParameter("subCategory_id")));
 		model.addAttribute("subCategory_id",subCategory.getSubCategory_id());
-		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
 		
+		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
 		model.addAttribute("vendor_id",vendor.getVendor_id());
 		
 	  switch(subCategory.getSubCategory_name()) 
@@ -76,10 +77,24 @@ public class ProductController {
 		}
 	}
 	@PostMapping("laptoprocess")
-	public String addLaptopProcess(@ModelAttribute("laptop")Laptop laptop) {
+	public String addLaptopProcess(@ModelAttribute("laptop")Laptop laptop,HttpSession session) {
 		
-		laptopDaoService.addLaptop(laptop);
-		return "vendorindex";
+		laptop.setVendor((Vendor)session.getAttribute("vendor"));
+	   List<NoOfProducts> noOfProducts=listOfProducts(laptop);
+	   
+		
+		if(laptopDaoService.addLaptop(laptop)) {
+			
+			return  "vendorindex";
+			}
+		   else {
+			return  "getModel";
+		   }
+		
+	}
+	
+	private List<NoOfProducts> listOfProducts(Laptop laptop2) {
+		return null;
 	}
 	
 	@PostMapping("mobileprocess")
