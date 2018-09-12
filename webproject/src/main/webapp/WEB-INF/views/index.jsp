@@ -122,13 +122,13 @@
 				<!-- The slideshow -->
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="${images}carousal4.jpg">
+						<img src="${images}carousal4.jpg" width="80%" height="80%">
 					</div>
 					<div class="carousel-item">
-						<img src="${images}carousal5.jpg">
+						<img src="${images}carousal5.jpg" width="80%" height="80%">
 					</div>
 					<div class="carousel-item">
-						<img src="${images}carousal6.jpg">
+						<img src="${images}carousal6.jpg" width="80%" height="80%">
 					</div>
 				</div>
 

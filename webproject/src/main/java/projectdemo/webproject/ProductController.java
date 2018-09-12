@@ -1,6 +1,7 @@
 package projectdemo.webproject;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,15 +12,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ecomProject.ecommerce.dao.CategoryDaoService;
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
+import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.dao.products.LaptopDaoService;
 import ecomProject.ecommerce.dao.products.MobileDaoService;
 import ecomProject.ecommerce.dao.products.RefrigeratorDaoService;
+import ecomProject.ecommerce.model.SubCategory;
+import ecomProject.ecommerce.model.Vendor;
 import ecomProject.ecommerce.model.products.Laptop;
 import ecomProject.ecommerce.model.products.Mobile;
 import ecomProject.ecommerce.model.products.Refrigerator;
 
 @Controller
 public class ProductController {
+	
+	@Autowired
+	private Laptop laptop;
 	
 	@Autowired
 	private LaptopDaoService laptopDaoService;
@@ -31,6 +38,8 @@ public class ProductController {
 	private SubCategoryDaoService subCategoryDaoService;
 	@Autowired
 	private CategoryDaoService categoryDaoService;
+	@Autowired
+	private VendorDaoService vendorDaoService;
 	
 	@PostMapping("subcategory")
 	public String getSubCategory(@RequestParam("category")int category_id, Model model) {
@@ -41,11 +50,21 @@ public class ProductController {
 		
 	}
 	@PostMapping("getModel")
-	public String  addProducts(HttpServletRequest request,Model model) {
+	public String  addProducts(HttpServletRequest request,Model model,HttpSession session) {
 		
-		switch(request.getParameter("subCategory_name")) 
+	   
+		SubCategory subCategory=subCategoryDaoService.getSubCategoryId(Integer.parseInt(request.getParameter("subCategory_id")));
+		model.addAttribute("subCategory_id",subCategory.getSubCategory_id());
+		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
+		
+		model.addAttribute("vendor_id",vendor.getVendor_id());
+		
+	  switch(subCategory.getSubCategory_name()) 
 		{
-		  case "Laptop": model.addAttribute("laptop" ,new Laptop());
+		  case "Laptop": 
+		  						
+		  						  model.addAttribute("laptop" ,new Laptop());
+		  					      
 		  return "laptop";
 		  
 		  case "Mobile": model.addAttribute("mobile" ,new Mobile());

@@ -1,7 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
-<title>Add laptop Page</title>
+<title>Add mobile Page</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -18,9 +18,9 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="laptoprocess"
-					method="post" modelAttribute="laptop">
-					<h2>Add Laptop</h2>
+				<spring:form class="form-container" action="mobileprocess"
+					method="post" modelAttribute="mobile">
+					<h2>Add Mobile</h2>
 					<div class="form-group">
 						<spring:label path="subCategory.subCategory_id">SubCategory ID</spring:label>
 						<spring:input class="form-control"
@@ -54,20 +54,20 @@
 							placeholder="Enter  ram size" />
 					</div>
 					<div class="form-group">
-						<spring:label path="laptopName">Laptop Name</spring:label>
-						<spring:input type="text" class="form-control" path="laptopName"
-							placeholder="Enter laptop name" />
+						<spring:label path="name">Mobile Name</spring:label>
+						<spring:input type="text" class="form-control" path="name"
+							placeholder="Enter mobile name" />
 					</div>
 
 					<div class="form-group">
-						<spring:label path="processor">Processor</spring:label>
-						<spring:input type="text" class="form-control" path="processor"
-							placeholder="Enter processor" />
+						<spring:label path="memory">Memory Size</spring:label>
+						<spring:input type="text" class="form-control" path="memory"
+							placeholder="Enter memory size" />
 					</div>
 					<div class="form-group">
-						<spring:label path="harddisk">Harddisk</spring:label>
-						<spring:input type="text" class="form-control" path="harddisk"
-							placeholder="Enter harddisk size" />
+						<spring:label path="screenSize">Screen Size</spring:label>
+						<spring:input type="text" class="form-control" path="screenSize"
+							placeholder="Enter screen size" />
 					</div>
 
 
