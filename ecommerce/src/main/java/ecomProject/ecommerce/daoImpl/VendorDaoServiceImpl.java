@@ -100,16 +100,6 @@ public class VendorDaoServiceImpl  implements VendorDaoService{
 		}
 	}
 
-	@Override
-	public List<Product> getProducts(int Vendor_id) {
-		
-		try {
-			Query<Product> query=sessionFactory.getCurrentSession().createQuery("form Product where vendor_vendor_id=:id", Product.class);
-			return query.getResultList();
-		} catch (Exception e) {
-		e.printStackTrace();
-		return null;
-		}
-	}
+	
 
 }

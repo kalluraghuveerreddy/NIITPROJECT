@@ -2,6 +2,7 @@ package projectdemo.webproject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ecomProject.ecommerce.dao.CategoryDaoService;
+import ecomProject.ecommerce.dao.ProductDaoService;
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
 import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.dao.products.LaptopDaoService;
@@ -44,6 +46,9 @@ public class ProductController {
 	private CategoryDaoService categoryDaoService;
 	@Autowired
 	private VendorDaoService vendorDaoService;
+	
+	@Autowired
+	private ProductDaoService productDaoService;
 	
 	@PostMapping("subcategory")
 	public String getSubCategory(@RequestParam("category")int category_id, Model model) {
@@ -124,10 +129,11 @@ public class ProductController {
 	}
 	
 	@GetMapping("productdetails")
-	public String getProducts(HttpSession session,Model model) {
+	public String getProducts(HttpSession session,Model model,Map<String,Object> products) {
+		
 		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
-		List<Product> products=vendorDaoService.getProducts(vendor.getVendor_id());
-	    session.setAttribute("products",products);
+		products.put("productList", productDaoService.getAllProducts(vendor.getVendor_id()));
+
 		return "productdetails";	
 	}
 }

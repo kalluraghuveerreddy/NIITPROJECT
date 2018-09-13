@@ -9,8 +9,9 @@
 </head>
 <body>
 
-<c:forEach items="${products}" var="products">
-    <c:out value="${products.product_ name}"></c:out>
+<c:forEach items="${productList}" var="products">
+
+    <c:out value="${products.product_brand}"></c:out>
 
 </c:forEach>
 </body>

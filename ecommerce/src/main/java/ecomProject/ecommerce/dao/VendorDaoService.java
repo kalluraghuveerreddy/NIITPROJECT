@@ -15,6 +15,6 @@ public interface VendorDaoService {
 	public Vendor getVendorByEmail(String vendor_email);
 	public List<Vendor> getAllVendorDetails();
 	
-	public List<Product> getProducts(int Vendor_id);
+
 
 }
