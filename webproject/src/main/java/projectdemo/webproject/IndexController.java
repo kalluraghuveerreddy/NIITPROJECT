@@ -173,10 +173,17 @@ import ecomProject.ecommerce.model.Customer;
 	
 
 	@GetMapping(value= {"editvendor"})
-	public String updateVendor(HttpSession httpSession,Model model)
+	public String editVendorprofile(HttpSession httpSession,Model model)
 	{
 		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
-		return "editvendor";
+		return "editvendorprofile";
+	}
+	
+	@PostMapping("vendoreditprofileprocess")
+	public String editVendorProfileProces(@ModelAttribute("vendor")Vendor vendor){
+		
+		vendorDaoService.update(vendor);
+		return "vendorindex";
 	}
 	
 	@PostMapping("vendorupdateprocess")
