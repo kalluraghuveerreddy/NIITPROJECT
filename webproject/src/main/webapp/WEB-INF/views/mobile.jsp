@@ -19,7 +19,7 @@
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
 				<spring:form class="form-container" action="mobileprocess"
-					method="post" modelAttribute="mobile">
+					method="post" modelAttribute="mobile" enctype="multipart/form-data">
 					<h2>Add Mobile</h2>
 					<div class="form-group">
 						<spring:label path="subCategory.subCategory_id">SubCategory ID</spring:label>
@@ -74,8 +74,13 @@
 						<spring:input type="text" class="form-control" path="numberOfProducts"
 							placeholder="Enter no of products" />
 					</div>
+					<div class="form-group">
+						<spring:label path="image">Image</spring:label>
+						<spring:input type="file" class="form-control" path="image"
+						 />
+					</div>
 
-					<button type="submit" class="btn btn-primary btn-block">AddLaptop</button>
+					<button type="submit" class="btn btn-primary btn-block">AddMobile</button>
 				</spring:form>
 			</section>
 		</section>

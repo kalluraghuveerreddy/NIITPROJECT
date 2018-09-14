@@ -47,4 +47,13 @@ public class MobileDaoServiceImpl implements MobileDaoService{
 		
 	}
 
+	@Override
+	public Mobile getMobileDetails(int product_id) {
+		try {
+			return sessionFactory.getCurrentSession().get(Mobile.class,product_id);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

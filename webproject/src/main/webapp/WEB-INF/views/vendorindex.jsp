@@ -21,7 +21,7 @@
 <body>
 
 	<nav
-		class="navbar navbar-expand-md bg-danger  navbar-danger ">
+		class="navbar navbar-expand-md bg  navbar">
 	<a class="navbar-brand  text-white" href="#">Shoppy</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
@@ -31,7 +31,7 @@
 		<ul class="navbar-nav">
 			<!-- Dropdown -->
 			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
+				class="nav-link dropdown-toggle text-danger" href="#" id="navbardrop"
 				data-toggle="dropdown"> Products </a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="categories"> Add Product</a> <a
@@ -40,9 +40,9 @@
 						 <a
 						class="dropdown-item" href="productdetails">view Products</a>
 				</div></li>
-			<li class="nav-item"><a class="nav-link text-white"
+			<li class="nav-item"><a class="nav-link text-danger"
 				href="vendorprofile">Profile</a></li>
-			<li class="nav-item"><a class="nav-link text-white" href="#">Cart</a></li>
+		
 		</ul>
 	</div>
 	</nav>
@@ -106,5 +106,7 @@
 		<div class="col-1"></div>
 	</div>
 
+ 
+<%--  <%@include file="index.jsp" %> --%>
 </body>
 </html>

@@ -12,9 +12,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
@@ -29,6 +31,8 @@ public class Product {
 	private String product_brand;
 	private int product_price;
 	private int numberOfProducts;
+	@Transient
+	private MultipartFile image;
 
 	@ManyToOne
 	private Vendor vendor;
@@ -36,7 +40,7 @@ public class Product {
 	@ManyToOne
 	private SubCategory subCategory;
 
-	@OneToMany(mappedBy = "product", fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<NoOfProducts> noOfProducts;
 
 	public SubCategory getSubCategory() {
@@ -87,8 +91,6 @@ public class Product {
 		this.vendor = vendor;
 	}
 
-	
-
 	public List<NoOfProducts> getNoOfProducts() {
 		return noOfProducts;
 	}
@@ -104,5 +106,24 @@ public class Product {
 	public void setNumberOfProducts(int numberOfProducts) {
 		this.numberOfProducts = numberOfProducts;
 	}
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [product_id=" + product_id + ", product_name=" + product_name + ", product_brand="
+				+ product_brand + ", product_price=" + product_price + ", numberOfProducts=" + numberOfProducts
+				+ ", image=" + image + ", vendor=" + vendor + ", subCategory=" + subCategory + ", noOfProducts="
+				+ noOfProducts + "]";
+	}
+	
+	
+	
 
 }

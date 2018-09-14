@@ -7,4 +7,5 @@ public interface MobileDaoService {
 	public boolean addMobile(Mobile mobile);
 	public boolean deleteMobile(Mobile mobile);
 	public boolean updateMobile(Mobile mobile);
+	public Mobile getMobileDetails(int product_id);
 }
