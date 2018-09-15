@@ -1,7 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
-<title>Edit vendor Page</title>
+<title>Register Page</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -11,50 +11,47 @@
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="registervendor.css">
+<link rel="stylesheet" type="text/css" href="registercustomer.css">
 </head>
 <body>
 
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="editvendorprofileprocess"
-					method="post" modelAttribute="vendor">
-					<h2>Edit Vendor</h2>
+				<spring:form class="form-container" action="editcustomerprofileprocess"
+					method="post" modelAttribute="customer">
+					<h2>Edit Customer</h2>
 					
 					<div class="form-group">
-						<spring:label path="vendor_id">Vendor ID</spring:label>
-						<spring:input class="form-control" path="vendor_id"  type="hidden" value="${vendorDetails.vendor_id }"
-							/>
-					</div>
-					<div class="form-group">
-						<spring:label path="vendor_name">Name</spring:label>
-						<spring:input type="text" class="form-control" path="vendor_name" value="${vendorDetails.vendor_name }"
-							/>
-					</div>
-					<div class="form-group">
-						<spring:label path="vendor_email">Email</spring:label>
-						<spring:input type="email" class="form-control"
-							path="vendor_email" value="${vendorDetails.vendor_email }" />
-					</div>
-
-					<div class="form-group">
-						<spring:label path="vendor_mobile">Mobile</spring:label>
-						<spring:input type="phone" class="form-control"
-							path="vendor_mobile" value="${vendorDetails.vendor_mobile }" />
-					</div>
-					<div class="form-group">
-						<spring:label path="vendor_password">Password</spring:label>
+						<spring:label path="customer_id">Customer ID</spring:label>
 						<spring:input type="hidden" class="form-control"
-							path="vendor_password" value="${vendorDetails.vendor_password}" />
+							path="customer_id" value="${customerDetails.customer_id}" />
+					</div>
+					
+					<div class="form-group">
+						<spring:label path="customer_name">Name</spring:label>
+						<spring:input type="text" class="form-control"
+							path="customer_name" value="${customerDetails.customer_name}" />
 					</div>
 					<div class="form-group">
-						<spring:label path="company_name">Company Name</spring:label>
-						<spring:input type="text" class="form-control"
-							path="company_name" value="${vendorDetails.company_name }" />
+						<spring:label path="customer_email">Email</spring:label>
+						<spring:input type="email" class="form-control"
+							path="customer_email" value="${customerDetails.customer_email}"  />
 					</div>
 
-					<button type="submit" class="btn btn-primary btn-block">Update Vendor</button>
+					<div class="form-group">
+						<spring:label path="customer_mobile">Mobile</spring:label>
+						<spring:input type="phone" class="form-control"
+							path="customer_mobile" value="${customerDetails.customer_mobile}"  />
+					</div>
+					<div class="form-group">
+						<spring:label path="customer_password">Password</spring:label>
+						<spring:input type="hidden" class="form-control"
+							path="customer_password"  value="${customerDetails.customer_password}"  />
+					</div>
+
+
+					<button type="submit" class="btn btn-primary btn-block">Update Customer</button>
 				</spring:form>
 			</section>
 		</section>

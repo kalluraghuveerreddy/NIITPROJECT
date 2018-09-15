@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <form action="getModel" method="post">
+
+
+     <form action="getModel" method="post">
 				<div class="form-group">
 					<label for="sel1">SubCategories</label> 
 					<select class="form-control "

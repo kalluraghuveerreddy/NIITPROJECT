@@ -88,5 +88,16 @@ public class ProductDaoServiceImp implements ProductDaoService{
 		}
 		
 	}
+
+	@Override
+	public List<Product> getProducts(int subCategory_id) {
+		try {
+			Query<Product> query=sessionFactory.getCurrentSession().createQuery("from Product where subCategory_subCategory_id =: id", Product.class);
+			query.setParameter("id", subCategory_id);
+			return query.getResultList();
+		} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+		}	}
 	
 }

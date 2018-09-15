@@ -51,4 +51,25 @@ public class SubCategoryDaoServiceImpl implements SubCategoryDaoService{
 		}
 	}
 
+	@Override
+	public int getSubcategoryId(String subCategory_name) {
+		try {
+			Query<SubCategory> query=sessionFactory.getCurrentSession().createQuery("from SubCategory where subCategory_name=:name", SubCategory.class);
+			query.setParameter("name", subCategory_name);
+			return query.getSingleResult().getSubCategory_id();
+		} catch (Exception e) {
+			return 0;
+		}
+	}
+
+	@Override
+	public List<SubCategory> getAllSubCategoryList() {
+		
+		try {
+			return sessionFactory.getCurrentSession().createCriteria(SubCategory.class).list();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

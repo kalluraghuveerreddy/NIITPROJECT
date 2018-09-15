@@ -226,4 +226,11 @@ public class ProductController {
 		return "vendorindex";
 	}
 
+	
+	@GetMapping("products/{subCategory_id}")
+	public String getProducts(@PathVariable("subCategory_id")int subCategory_id,Map<String,Object> products) {
+		
+		products.put("productList",productDaoService.getProducts(subCategory_id));
+		return "product";
+	}
 }

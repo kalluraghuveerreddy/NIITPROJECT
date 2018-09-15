@@ -11,10 +11,11 @@
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="loginstyle.css">
+<link rel="stylesheet" type="text/css" href="loginvendor.css">
+
 </head>
 <body>
-
+<%@include file="navbar.jsp"%>
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">

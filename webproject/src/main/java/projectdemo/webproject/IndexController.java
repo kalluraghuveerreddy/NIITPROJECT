@@ -45,11 +45,15 @@ import ecomProject.ecommerce.model.Customer;
 	private SessionFactory sessionFactory;
 	
 	@GetMapping(value= {"/"})
-	public ModelAndView indexPage()
+	public ModelAndView indexPage(HttpSession session)
 	{
 		ModelAndView modelAndView=new ModelAndView("index");
+	   session.setAttribute("Electronics",subCategoryDaoService.getAllSubCategoryList());
+		
 	    return modelAndView;
 	}
+	
+	// It opens vendor sign up form
 	
 	@GetMapping(value= {"vendorsignup"})
 	public String signupVendor(Model model)
@@ -59,6 +63,7 @@ import ecomProject.ecommerce.model.Customer;
 		return "vendorsignup";
 	}
 	
+	// inserting  vendor sign up form data
 	@PostMapping("vendorregisterprocess")
 	public String singupVendorProcess(@ModelAttribute("vendor")Vendor vendor) {
 	
@@ -148,7 +153,6 @@ import ecomProject.ecommerce.model.Customer;
 	@GetMapping("adminsignin")
 	public String loginAdmin()
 	{
-		
 		return "adminsignin";
 	}
 	
@@ -172,28 +176,35 @@ import ecomProject.ecommerce.model.Customer;
 	}
 	
 
-	@GetMapping(value= {"editvendor"})
+	@GetMapping(value= {"editvendorprofile"})
 	public String editVendorprofile(HttpSession httpSession,Model model)
 	{
 		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
 		return "editvendorprofile";
 	}
 	
-	@PostMapping("vendoreditprofileprocess")
+	@PostMapping("editvendorprofileprocess")
 	public String editVendorProfileProces(@ModelAttribute("vendor")Vendor vendor){
 		
 		vendorDaoService.update(vendor);
 		return "vendorindex";
 	}
 	
-	@PostMapping("vendorupdateprocess")
-	public String vendorUpdateProcess(@ModelAttribute("vendor")Vendor vendor,HttpSession session) {
-
-		    session.setAttribute("vendorDetails", vendor);
-			vendorDaoService.update(vendor);
-		    return  "vendorindex";
-			 
+	@GetMapping(value= {"editcustomerprofile"})
+	public String editCustomerProfile(HttpSession httpSession,Model model)
+	{
+		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
+		return "editcustomerprofile";
 	}
+	
+	@PostMapping("editcustomerprofileprocess")
+	public String editCustomerProfileProces(@ModelAttribute("customer")Customer customer){
+		
+		customerDaoService.updateCustomer(customer);
+		return "customerindex";
+	}
+	
+
 	
 	@GetMapping("vendordetails")
 	public String getVendorDetails(Map<String ,Object> vendors) {
@@ -241,4 +252,6 @@ import ecomProject.ecommerce.model.Customer;
 		categories.put("categoryList", categoryDaoService.getCategories());
 		return "categories";
 	}
+	
+	
 }

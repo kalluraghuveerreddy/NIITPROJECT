@@ -11,7 +11,7 @@
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="registerstyle.css">
+<link rel="stylesheet" type="text/css" href="registercustomer.css">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
 					</div>
 
 
-					<button type="submit" class="btn btn-primary btn-block">Login</button>
+					<button type="submit" class="btn btn-primary btn-block">Register</button>
 				</spring:form>
 			</section>
 		</section>

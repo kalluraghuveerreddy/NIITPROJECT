@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import ecomProject.ecommerce.dao.CustomerDaoService;
 import ecomProject.ecommerce.model.Customer;
+import ecomProject.ecommerce.model.SubCategory;
 @Component
 @Transactional
 public class CustomerDaoServiceImpl implements CustomerDaoService{
@@ -79,5 +80,6 @@ public class CustomerDaoServiceImpl implements CustomerDaoService{
 			return null;
 		}
 	}
+
 
 }
