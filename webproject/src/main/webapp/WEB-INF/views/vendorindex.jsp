@@ -34,7 +34,7 @@
 	</nav>
 
 	<nav class="navbar navbar-expand-md bg  navbar"> <a
-		class="navbar-brand  text-white" href="#">Shoppy</a>
+		class="navbar-brand  text-danger" href="#">Shoppy</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
@@ -42,6 +42,14 @@
 	<div class="collapse navbar-collapse  justify-content-end"
 		id="collapsibleNavbar">
 		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link text-danger "
+				href="customersignup">
+					<form class="form-inline  " action="/action_page.php">
+						<input class="form-control mr-sm-2  " type="text"
+							placeholder="Search">
+						<button class="btn btn-success" type="submit">Search</button>
+					</form>
+			</a></li>
 			<!-- Dropdown -->
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle text-danger" href="#"
@@ -64,6 +72,6 @@
 	</nav>
 
 	<%@include file="navbar.jsp"%>
-	
+
 </body>
 </html>

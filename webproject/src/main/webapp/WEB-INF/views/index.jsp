@@ -55,9 +55,19 @@
 
 	<div class="collapse navbar-collapse justify-content-end"
 		id="collapsibleNavbar">
-
+      
+		<ul class ="navbar-nav ">
+			<li class="nav-item"><a class="nav-link text-danger "
+				href="customersignup">
+					<form class="form-inline  " action="/action_page.php">
+						<input class="form-control mr-sm-2  " type="text"
+							placeholder="Search">
+						<button class="btn btn-success" type="submit">Search</button>
+					</form>
+			</a></li>
+		</ul>
 		<ul class="navbar-nav ">
-			
+
 			<li class="nav-item"><a class="nav-link text-danger"
 				href="customersignup">Sign up</a></li>
 			<li class="nav-item"><a class="nav-link text-danger"
@@ -68,18 +78,18 @@
 	</nav>
 
 	<%@include file="navbar.jsp"%>
-	
+
 	<br>
 	<%@include file="homecarousel.jsp"%>
-	
+
 	<br>
 	<%@include file="footer.jsp"%>
-	
-	
-   
-	
 
-	
+
+
+
+
+
 
 </body>
 </html>
