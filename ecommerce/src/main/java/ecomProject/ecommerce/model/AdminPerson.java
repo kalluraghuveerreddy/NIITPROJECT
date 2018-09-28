@@ -18,6 +18,9 @@ public class AdminPerson {
 	@Column(unique=true)
 	private String email;
 	private String  password;
+	@Column(nullable = false)
+	private boolean status;
+	private final String role="null";
 	
 	public int getId() {
 		return id;
@@ -37,9 +40,15 @@ public class AdminPerson {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	public String getRole() {
+		return role;
+	}
 	
-	
-	
-	
-	
+
 }

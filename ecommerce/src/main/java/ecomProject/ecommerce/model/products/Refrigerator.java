@@ -10,14 +10,14 @@ import ecomProject.ecommerce.model.Product;
 @Component
 public class Refrigerator extends Product {
 	
-	private String brandName;
+	private String name;
 	private String capacity;
 	private String color;
-	public String getBrandName() {
-		return brandName;
+	public String getName() {
+		return name;
 	}
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getCapacity() {
 		return capacity;

@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Persistanceconfig {
 	
 	
-	@Bean
+	@Bean("dataSource")
     public DataSource getDataSource()
 	{
 		BasicDataSource basicDataSource=new BasicDataSource();

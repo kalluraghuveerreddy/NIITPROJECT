@@ -39,6 +39,8 @@ public class Product {
 
 	@ManyToOne
 	private SubCategory subCategory;
+	
+
 
 	@OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<NoOfProducts> noOfProducts;

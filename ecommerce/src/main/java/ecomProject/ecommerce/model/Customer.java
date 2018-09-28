@@ -26,6 +26,9 @@ public class Customer {
 	private String customer_password;
 	@Column(unique = true)
 	private String customer_mobile;
+	@Column(nullable = false)
+	private boolean status;
+	private final String role="customer";
 	
 	
 	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
@@ -81,8 +84,16 @@ public class Customer {
 		this.customerAddress = customerAddress;
 	}
 
+	public boolean isStatus() {
+		return status;
+	}
 
-	
-	
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public String getRole() {
+		return role;
+	}
 
 }

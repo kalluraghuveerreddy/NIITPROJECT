@@ -21,8 +21,10 @@
 			<td>harddisk:</td>
 			<td>${laptop.harddisk }</td>
 		</tr>
+		<tr>
 		<td>ram:</td>
 		<td>${laptop.ram}</td>
+		</tr>
 		<tr>
 			<td>processor:</td>
 			<td>${laptop.processor }</td>

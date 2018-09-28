@@ -28,6 +28,7 @@ public class Vendor {
 	private String company_name;
 	@Column(nullable = false)
 	private boolean status;
+	private final String role="vendor";
 
 	@OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
 	private Set<VendorAddress> vendorAddress;
@@ -106,7 +107,10 @@ public class Vendor {
 	public void setProduct(List<Product> product) {
 		this.product = product;
 	}
-	
-	
 
+	public String getRole() {
+		return role;
+	}
+
+	
 }

@@ -43,11 +43,12 @@ public class IndexController {
 	public ModelAndView indexPage(HttpSession session) {
 
 		ModelAndView modelAndView = new ModelAndView("index");
+
 		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
 		session.setAttribute("books", subCategoryDaoService.getBooks());
 		session.setAttribute("homeAppliances", subCategoryDaoService.getHomeAppliances());
-		session.setAttribute("men", subCategoryDaoService.getMen());
-		session.setAttribute("women", subCategoryDaoService.getWomen());
+		session.setAttribute("mens", subCategoryDaoService.getMen());
+		session.setAttribute("womens", subCategoryDaoService.getWomen());
 		session.setAttribute("kids", subCategoryDaoService.getKids());
 
 		return modelAndView;
@@ -83,7 +84,7 @@ public class IndexController {
 	}
 
 	@PostMapping("vendorloginprocess")
-	public String loginVendor(HttpServletRequest request, HttpSession session) {
+	public String loginVendor(HttpServletRequest request, HttpSession session, Model model) {
 
 		if ((vendorDaoService.loginVendor(request.getParameter("vendor_email"),
 				request.getParameter("vendor_password"))) != null) {
@@ -93,12 +94,22 @@ public class IndexController {
 
 			session.setAttribute("vendorDetails", vendor);
 
-			return "vendorindex";
+			session.setAttribute("electronics", session.getAttribute("electronics"));
+			session.setAttribute("mens", session.getAttribute("mens"));
+			session.setAttribute("womens", session.getAttribute("womens"));
+
+			return "redirect:vendorindex";
 
 		} else {
 
 			return "vendorsignin";
 		}
+	}
+
+	@GetMapping("vendorindex")
+	public ModelAndView openVendorIndex() {
+		ModelAndView modelAndView = new ModelAndView("vendorindex");
+		return modelAndView;
 	}
 
 	@GetMapping(value = { "customersignup" })
@@ -116,7 +127,7 @@ public class IndexController {
 			return "customersignup";
 		} else {
 			customerDaoService.registerCustomer(customer);
-			return "index";
+			return "redirect:index";
 		}
 	}
 
@@ -127,7 +138,7 @@ public class IndexController {
 	}
 
 	@PostMapping("customerloginprocess")
-	public String loginCustomerProcess(HttpServletRequest request, HttpSession session) {
+	public String loginCustomerProcess(HttpServletRequest request, HttpSession session, Model model) {
 
 		if ((customerDaoService.loginCustomer(request.getParameter("customer_email"),
 				request.getParameter("customer_password"))) != null) {
@@ -135,9 +146,13 @@ public class IndexController {
 			Customer customer = customerDaoService.loginCustomer(request.getParameter("customer_email"),
 					request.getParameter("customer_password"));
 
+			session.setAttribute("electronics", session.getAttribute("electronics"));
+			session.setAttribute("mens", session.getAttribute("mens"));
+			session.setAttribute("womens", session.getAttribute("womens"));
+			
 			session.setAttribute("customerDetails", customer);
 
-			return "customerindex";
+			return "redirect:customerindex";
 
 		} else {
 
@@ -145,27 +160,41 @@ public class IndexController {
 		}
 	}
 
+	@GetMapping("customerindex")
+	public ModelAndView openCustomerIndex() {
+		ModelAndView modelAndView = new ModelAndView("customerindex");
+		return modelAndView;
+	}
+
 	@GetMapping("adminsignin")
 	public String loginAdmin() {
 		return "adminsignin";
 	}
 
-	@PostMapping("adminloginprocess")
+	/*@PostMapping("adminloginprocess")
 	public String loginAdminProcess(HttpServletRequest request, HttpSession session) {
-
+		
+		
 		if ((adminDaoService.login(request.getParameter("email"), request.getParameter("password"))) != null) {
 
 			AdminPerson adminPerson = adminDaoService.login(request.getParameter("email"),
 					request.getParameter("password"));
-
 			session.setAttribute("adminDetails", adminPerson);
 
-			return "adminindex";
+			return "redirect:adminindex";
 
 		} else {
 
 			return "adminsignin";
 		}
+		
+	}*/
+	
+
+	@GetMapping("adminindex")
+	public ModelAndView openAdminIndex() {
+		ModelAndView modelAndView = new ModelAndView("adminindex");
+		return modelAndView;
 	}
 
 	@GetMapping(value = { "editvendorprofile" })
@@ -178,7 +207,7 @@ public class IndexController {
 	public String editVendorProfileProces(@ModelAttribute("vendor") Vendor vendor) {
 
 		vendorDaoService.update(vendor);
-		return "vendorindex";
+		return "redirect:vendorindex";
 	}
 
 	@GetMapping(value = { "editcustomerprofile" })
@@ -191,7 +220,7 @@ public class IndexController {
 	public String editCustomerProfileProces(@ModelAttribute("customer") Customer customer) {
 
 		customerDaoService.updateCustomer(customer);
-		return "customerindex";
+		return "redirect:customerindex";
 	}
 
 	@GetMapping("vendordetails")
@@ -238,7 +267,10 @@ public class IndexController {
 	@GetMapping("categories")
 	public String getCategories(Map<String, Object> categories) {
 		categories.put("categoryList", categoryDaoService.getCategories());
+
 		return "categories";
 	}
+	
+
 
 }

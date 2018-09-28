@@ -14,7 +14,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -39,40 +39,54 @@
 			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-		  <groupId>ecomProject</groupId>
-	      <artifactId>ecommerce</artifactId>
-	      <version>0.0.1-SNAPSHOT</version>
+			<groupId>ecomProject</groupId>
+			<artifactId>ecommerce</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/smtp -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>smtp</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.0.8.RELEASE</version>
 		</dependency>
 		
-<!-- https://mvnrepository.com/artifact/jstl/jstl -->
-<dependency>
-    <groupId>jstl</groupId>
-    <artifactId>jstl</artifactId>
-    <version>1.2</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/com.sun.mail/smtp -->
-<dependency>
-   <groupId>com.sun.mail</groupId>
-   <artifactId>smtp</artifactId>
-   <version>1.6.2</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
-<dependency>
-   <groupId>javax.activation</groupId>
-   <artifactId>activation</artifactId>
-   <version>1.1.1</version>
-</dependency>
-
-<dependency>
-   <groupId>javax.servlet.jsp</groupId>
-   <artifactId>jsp-api</artifactId>
-   <version>2.2</version>
-   <scope>provided</scope>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.0.8.RELEASE</version>
+		</dependency>
 
 	</dependencies>
 	<build>

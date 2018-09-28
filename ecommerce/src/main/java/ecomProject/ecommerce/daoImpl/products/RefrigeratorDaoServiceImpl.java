@@ -26,4 +26,22 @@ public class RefrigeratorDaoServiceImpl implements RefrigeratorDaoService{
 		
 	}
 
+	@Override
+	public boolean deleteRefrigerator(Refrigerator refrigerator) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateRefrigerator(Refrigerator refrigerator) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Refrigerator getRefrigerator(int product_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -56,7 +56,6 @@ public class AppTest {
 		@Autowired
 		private AdminPerson adminPerson;
 	
-	
 		@Before
 		public void setUp()
 		{
