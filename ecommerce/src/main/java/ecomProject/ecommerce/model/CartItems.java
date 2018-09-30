@@ -2,7 +2,9 @@ package ecomProject.ecommerce.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,9 +18,9 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 public class CartItems {
-	
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartItem_id;
 	private int unitPrice;
 	private int quantity;
@@ -26,8 +28,8 @@ public class CartItems {
 
 	@ManyToOne
 	private Cart cart;
-   
-    
+	@OneToMany(mappedBy = "cartItems",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private List<CartItemId> cartItemIds;
 
 	public int getUnitPrice() {
 		return unitPrice;
@@ -53,7 +55,6 @@ public class CartItems {
 		this.cart = cart;
 	}
 
-
 	public int getCartItem_id() {
 		return cartItem_id;
 	}
@@ -70,5 +71,12 @@ public class CartItems {
 		this.totalPrice = totalPrice;
 	}
 
+	public List<CartItemId> getCartItemIds() {
+		return cartItemIds;
+	}
+
+	public void setCartItemIds(List<CartItemId> cartItemIds) {
+		this.cartItemIds = cartItemIds;
+	}
 
 }

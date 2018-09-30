@@ -1,8 +1,9 @@
 package ecomProject.ecommerce.model;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,34 +17,28 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Cart {
-
+public class Ordered {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int cart_id;
+	private int ordered_id;
 	private int noOfItems;
 	private int netPrice;
-	
+	private Date date;
+	private Timestamp timestamp;
+	private String status;
+
 	@OneToOne
 	private Customer customer;
-	@OneToMany(mappedBy="cart",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	private List<CartItems> cartItems;
+	@OneToMany(mappedBy = "ordered",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private List<OrderedItems> orderedItems;
 
 	
-	public List<CartItems> getCartItems() {
-		return cartItems;
+	public int getOrdered_id() {
+		return ordered_id;
 	}
 
-	public void setCartItems(List<CartItems> cartItems) {
-		this.cartItems = cartItems;
-	}
-
-	public int getCart_id() {
-		return cart_id;
-	}
-
-	public void setCart_id(int cart_id) {
-		this.cart_id = cart_id;
+	public void setOrdered_id(int ordered_id) {
+		this.ordered_id = ordered_id;
 	}
 
 	public int getNoOfItems() {
@@ -62,6 +57,30 @@ public class Cart {
 		this.netPrice = netPrice;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -70,6 +89,12 @@ public class Cart {
 		this.customer = customer;
 	}
 
-	
+	public List<OrderedItems> getOrderedItems() {
+		return orderedItems;
+	}
+
+	public void setOrderedItems(List<OrderedItems> orderedItems) {
+		this.orderedItems = orderedItems;
+	}
 
 }

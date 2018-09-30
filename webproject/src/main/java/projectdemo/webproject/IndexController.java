@@ -60,118 +60,14 @@ public class IndexController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = { "vendorsignup" })
-	public String signupVendor(Model model) {
-
-		model.addAttribute("vendor", new Vendor());
-		return "vendorsignup";
-	}
-
-	@PostMapping("vendorregisterprocess")
-	public String singupVendorProcess(@ModelAttribute("vendor") Vendor vendor) {
-
-		if ((vendorDaoService.getVendorByEmail(vendor.getVendor_email())) != null) {
-			return "vendorsignup";
-		} else {
-			vendorDaoService.registerVendor(vendor);
-			return "redirect:index";
-		}
-	}
-
-	@GetMapping("vendorsignin")
-	public String login() {
-		return "vendorsignin";
-	}
-
-	@PostMapping("vendorloginprocess")
-	public String loginVendor(HttpServletRequest request, HttpSession session, Model model) {
-
-		if ((vendorDaoService.loginVendor(request.getParameter("vendor_email"),
-				request.getParameter("vendor_password"))) != null) {
-
-			Vendor vendor = vendorDaoService.loginVendor(request.getParameter("vendor_email"),
-					request.getParameter("vendor_password"));
-
-			session.setAttribute("vendorDetails", vendor);
-
-			session.setAttribute("electronics", session.getAttribute("electronics"));
-			session.setAttribute("mens", session.getAttribute("mens"));
-			session.setAttribute("womens", session.getAttribute("womens"));
-
-			return "redirect:vendorindex";
-
-		} else {
-
-			return "vendorsignin";
-		}
-	}
-
-	@GetMapping("vendorindex")
-	public ModelAndView openVendorIndex() {
-		ModelAndView modelAndView = new ModelAndView("vendorindex");
-		return modelAndView;
-	}
-
-	@GetMapping(value = { "customersignup" })
-	public String signupCustomer(Model model) {
-		model.addAttribute("customer", new Customer());
-
-		return "customersignup";
-	}
-
-	@PostMapping("customerregisterprocess")
-	public String singupVendorProcess(@ModelAttribute("customer") Customer customer) {
-
-		if ((customerDaoService.getCustomerByEmail(customer.getCustomer_email())) != null) {
-
-			return "customersignup";
-		} else {
-			customerDaoService.registerCustomer(customer);
-			return "redirect:index";
-		}
-	}
-
-	@GetMapping("customersignin")
-	public String loginCustomer() {
-
-		return "customersignin";
-	}
-
-	@PostMapping("customerloginprocess")
-	public String loginCustomerProcess(HttpServletRequest request, HttpSession session, Model model) {
-
-		if ((customerDaoService.loginCustomer(request.getParameter("customer_email"),
-				request.getParameter("customer_password"))) != null) {
-
-			Customer customer = customerDaoService.loginCustomer(request.getParameter("customer_email"),
-					request.getParameter("customer_password"));
-
-			session.setAttribute("electronics", session.getAttribute("electronics"));
-			session.setAttribute("mens", session.getAttribute("mens"));
-			session.setAttribute("womens", session.getAttribute("womens"));
-			
-			session.setAttribute("customerDetails", customer);
-
-			return "redirect:customerindex";
-
-		} else {
-
-			return "customersignin";
-		}
-	}
-
-	@GetMapping("customerindex")
-	public ModelAndView openCustomerIndex() {
-		ModelAndView modelAndView = new ModelAndView("customerindex");
-		return modelAndView;
-	}
+	
 
 	@GetMapping("adminsignin")
 	public String loginAdmin() {
 		return "adminsignin";
 	}
 
-	/*@PostMapping("adminloginprocess")
+	@PostMapping("adminloginprocess")
 	public String loginAdminProcess(HttpServletRequest request, HttpSession session) {
 		
 		
@@ -188,7 +84,7 @@ public class IndexController {
 			return "adminsignin";
 		}
 		
-	}*/
+	}
 	
 
 	@GetMapping("adminindex")
@@ -197,47 +93,7 @@ public class IndexController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = { "editvendorprofile" })
-	public String editVendorprofile(HttpSession httpSession, Model model) {
-		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
-		return "editvendorprofile";
-	}
-
-	@PostMapping("editvendorprofileprocess")
-	public String editVendorProfileProces(@ModelAttribute("vendor") Vendor vendor) {
-
-		vendorDaoService.update(vendor);
-		return "redirect:vendorindex";
-	}
-
-	@GetMapping(value = { "editcustomerprofile" })
-	public String editCustomerProfile(HttpSession httpSession, Model model) {
-		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
-		return "editcustomerprofile";
-	}
-
-	@PostMapping("editcustomerprofileprocess")
-	public String editCustomerProfileProces(@ModelAttribute("customer") Customer customer) {
-
-		customerDaoService.updateCustomer(customer);
-		return "redirect:customerindex";
-	}
-
-	@GetMapping("vendordetails")
-	public String getVendorDetails(Map<String, Object> vendors) {
-		vendors.put("vendorList", vendorDaoService.getAllVendorDetails());
-		return "vendordetails";
-	}
-
-	@GetMapping("vendorprofile")
-	public String getVendorDetails() {
-		return "vendorprofile";
-	}
-
-	@GetMapping("customerprofile")
-	public String getCustomerDetails() {
-		return "customerprofile";
-	}
+	
 
 	@GetMapping("adminprofile")
 	public String getAdminDetails() {
