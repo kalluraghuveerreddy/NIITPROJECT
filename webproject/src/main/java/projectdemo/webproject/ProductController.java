@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -92,12 +93,14 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/getModel")
-	public String addProducts(HttpServletRequest request, Model model, HttpSession session) {
+	public String addProducts(HttpServletRequest request, Model model, HttpSession session,Principal principal) {
 
 		SubCategory subCategory = subCategoryDaoService.getSubCategoryId(Integer.parseInt(request.getParameter("subCategory_id")));
 		model.addAttribute("subCategory_id", subCategory.getSubCategory_id());
+		
+		Vendor vendor=vendorDaoService.getVendorByEmail(principal.getName());
 
-		Vendor vendor = (Vendor) session.getAttribute("vendorDetails");
+		/*Vendor vendor = (Vendor) session.getAttribute("vendorDetails");*/
 		model.addAttribute("vendor_id", vendor.getVendor_id());
 
 		switch (subCategory.getSubCategory_name()) {
@@ -282,7 +285,7 @@ public class ProductController {
 		
 	}
 
-	@GetMapping("productdetails")
+	@GetMapping("vendor/productdetails")
 	public String getProducts(HttpSession session, Model model, Map<String, Object> products) {
 
 		Vendor vendor = (Vendor) session.getAttribute("vendorDetails");
@@ -326,7 +329,7 @@ public class ProductController {
 		}
 	}
 
-	@GetMapping("editproductspecifications/{product_id}")
+	@GetMapping("vendor/editproductspecifications/{product_id}")
 	public String editProducts(@PathVariable("product_id") int product_id, Model model,HttpServletRequest request) {
 
 		String name = subCategoryDaoService.getSubCategoryId(productDaoService.getSubCategoryId(product_id))
@@ -436,6 +439,7 @@ public class ProductController {
 		session.setAttribute("mens", subCategoryDaoService.getMen());
 		session.setAttribute("womens", subCategoryDaoService.getWomen());
 		session.setAttribute("kids", subCategoryDaoService.getKids());
+		
 		products.put("productList",productDaoService.getProducts(subCategory_id));
 		
 		

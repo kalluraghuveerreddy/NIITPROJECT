@@ -1,5 +1,6 @@
 package projectdemo.webproject;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -84,7 +85,7 @@ public class VendorController {
 	}*/
 
 	@GetMapping("vendor/vendorindex")
-	public ModelAndView openVendorIndex(HttpSession session) {
+	public ModelAndView openVendorIndex(HttpSession session,Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("vendorindex");
 		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
 		session.setAttribute("books", subCategoryDaoService.getBooks());
@@ -92,12 +93,15 @@ public class VendorController {
 		session.setAttribute("mens", subCategoryDaoService.getMen());
 		session.setAttribute("womens", subCategoryDaoService.getWomen());
 		session.setAttribute("kids", subCategoryDaoService.getKids());
+		Vendor vendor=vendorDaoService.getVendorByEmail(principal.getName());
+		session.setAttribute("vendorDetails", vendor);
 		return modelAndView;
 	}
 
 	@GetMapping(value = { "vendor/editvendorprofile" })
-	public String editVendorprofile(HttpSession httpSession, Model model) {
-		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
+	public String editVendorprofile(HttpSession session, Model model) {
+	
+		model.addAttribute("vendor", session.getAttribute("vendorDetails"));
 		return "editvendorprofile";
 	}
 
@@ -105,12 +109,13 @@ public class VendorController {
 	public String editVendorProfileProces(@ModelAttribute("vendor") Vendor vendor) {
 
 		vendorDaoService.update(vendor);
-		return "redirect:vendorindex";
+		return "redirect:/vendor/vendorindex";
 	}
 
 	
 	@GetMapping("vendor/vendorprofile")
 	public String getVendorDetails() {
+		
 		return "vendorprofile";
 	}
 

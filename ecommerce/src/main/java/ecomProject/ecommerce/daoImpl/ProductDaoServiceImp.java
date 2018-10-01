@@ -99,5 +99,18 @@ public class ProductDaoServiceImp implements ProductDaoService{
 		e.printStackTrace();
 		return null;
 		}	}
+
+	@Override
+	public Product getProduct(int product_id) {
+		try {
+			Query<Product> query=sessionFactory.getCurrentSession().createQuery("from Product where product_id =:id" , Product.class);
+			query.setParameter("id",product_id);
+			return query.getSingleResult();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }

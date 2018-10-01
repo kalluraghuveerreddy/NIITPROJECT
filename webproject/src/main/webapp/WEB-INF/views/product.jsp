@@ -61,9 +61,9 @@
 					<div class="card-body">
 						<h5 class="card-title">${product.product_brand }</h5>
 						<a href="${contextPath}/viewproductspecifications/${product.product_id }"><button
-								class="btn btn-success">view</button></a>
+								class="btn btn-success">View</button></a>
 								<a href="${contextPath}/cust/${product.product_id }"><button
-								class="btn btn-success">add to cart</button></a>
+								class="btn btn-danger">Buy</button></a>
 					</div>
 				</div>
 			</c:forEach>

@@ -12,6 +12,7 @@ public interface ProductDaoService {
 	public List<Product> getAllProducts(int vendor_id);
 	public int getSubCategoryId(int product_id);
 	public List<Product> getProducts(int subCategory_id);
+	public Product getProduct(int product_id);
 	
 	
 
