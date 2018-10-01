@@ -4,6 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="springtag"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="contextpath.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,7 +48,7 @@
 						<td><c:out value="${vendor.vendor_mobile}"></c:out></td>
 						<td><c:out value="${vendor.company_name}"></c:out></td>
 						<td><c:out value="${vendor.status }"></c:out></td>
-						<td><a href="accept/${vendor.vendor_id }"><input
+						<td><a href="${contextPath}/admin/accept/${vendor.vendor_id }"><input
 								type="button" value="Activate"></a></td>
 					</tr>
 				</c:if>
@@ -81,7 +82,7 @@
 						<td><c:out value="${vendor.vendor_mobile}"></c:out></td>
 						<td><c:out value="${vendor.company_name}"></c:out></td>
 						<td><c:out value="${vendor.status }"></c:out></td>
-						<td><a href="reject/${vendor.vendor_id }"><input
+						<td><a href="${contextPath}/admin/reject/${vendor.vendor_id }"><input
 								type="button" value="Deactive"></a></td>
 					</tr>
 				</c:if>

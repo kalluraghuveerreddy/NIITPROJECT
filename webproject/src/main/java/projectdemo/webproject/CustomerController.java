@@ -60,7 +60,7 @@ public class CustomerController {
 		return "customersignin";
 	}
 
-	@PostMapping("customerloginprocess")
+	/*@PostMapping("customerloginprocess")
 	public String loginCustomerProcess(HttpServletRequest request, HttpSession session, Model model) {
 
 		if ((customerDaoService.loginCustomer(request.getParameter("customer_email"),
@@ -82,8 +82,8 @@ public class CustomerController {
 			return "customersignin";
 		}
 	}
-
-	@GetMapping("customerindex")
+*/
+	@GetMapping("customer/customerindex")
 	public ModelAndView openCustomerIndex() {
 		ModelAndView modelAndView = new ModelAndView("customerindex");
 		return modelAndView;

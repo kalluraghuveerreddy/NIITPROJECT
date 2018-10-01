@@ -21,7 +21,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<form class="form-container" action="vendorloginprocess"
+				<form class="form-container" action="vendor/vendorloginprocess"
 					method="post">
 					<h2>Login</h2>
 					<div class="form-group">

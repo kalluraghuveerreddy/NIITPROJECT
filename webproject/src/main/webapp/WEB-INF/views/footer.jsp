@@ -74,10 +74,9 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
 
           <!-- Content -->
-          <h6 class="text-uppercase font-weight-bold">Company name</h6>
+          <h6 class="text-uppercase font-weight-bold">Shoppy</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.</p>
+          <p>Shoppy is the activity of buying or selling of products on online services or over the Internet. .</p>
 
         </div>
         <!-- Grid column -->
@@ -89,16 +88,16 @@
           <h6 class="text-uppercase font-weight-bold">Products</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="dark-grey-text" href="#!">MDBootstrap</a>
+            <a class="dark-grey-text" href="#!">Men</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="#!">MDWordPress</a>
+            <a class="dark-grey-text" href="#!">Women</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="#!">BrandFlow</a>
+            <a class="dark-grey-text" href="#!">Home Appliances</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="#!">Bootstrap Angular</a>
+            <a class="dark-grey-text" href="#!">Electronic</a>
           </p>
 
         </div>
@@ -111,16 +110,16 @@
           <h6 class="text-uppercase font-weight-bold">Useful links</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="dark-grey-text" href="#!">Your Account</a>
+            <a class="dark-grey-text" href="#!">Support</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="#!">Become an Affiliate</a>
+            <a class="dark-grey-text" href="#!">Contact</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="#!">Shipping Rates</a>
+            <a class="dark-grey-text" href="#!">Register</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="#!">Help</a>
+            <a class="dark-grey-text" href="#!">Signin</a>
           </p>
 
         </div>
@@ -133,13 +132,13 @@
           <h6 class="text-uppercase font-weight-bold">Contact</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+            <i class="fa fa-home mr-3"></i> Hyderabad,India,500079</p>
           <p>
-            <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+            <i class="fa fa-envelope mr-3"></i> info@shoppy.com</p>
           <p>
-            <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+            <i class="fa fa-phone mr-3"></i> + 91 9000052634</p>
           <p>
-            <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+            <i class="fa fa-print mr-3"></i> + 918978513016</p>
 
         </div>
         <!-- Grid column -->

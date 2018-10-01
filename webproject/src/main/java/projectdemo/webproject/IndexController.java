@@ -67,7 +67,7 @@ public class IndexController {
 		return "adminsignin";
 	}
 
-	@PostMapping("adminloginprocess")
+	/*@PostMapping("adminloginprocess")
 	public String loginAdminProcess(HttpServletRequest request, HttpSession session) {
 		
 		
@@ -85,9 +85,9 @@ public class IndexController {
 		}
 		
 	}
-	
+	*/
 
-	@GetMapping("adminindex")
+	@GetMapping("/admin/adminindex")
 	public ModelAndView openAdminIndex() {
 		ModelAndView modelAndView = new ModelAndView("adminindex");
 		return modelAndView;
@@ -95,32 +95,37 @@ public class IndexController {
 
 	
 
-	@GetMapping("adminprofile")
+	@GetMapping("admin/adminprofile")
 	public String getAdminDetails() {
 		return "adminprofile";
 	}
 
-	@GetMapping("accept/{vendor_id}")
+	@GetMapping("admin/accept/{vendor_id}")
 	public String acceptUser(@PathVariable("vendor_id") int vendor_id) {
 
 		Vendor vendor = vendorDaoService.getVendorById(vendor_id);
 		vendor.setStatus(true);
 		vendorDaoService.update(vendor);
-		return "redirect:/vendordetails";
+		return "redirect:/admin/vendordetails";
 
 	}
 
-	@GetMapping("reject/{user_id}")
+	@GetMapping("admin/reject/{user_id}")
 	public String rejectUser(@PathVariable("vendor_id") int vendor_id) {
 
 		Vendor vendor = vendorDaoService.getVendorById(vendor_id);
 		vendor.setStatus(false);
 		vendorDaoService.update(vendor);
-		return "redirect:/vendordetails";
+		return "redirect:/admin/vendordetails";
 
 	}
+	@GetMapping("admin/vendordetails")
+	public String getVendorDetails(Map<String, Object> vendors) {
+		vendors.put("vendorList", vendorDaoService.getAllVendorDetails());
+		return "vendordetails";
+	}
 
-	@GetMapping("categories")
+	@GetMapping("vendor/categories")
 	public String getCategories(Map<String, Object> categories) {
 		categories.put("categoryList", categoryDaoService.getCategories());
 

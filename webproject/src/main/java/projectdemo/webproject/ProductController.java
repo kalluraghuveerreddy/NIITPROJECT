@@ -82,7 +82,7 @@ public class ProductController {
 	@Autowired
 	private ImageUpload ImageUpload;
 
-	@GetMapping("subcategory/{category_id}")
+	@GetMapping("vendor/subcategory/{category_id}")
 	public String getSubCategory(@PathVariable("category_id") int category_id, Model model) {
 
 		model.addAttribute("subCategoryList", subCategoryDaoService.getSubcategory(category_id));
@@ -91,7 +91,7 @@ public class ProductController {
 
 	}
 
-	@PostMapping("getModel")
+	@PostMapping("vendor/getModel")
 	public String addProducts(HttpServletRequest request, Model model, HttpSession session) {
 
 		SubCategory subCategory = subCategoryDaoService.getSubCategoryId(Integer.parseInt(request.getParameter("subCategory_id")));

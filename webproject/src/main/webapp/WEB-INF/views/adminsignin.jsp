@@ -20,7 +20,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<form class="form-container" action="adminloginprocess"
+				<form class="form-container" action="admin/adminloginprocess"
 					method="post">
 					<h2>Login</h2>
 					<div class="form-group">

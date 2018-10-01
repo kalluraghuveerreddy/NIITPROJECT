@@ -26,8 +26,8 @@ public class Customer {
 	private String customer_password;
 	@Column(unique = true)
 	private String customer_mobile;
-	@Column(nullable = true)
-	private boolean status;
+	
+	private boolean status=true;
 	private final String role="customer";
 	
 	

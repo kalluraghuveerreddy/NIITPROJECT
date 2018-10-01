@@ -60,7 +60,7 @@ public class VendorController {
 		return "vendorsignin";
 	}
 
-	@PostMapping("vendorloginprocess")
+	/*@PostMapping("vendorloginprocess")
 	public String loginVendor(HttpServletRequest request, HttpSession session, Model model) {
 
 		if ((vendorDaoService.loginVendor(request.getParameter("vendor_email"),
@@ -81,9 +81,9 @@ public class VendorController {
 
 			return "vendorsignin";
 		}
-	}
+	}*/
 
-	@GetMapping("vendorindex")
+	@GetMapping("vendor/vendorindex")
 	public ModelAndView openVendorIndex(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView("vendorindex");
 		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
@@ -95,26 +95,21 @@ public class VendorController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = { "editvendorprofile" })
+	@GetMapping(value = { "vendor/editvendorprofile" })
 	public String editVendorprofile(HttpSession httpSession, Model model) {
 		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
 		return "editvendorprofile";
 	}
 
-	@PostMapping("editvendorprofileprocess")
+	@PostMapping("vendor/editvendorprofileprocess")
 	public String editVendorProfileProces(@ModelAttribute("vendor") Vendor vendor) {
 
 		vendorDaoService.update(vendor);
 		return "redirect:vendorindex";
 	}
 
-	@GetMapping("vendordetails")
-	public String getVendorDetails(Map<String, Object> vendors) {
-		vendors.put("vendorList", vendorDaoService.getAllVendorDetails());
-		return "vendordetails";
-	}
-
-	@GetMapping("vendorprofile")
+	
+	@GetMapping("vendor/vendorprofile")
 	public String getVendorDetails() {
 		return "vendorprofile";
 	}

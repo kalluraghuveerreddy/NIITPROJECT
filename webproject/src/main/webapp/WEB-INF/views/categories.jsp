@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="contextpath.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 		data-toggle="dropdown">Categories</a>
 		<div class="dropdown-menu">
 			<c:forEach items="${categoryList}" var="category">
-				<a class="dropdown-item" href="subcategory/${category.category_id}">${category.category_name}</a>
+				<a class="dropdown-item" href="${contextPath}/vendor/subcategory/${category.category_id}">${category.category_name}</a>
 			</c:forEach>
 		</div></li>
 

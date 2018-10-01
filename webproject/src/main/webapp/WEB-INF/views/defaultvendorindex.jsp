@@ -91,16 +91,16 @@
 				class="nav-link dropdown-toggle text-white" href="#"
 				id="navbardrop" data-toggle="dropdown"> Products </a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="categories"> Add Product</a> <a
-						class="dropdown-item" href="productdetails">View Products</a>
+					<a class="dropdown-item" href="${contextPath}/vendor/categories"> Add Product</a> <a
+						class="dropdown-item" href="${contextPath}/vendor/productdetails">View Products</a>
 				</div></li>
 
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle text-white" href="#"
 				id="navbardrop" data-toggle="dropdown"> My Account</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="vendorprofile">My profile</a> <a
-						class="dropdown-item" href="editvendorprofile"> Edit Profile</a>
+					<a class="dropdown-item" href="${contextPath}/vendor/vendorprofile">My profile</a> <a
+						class="dropdown-item" href="${contextPath}/vendor/editvendorprofile"> Edit Profile</a>
 				</div></li>
 
 
