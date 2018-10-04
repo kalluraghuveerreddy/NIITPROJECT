@@ -1,3 +1,5 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
+<%@include file ="contextpath.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>

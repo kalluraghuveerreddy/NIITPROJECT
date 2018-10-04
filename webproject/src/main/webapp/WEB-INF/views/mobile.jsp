@@ -1,3 +1,5 @@
+<%@page isELIgnored="false" %>
+<%@include file="contextpath.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
@@ -21,7 +23,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="mobileprocess"
+				<spring:form class="form-container" action="${contextPath}/vendor/mobileprocess"
 					method="post" modelAttribute="mobile" enctype="multipart/form-data">
 					<h2>Add Mobile</h2>
 					<div class="form-group">

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
@@ -18,7 +20,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="editcustomerprofileprocess"
+				<spring:form class="form-container" action="customer/editcustomerprofileprocess"
 					method="post" modelAttribute="customer">
 					<h2>Edit Customer</h2>
 					

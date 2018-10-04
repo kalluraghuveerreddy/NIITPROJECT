@@ -51,7 +51,6 @@ public class ProductController {
 
 	@Autowired
 	private Laptop laptop;
-
 	@Autowired
 	private LaptopDaoService laptopDaoService;
 	@Autowired
@@ -64,22 +63,16 @@ public class ProductController {
 	private CategoryDaoService categoryDaoService;
 	@Autowired
 	private VendorDaoService vendorDaoService;
-
 	@Autowired
 	private ProductDaoService productDaoService;
-	
 	@Autowired
 	private AirConditionerDaoService airConditionerDaoService;
-	
 	@Autowired
 	private ShirtDaoService shirtDaoService;
 	@Autowired
 	private PantDaoService pantDaoService;
 	@Autowired
 	private KurtaDaoService kurtaDaoService;
-	
-	
-	
 	@Autowired
 	private ImageUpload ImageUpload;
 
@@ -93,18 +86,19 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/getModel")
-	public String addProducts(HttpServletRequest request, Model model, HttpSession session,Principal principal) {
+	public String addProducts(HttpServletRequest request, Model model, HttpSession session, Principal principal) {
 
-		SubCategory subCategory = subCategoryDaoService.getSubCategoryId(Integer.parseInt(request.getParameter("subCategory_id")));
+		SubCategory subCategory = subCategoryDaoService
+				.getSubCategoryId(Integer.parseInt(request.getParameter("subCategory_id")));
 		model.addAttribute("subCategory_id", subCategory.getSubCategory_id());
-		
-		Vendor vendor=vendorDaoService.getVendorByEmail(principal.getName());
 
-		/*Vendor vendor = (Vendor) session.getAttribute("vendorDetails");*/
+		Vendor vendor = vendorDaoService.getVendorByEmail(principal.getName());
+
+		/* Vendor vendor = (Vendor) session.getAttribute("vendorDetails"); */
 		model.addAttribute("vendor_id", vendor.getVendor_id());
 
 		switch (subCategory.getSubCategory_name()) {
-		
+
 		case "Laptop":
 
 			model.addAttribute("laptop", new Laptop());
@@ -121,11 +115,11 @@ public class ProductController {
 		case "Shirt":
 			model.addAttribute("shirt", new Shirt());
 			return "shirt";
-			
+
 		case "Pant":
 			model.addAttribute("pant", new Pant());
 			return "pant";
-			
+
 		case "AirConditioner":
 			model.addAttribute("airconditioner", new AirConditioner());
 			return "airconditioner";
@@ -140,11 +134,10 @@ public class ProductController {
 		}
 	}
 
-	@PostMapping("laptoprocess")
+	@PostMapping("vendor/laptopprocess")
 	public String addLaptopProcess(@ModelAttribute("laptop") Laptop laptop, HttpSession session,
 			HttpServletRequest request) {
 
-		
 		List<NoOfProducts> noOfProducts = listOfProducts(laptop);
 
 		System.out.println(laptop);
@@ -153,7 +146,7 @@ public class ProductController {
 		if (laptopDaoService.addLaptop(laptop)) {
 
 			ImageUpload.uploadImage(laptop, request);
-			return "vendorindex";
+			return "redirect:/vendor/vendorindex";
 		} else {
 			return "laptop";
 		}
@@ -170,7 +163,7 @@ public class ProductController {
 		return noOfProductsList;
 	}
 
-	@PostMapping("mobileprocess")
+	@PostMapping("vendor/mobileprocess")
 	public String addMobileProcess(@ModelAttribute("mobile") Mobile mobile, HttpServletRequest request) {
 
 		List<NoOfProducts> noOfProducts = listOfProducts(mobile);
@@ -179,110 +172,100 @@ public class ProductController {
 
 		if (mobileDaoService.addMobile(mobile)) {
 
-		    ImageUpload.uploadImage(mobile, request);
-			return "vendorindex";
+			ImageUpload.uploadImage(mobile, request);
+			return "redirect:/vendor/vendorindex";
 		} else {
 			return "mobile";
 		}
 
 	}
-	
-	@PostMapping("pantprocess")
-	public String addPantProcess(@ModelAttribute("pant")Pant pant, HttpSession session,
-			HttpServletRequest request) {
 
-		
+	@PostMapping("vendor/pantprocess")
+	public String addPantProcess(@ModelAttribute("pant") Pant pant, HttpSession session, HttpServletRequest request) {
+
 		List<NoOfProducts> noOfProducts = listOfProducts(pant);
 
-		
 		pant.setNoOfProducts(noOfProducts);
 
 		if (pantDaoService.add(pant)) {
 
 			ImageUpload.uploadImage(pant, request);
-			return "vendorindex";
+			return "redirect:/vendor/vendorindex";
 		} else {
 			return "pant";
 		}
 
 	}
-	
-	@PostMapping("shirtprocess")
-	public String addShirtProcess(@ModelAttribute("shirt")Shirt shirt, HttpSession session,
+
+	@PostMapping("vendor/shirtprocess")
+	public String addShirtProcess(@ModelAttribute("shirt") Shirt shirt, HttpSession session,
 			HttpServletRequest request) {
 
-		
 		List<NoOfProducts> noOfProducts = listOfProducts(shirt);
 
-		
 		shirt.setNoOfProducts(noOfProducts);
 
 		if (shirtDaoService.add(shirt)) {
 
 			ImageUpload.uploadImage(shirt, request);
-			return "vendorindex";
+			return "redirect:/vendor/vendorindex";
 		} else {
 			return "shirt";
 		}
 
 	}
-	
-	@PostMapping("kurtaprocess")
-	public String addKurtaProcess(@ModelAttribute("kurta")Kurta kurta, HttpSession session,
+
+	@PostMapping("vendor/kurtaprocess")
+	public String addKurtaProcess(@ModelAttribute("kurta") Kurta kurta, HttpSession session,
 			HttpServletRequest request) {
 
-		
 		List<NoOfProducts> noOfProducts = listOfProducts(kurta);
 
-		
 		kurta.setNoOfProducts(noOfProducts);
 
 		if (kurtaDaoService.add(kurta)) {
 
 			ImageUpload.uploadImage(kurta, request);
-			return "vendorindex";
+			return "redirect:vendor/vendorindex";
 		} else {
 			return "kurta";
 		}
 
 	}
-	
-	@PostMapping("airconditionerprocess")
-	public String addKurtaProcess(@ModelAttribute("airconditioner")AirConditioner airConditioner, HttpSession session,
+
+	@PostMapping("vendor/airconditionerprocess")
+	public String addKurtaProcess(@ModelAttribute("airconditioner") AirConditioner airConditioner, HttpSession session,
 			HttpServletRequest request) {
 
-		
 		List<NoOfProducts> noOfProducts = listOfProducts(airConditioner);
 
-		
 		airConditioner.setNoOfProducts(noOfProducts);
 
 		if (airConditionerDaoService.add(airConditioner)) {
 
 			ImageUpload.uploadImage(airConditioner, request);
-			return "vendorindex";
+			return "redirect:vendor/vendorindex";
 		} else {
 			return "airConditioner";
 		}
 
 	}
 
-	@PostMapping("refrigeratorprocess")
-	public String addRefrigeratorProcess(@ModelAttribute("refrigerator") Refrigerator refrigerator,HttpServletRequest request) {
-		
+	@PostMapping("vendor/refrigeratorprocess")
+	public String addRefrigeratorProcess(@ModelAttribute("refrigerator") Refrigerator refrigerator,
+			HttpServletRequest request) {
+
 		List<NoOfProducts> noOfProducts = listOfProducts(refrigerator);
 
-		
 		refrigerator.setNoOfProducts(noOfProducts);
-		if(refrigeratorDaoService.addRefrigerator(refrigerator)) {
-			
+		if (refrigeratorDaoService.addRefrigerator(refrigerator)) {
+
 			ImageUpload.uploadImage(refrigerator, request);
-			return "vendorindex";
-		}
-		else {
+			return "redirect:vendor/vendorindex";
+		} else {
 			return "refrigerator";
 		}
-		
+
 	}
 
 	@GetMapping("vendor/productdetails")
@@ -294,7 +277,9 @@ public class ProductController {
 		return "productdetails";
 	}
 
-	@GetMapping("viewproductspecifications/{product_id}")
+	// view defaultindex products
+
+	@GetMapping("viewproducts/{product_id}")
 	public String viewProducts(@PathVariable("product_id") int product_id, Model model) {
 
 		String name = subCategoryDaoService.getSubCategoryId(productDaoService.getSubCategoryId(product_id))
@@ -303,68 +288,174 @@ public class ProductController {
 		switch (name) {
 		case "Mobile":
 			model.addAttribute("mobile", mobileDaoService.getMobileDetails(product_id));
-			return "mobilespecifications";
+			return "viewmobile";
 
 		case "Laptop":
 			model.addAttribute("laptop", laptopDaoService.getLaptopDetails(product_id));
-			return "laptopspecifications";
+			return "viewlaptop";
 		case "AirConditioner":
 			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
-			return "airconditionerspecifications";
+			return "viewairconditioner";
 		case "Refrigeraor":
 			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
-			return "refrigeratorspecifications";
+			return "viewrefrigerator";
 		case "Shirt":
 			model.addAttribute("shirt", shirtDaoService.getShirts(product_id));
-			return "shirtspecifications";
+			return "viewshirt";
 		case "Pant":
 			model.addAttribute("pant", pantDaoService.getPants(product_id));
-			return "pantpecifications";
+			return "viewpant";
 		case "Kurta":
 			model.addAttribute("kurta", kurtaDaoService.getKurtas(product_id));
-			return "kurtapecifications";
+			return "viewkurta";
 
 		default:
-			return "productdetails";
+			return "index";
+		}
+	}
+
+	// view customerproducts
+
+	@GetMapping("customer/viewcustomerproducts/{product_id}")
+	public String viewCustomerProducts(@PathVariable("product_id") int product_id, Model model) {
+
+		String name = subCategoryDaoService.getSubCategoryId(productDaoService.getSubCategoryId(product_id))
+				.getSubCategory_name();
+		System.out.println(name);
+		switch (name) {
+		case "Mobile":
+			model.addAttribute("mobile", mobileDaoService.getMobileDetails(product_id));
+			return "custviewmobile.";
+
+		case "Laptop":
+			model.addAttribute("laptop", laptopDaoService.getLaptopDetails(product_id));
+			return "custviewlaptop";
+		case "AirConditioner":
+			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
+			return "custviewairconditioner";
+		case "Refrigeraor":
+			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
+			return "custviewrefrigerator";
+		case "Shirt":
+			model.addAttribute("shirt", shirtDaoService.getShirts(product_id));
+			return "custviewshirts";
+		case "Pant":
+			model.addAttribute("pant", pantDaoService.getPants(product_id));
+			return "custviewpant";
+		case "Kurta":
+			model.addAttribute("kurta", kurtaDaoService.getKurtas(product_id));
+			return "custviewkurta";
+
+		default:
+			return "vendor/vendorindex";
+		}
+	}
+
+	@GetMapping("admin/viewadminproducts/{product_id}")
+	public String viewAdminProducts(@PathVariable("product_id") int product_id, Model model) {
+
+		String name = subCategoryDaoService.getSubCategoryId(productDaoService.getSubCategoryId(product_id))
+				.getSubCategory_name();
+		System.out.println(name);
+		switch (name) {
+		case "Mobile":
+			model.addAttribute("mobile", mobileDaoService.getMobileDetails(product_id));
+			return "adminviewmobile.";
+
+		case "Laptop":
+			model.addAttribute("laptop", laptopDaoService.getLaptopDetails(product_id));
+			return "adminviewlaptop";
+		case "AirConditioner":
+			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
+			return "adminviewairconditioner";
+		case "Refrigeraor":
+			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
+			return "adminviewrefrigerator";
+		case "Shirt":
+			model.addAttribute("shirt", shirtDaoService.getShirts(product_id));
+			return "adminviewshirts";
+		case "Pant":
+			model.addAttribute("pant", pantDaoService.getPants(product_id));
+			return "adminviewpant";
+		case "Kurta":
+			model.addAttribute("kurta", kurtaDaoService.getKurtas(product_id));
+			return "adminviewkurta";
+
+		default:
+			return "admin/adminindex";
+		}
+	}
+
+	@GetMapping("buyproducts/{product_id}")
+	public String viewAndBuyCustomerProducts(@PathVariable("product_id") int product_id, Model model) {
+
+		String name = subCategoryDaoService.getSubCategoryId(productDaoService.getSubCategoryId(product_id))
+				.getSubCategory_name();
+		System.out.println(name);
+		switch (name) {
+		case "Mobile":
+			model.addAttribute("mobile", mobileDaoService.getMobileDetails(product_id));
+			return "buymobile";
+
+		case "Laptop":
+			model.addAttribute("laptop", laptopDaoService.getLaptopDetails(product_id));
+			return "buylaptop";
+		case "AirConditioner":
+			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
+			return "buyairconditioner";
+		case "Refrigeraor":
+			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
+			return "buyrefrigerator";
+		case "Shirt":
+			model.addAttribute("shirt", shirtDaoService.getShirts(product_id));
+			return "buyshirt";
+		case "Pant":
+			model.addAttribute("pant", pantDaoService.getPants(product_id));
+			return "buypant";
+		case "Kurta":
+			model.addAttribute("kurta", kurtaDaoService.getKurtas(product_id));
+			return "buykurta";
+
+		default:
+			return "vendor/vendorindex";
 		}
 	}
 
 	@GetMapping("vendor/editproductspecifications/{product_id}")
-	public String editProducts(@PathVariable("product_id") int product_id, Model model,HttpServletRequest request) {
+	public String editProducts(@PathVariable("product_id") int product_id, Model model, HttpServletRequest request) {
 
 		String name = subCategoryDaoService.getSubCategoryId(productDaoService.getSubCategoryId(product_id))
 				.getSubCategory_name();
-		
-		
+
 		switch (name) {
 
 		case "Mobile":
-			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("contextPath", request.getContextPath());
 			model.addAttribute("mobile", mobileDaoService.getMobileDetails(product_id));
 			return "editmobilespecifications";
 
 		case "Laptop":
-			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("contextPath", request.getContextPath());
 			model.addAttribute("laptop", laptopDaoService.getLaptopDetails(product_id));
 			return "editlaptopspecifications";
 		case "AirConditioner":
-			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("contextPath", request.getContextPath());
 			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
 			return "editairconditionerpecifications";
 		case "Refrigerator":
-			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("contextPath", request.getContextPath());
 			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
 			return "editrefrigeratorspecifications";
 		case "Shirt":
-			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("contextPath", request.getContextPath());
 			model.addAttribute("shirt", shirtDaoService.getShirts(product_id));
 			return "editshirtspecifications";
 		case "Pant":
-			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("contextPath", request.getContextPath());
 			model.addAttribute("pant", pantDaoService.getPants(product_id));
 			return "editpantspecifications";
 		case "Kurta":
-			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("contextPath", request.getContextPath());
 			model.addAttribute("kurta", kurtaDaoService.getKurtas(product_id));
 			return "editkurtaspecifications";
 
@@ -374,10 +465,10 @@ public class ProductController {
 	}
 
 	@PostMapping("editlaptopprocess")
-	public String editLaptopProductDetails(@ModelAttribute("laptop") Laptop laptop,HttpServletRequest request) {
-        if(!laptop.getImage().isEmpty()) {
-        	ImageUpload.uploadImage(laptop, request);
-        }
+	public String editLaptopProductDetails(@ModelAttribute("laptop") Laptop laptop, HttpServletRequest request) {
+		if (!laptop.getImage().isEmpty()) {
+			ImageUpload.uploadImage(laptop, request);
+		}
 		laptopDaoService.updateLaptop(laptop);
 		return "vendorindex";
 	}
@@ -390,61 +481,86 @@ public class ProductController {
 	}
 
 	@PostMapping("editairconditionerprocess")
-	public String editLaptopProductDetails(@ModelAttribute("airconditioner")AirConditioner airConditioner,HttpServletRequest request) {
-        if(!airConditioner.getImage().isEmpty()) {
-        	ImageUpload.uploadImage(airConditioner, request);
-        }
-        airConditionerDaoService.update(airConditioner);
+	public String editLaptopProductDetails(@ModelAttribute("airconditioner") AirConditioner airConditioner,
+			HttpServletRequest request) {
+		if (!airConditioner.getImage().isEmpty()) {
+			ImageUpload.uploadImage(airConditioner, request);
+		}
+		airConditionerDaoService.update(airConditioner);
 		return "vendorindex";
 	}
+
 	@PostMapping("editrefrigeratorprocess")
-	public String editLaptopProductDetails(@ModelAttribute("refrigerator")Refrigerator refrigerator,HttpServletRequest request) {
-        if(!refrigerator.getImage().isEmpty()) {
-        	ImageUpload.uploadImage(refrigerator, request);
-        }
-        refrigeratorDaoService.updateRefrigerator(refrigerator);
+	public String editLaptopProductDetails(@ModelAttribute("refrigerator") Refrigerator refrigerator,
+			HttpServletRequest request) {
+		if (!refrigerator.getImage().isEmpty()) {
+			ImageUpload.uploadImage(refrigerator, request);
+		}
+		refrigeratorDaoService.updateRefrigerator(refrigerator);
 		return "vendorindex";
 	}
+
 	@PostMapping("editshirtprocess")
-	public String editLaptopProductDetails(@ModelAttribute("shirt")Shirt shirt,HttpServletRequest request) {
-        if(!shirt.getImage().isEmpty()) {
-        	ImageUpload.uploadImage(shirt, request);
-        }
-        shirtDaoService.update(shirt);
+	public String editLaptopProductDetails(@ModelAttribute("shirt") Shirt shirt, HttpServletRequest request) {
+		if (!shirt.getImage().isEmpty()) {
+			ImageUpload.uploadImage(shirt, request);
+		}
+		shirtDaoService.update(shirt);
 		return "vendorindex";
 	}
+
 	@PostMapping("editpantprocess")
-	public String editLaptopProductDetails(@ModelAttribute("pant") Pant pant,HttpServletRequest request) {
-        if(!pant.getImage().isEmpty()) {
-        	ImageUpload.uploadImage(pant, request);
-        }
+	public String editLaptopProductDetails(@ModelAttribute("pant") Pant pant, HttpServletRequest request) {
+		if (!pant.getImage().isEmpty()) {
+			ImageUpload.uploadImage(pant, request);
+		}
 		pantDaoService.update(pant);
 		return "vendorindex";
 	}
+
 	@PostMapping("editkurtaprocess")
-	public String editLaptopProductDetails(@ModelAttribute("kurta")Kurta kurta,HttpServletRequest request) {
-        if(!kurta.getImage().isEmpty()) {
-        	ImageUpload.uploadImage(kurta, request);
-        }
-        kurtaDaoService.update(kurta);
+	public String editLaptopProductDetails(@ModelAttribute("kurta") Kurta kurta, HttpServletRequest request) {
+		if (!kurta.getImage().isEmpty()) {
+			ImageUpload.uploadImage(kurta, request);
+		}
+		kurtaDaoService.update(kurta);
 		return "vendorindex";
 	}
-	
+
 	@GetMapping("products/{subCategory_id}")
-	public String getProducts(@PathVariable("subCategory_id")int subCategory_id,Map<String,Object> products,HttpSession session) {
-		
-		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
-		session.setAttribute("books", subCategoryDaoService.getBooks());
-		session.setAttribute("homeAppliances", subCategoryDaoService.getHomeAppliances());
-		session.setAttribute("mens", subCategoryDaoService.getMen());
-		session.setAttribute("womens", subCategoryDaoService.getWomen());
-		session.setAttribute("kids", subCategoryDaoService.getKids());
-		
-		products.put("productList",productDaoService.getProducts(subCategory_id));
-		
-		
+	public String getProducts(@PathVariable("subCategory_id") int subCategory_id, Map<String, Object> products,
+			HttpSession session) {
+
+		products.put("productList", productDaoService.getProducts(subCategory_id));
+
 		return "product";
 	}
-	
-	
+
+	@GetMapping("vendorproducts/{subCategory_id}")
+	public String getVendorProducts(@PathVariable("subCategory_id") int subCategory_id, Map<String, Object> products,
+			HttpSession session) {
+
+		products.put("productList", productDaoService.getProducts(subCategory_id));
+
+		return "vendorproduct";
+	}
+
+	@GetMapping("customerproducts/{subCategory_id}")
+	public String getCustomerProducts(@PathVariable("subCategory_id") int subCategory_id, Map<String, Object> products,
+			HttpSession session) {
+
+		products.put("productList", productDaoService.getProducts(subCategory_id));
+
+		return "customerproduct";
+	}
+
+	@GetMapping("adminproducts/{subCategory_id}")
+	public String getAdminProducts(@PathVariable("subCategory_id") int subCategory_id, Map<String, Object> products,
+			HttpSession session) {
+
+		products.put("productList", productDaoService.getProducts(subCategory_id));
+
+		return "adminproduct";
+	}
+
 }

@@ -118,5 +118,13 @@ public class VendorController {
 		
 		return "vendorprofile";
 	}
+	
+	@GetMapping("vendor/categories")
+	public String getCategories(Map<String, Object> categories) {
+		categories.put("categoryList", categoryDaoService.getCategories());
+
+		return "categories";
+	}
+
 
 }

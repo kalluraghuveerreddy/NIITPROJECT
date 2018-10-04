@@ -10,6 +10,7 @@ public interface AdminDaoService {
 	public boolean registerAdmin(AdminPerson adminPerson);
 	public AdminPerson login(String email,String password);
 	public AdminPerson getAdminDetailsById(int id);
+	public AdminPerson getAdminDetailsByEmail(String email);
 	public List<Vendor>  getAllVendors();
 
 }

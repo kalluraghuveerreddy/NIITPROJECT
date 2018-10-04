@@ -1,9 +1,9 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
+<%@include file ="contextpath.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <title>vendor Login Page</title>
-
-
 <link rel="stylesheet" type="text/css" href="loginvendor.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"

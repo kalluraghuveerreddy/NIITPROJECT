@@ -25,29 +25,7 @@
 </head>
 <body>
 
-	<%-- <div class="container">
-		<div class="row">
-			<c:forEach items="${productList}" var="product">
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<img
-							src="<spring:url  value="/resources/images/products/${product.product_id}.jpg"></spring:url>"
-							alt="${product.product_brand }" style="width: 100%" />
-
-						<div class="caption">
-							<h3>${product.product_brand}</h3>
-							<a
-								href="${contextPath}/viewproductspecifications/${product.product_id }"><button
-									class="btn btn-primary">view</button></a>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
- --%>
-
-
-	<%@include file="defaultvendorindex.jsp"%>
+	<%@include file="defaultindex.jsp"%>
 
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
@@ -60,9 +38,9 @@
 						alt="Card image cap">
 					<div class="card-body">
 						<h5 class="card-title">${product.product_brand }</h5>
-						<a href="${contextPath}/viewproductspecifications/${product.product_id }"><button
+						<a href="${contextPath}/viewproducts/${product.product_id }"><button
 								class="btn btn-success">View</button></a>
-								<a href="${contextPath}/cust/${product.product_id }"><button
+								<a href="${contextPath}/customer/addtocart"><button
 								class="btn btn-danger">Buy</button></a>
 					</div>
 				</div>

@@ -45,14 +45,40 @@ public class AdminDaoServiceImpl implements AdminDaoService{
 
 	@Override
 	public AdminPerson getAdminDetailsById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Query<AdminPerson> query=sessionFactory.getCurrentSession().createQuery("from AdminPerson where id=:id",AdminPerson.class);
+			query.setParameter("id", id);
+	
+			return query.getSingleResult();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
 	public List<Vendor> getAllVendors() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Query<Vendor> query=sessionFactory.getCurrentSession().createQuery("from Vendor ",Vendor.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public AdminPerson getAdminDetailsByEmail(String email) {
+		try {
+			Query<AdminPerson> query=sessionFactory.getCurrentSession().createQuery("from AdminPerson where email=:email ",AdminPerson.class);
+			query.setParameter("email",email);
+		
+			return query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

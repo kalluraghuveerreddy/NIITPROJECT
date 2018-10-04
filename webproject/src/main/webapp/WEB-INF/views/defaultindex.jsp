@@ -17,7 +17,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm bg navbar  "> <a
-		class="navbar-brand" href="">Shoppy</a>
+		class="navbar-brand" href="/">Shoppy</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
@@ -47,6 +47,7 @@
 		id="collapsibleNavbar">
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link text-white" href="index">Home</a></li>
+			
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle  text-white" href="#"
 				id="navbardrop" data-toggle="dropdown"> Electronics </a>
@@ -91,24 +92,22 @@
 				</div></li>
 
 			<li class="nav-item"><a class="nav-link text-white"
-				href="customersignup">Sign up</a></li>
+				href="${contextPath}/customersignup">Sign up</a></li>
 			<li class="nav-item"><a class="nav-link text-white"
-				href="customersignin">Sign in</a></li>
+				href="${contextPath}/customersignin">Sign in</a></li>
 
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle  text-white" href="#"
 				id="navbardrop" data-toggle="dropdown"> Sell on Shoppy </a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="vendorsignup">Sign up</a> <a
-						class="dropdown-item" href="vendorsignin">Sign in</a>
+					<a class="dropdown-item" href="${contextPath}/vendorsignup">Sign up</a> <a
+						class="dropdown-item" href="${contextPath}/vendorsignin">Sign in</a>
 
 				</div></li>
 
 		</ul>
 	</div>
 	</nav>
-
-
 
 </body>
 </html>

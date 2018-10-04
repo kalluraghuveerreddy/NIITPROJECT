@@ -16,7 +16,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg navbar  "> <a
-		class="navbar-brand" href="">Shoppy</a>
+		class="navbar-brand" href="${contextPath}/vendor/vendorindex">Shoppy</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
@@ -43,14 +43,14 @@
 	<div class="collapse navbar-collapse justify-content-end"
 		id="collapsibleNavbar">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link text-white" href="index">Home</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="${contextPath}/vendor/vendorindex">Home</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle  text-white" href="#"
 				id="navbardrop" data-toggle="dropdown"> Electronics </a>
 				<div class="dropdown-menu">
 					<c:forEach items="${electronics}" var="electronic">
 						<a class="dropdown-item"
-							href="${contextPath}/products/${electronic.subCategory_id}">${electronic.subCategory_name}</a>
+							href="${contextPath}/vendorproducts/${electronic.subCategory_id}">${electronic.subCategory_name}</a>
 					</c:forEach>
 				</div></li>
 
@@ -61,7 +61,7 @@
 				<div class="dropdown-menu">
 					<c:forEach items="${mens}" var="men">
 						<a class="dropdown-item"
-							href="${contextPath}/products/${men.subCategory_id}">${men.subCategory_name}</a>
+							href="${contextPath}/vendorproducts/${men.subCategory_id}">${men.subCategory_name}</a>
 					</c:forEach>
 				</div></li>
 
@@ -72,7 +72,7 @@
 				<div class="dropdown-menu">
 					<c:forEach items="${womens}" var="women">
 						<a class="dropdown-item"
-							href="${contextPath}/products/${women.subCategory_id}">${women.subCategory_name}</a>
+							href="${contextPath}/vendorproducts/${women.subCategory_id}">${women.subCategory_name}</a>
 					</c:forEach>
 				</div></li>
 
@@ -83,7 +83,7 @@
 				<div class="dropdown-menu">
 					<c:forEach items="${homeAppliances}" var="homeappliance">
 						<a class="dropdown-item"
-							href="${contextPath}/products/${homeappliance.subCategory_id}">${homeappliance.subCategory_name}</a>
+							href="${contextPath}/vendorproducts/${homeappliance.subCategory_id}">${homeappliance.subCategory_name}</a>
 					</c:forEach>
 				</div></li>
 

@@ -12,4 +12,6 @@ public interface CartDaoService {
 
 	public Cart getCart(int customer_id);
 
+	
+
 }

@@ -1,5 +1,7 @@
 package projectdemo.webproject;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -84,27 +86,31 @@ public class CustomerController {
 	}
 */
 	@GetMapping("customer/customerindex")
-	public ModelAndView openCustomerIndex() {
+	public ModelAndView openCustomerIndex(Principal principal,HttpSession session) {
+		
+		
 		ModelAndView modelAndView = new ModelAndView("customerindex");
+		Customer customer=customerDaoService.getCustomerByEmail(principal.getName());
+		session.setAttribute("customerDetails", customer);
 		return modelAndView;
 	}
 
-	@GetMapping("customerprofile")
+	@GetMapping("customer/customerprofile")
 	public String getCustomerDetails() {
 		return "customerprofile";
 	}
 
-	@GetMapping(value = { "editcustomerprofile" })
-	public String editCustomerProfile(HttpSession httpSession, Model model) {
-		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
+	@GetMapping(value = { "customer/editcustomerprofile" })
+	public String editCustomerProfile(HttpSession session, Model model) {
+		model.addAttribute("customer", session.getAttribute("customerDetails"));
 		return "editcustomerprofile";
 	}
 
-	@PostMapping("editcustomerprofileprocess")
+	@PostMapping("customer/editcustomerprofileprocess")
 	public String editCustomerProfileProces(@ModelAttribute("customer") Customer customer) {
 
 		customerDaoService.updateCustomer(customer);
-		return "redirect:customerindex";
+		return "redirect:customer/customerindex";
 	}
 
 }
