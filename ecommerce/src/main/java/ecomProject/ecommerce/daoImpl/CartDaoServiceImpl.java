@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +33,7 @@ public class CartDaoServiceImpl implements CartDaoService {
 			return (Cart) sessionFactory.getCurrentSession().createQuery("from Cart where customer_customer_id=:id")
 					.setParameter("id", customer_id).getSingleResult();
 		} catch (Exception e) {
-              e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -54,6 +55,20 @@ public class CartDaoServiceImpl implements CartDaoService {
 			return true;
 		} catch (Exception e) {
 			return false;
-		}	}
+		}
+	}
+
+	@Override
+	public boolean deleteCartByCustomerId(int cart_id) {
+		try {
+			Query<Cart> query=sessionFactory.getCurrentSession().createQuery("delete from Cart where cart_id=:id",Cart.class);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
 
 }

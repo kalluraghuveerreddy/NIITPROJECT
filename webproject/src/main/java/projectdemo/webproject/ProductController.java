@@ -319,7 +319,7 @@ public class ProductController {
 		case "AirConditioner":
 			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
 			return "viewairconditioner";
-		case "Refrigeraor":
+		case "Refrigerator":
 			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
 			return "viewrefrigerator";
 		case "Shirt":
@@ -359,7 +359,7 @@ public class ProductController {
 		case "AirConditioner":
 			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
 			return "custviewairconditioner";
-		case "Refrigeraor":
+		case "Refrigerator":
 			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
 			return "custviewrefrigerator";
 		case "Shirt":
@@ -397,7 +397,7 @@ public class ProductController {
 		case "AirConditioner":
 			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
 			return "vendorviewairconditioner";
-		case "Refrigeraor":
+		case "Refrigerator":
 			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
 			return "vendorviewrefrigerator";
 		case "Shirt":
@@ -435,7 +435,7 @@ public class ProductController {
 		case "AirConditioner":
 			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
 			return "adminviewairconditioner";
-		case "Refrigeraor":
+		case "Refrigerator":
 			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
 			return "adminviewrefrigerator";
 		case "Shirt":
@@ -473,7 +473,7 @@ public class ProductController {
 		case "AirConditioner":
 			model.addAttribute("airconditioner", airConditionerDaoService.getAirConditioners(product_id));
 			return "buyairconditioner";
-		case "Refrigeraor":
+		case "Refrigerator":
 			model.addAttribute("refrigerator", refrigeratorDaoService.getRefrigerator(product_id));
 			return "buyrefrigerator";
 		case "Shirt":

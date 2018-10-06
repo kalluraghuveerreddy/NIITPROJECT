@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ecomProject.ecommerce.dao.CartDaoService;
 import ecomProject.ecommerce.dao.CartItemsDaoService;
 import ecomProject.ecommerce.model.CartItems;
 
@@ -53,6 +52,19 @@ public class CartItemsDaoServiceImpl implements CartItemsDaoService {
 			return false;
 		}
 	}
+	
+	@Override
+	public CartItems getCartItems(int cartItems_id) {
+
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery("from CartItems where cartItem_id=:id", CartItems.class).setParameter("id", cartItems_id)
+					.getSingleResult();
+		} catch (HibernateException e) {
+
+			return null;
+		}
+	}
 
 	@Override
 	public List<CartItems> getAllCartItemsByCartId(int cart_id) {
@@ -79,13 +91,14 @@ public class CartItemsDaoServiceImpl implements CartItemsDaoService {
 	}
 
 	@Override
-	public boolean deleteAllCartItems(int cart_id) {
+	public boolean deleteCartItems(int cartItem_id) {
 		try {
-			sessionFactory.getCurrentSession().createQuery("delete from CartItems where cart_cart_id=:id")
-					.setParameter("id", cart_id);
+			System.out.println(cartItem_id);
+			sessionFactory.getCurrentSession().createQuery("delete from CartItems where cartItem_id=:id")
+					.setParameter("id", cartItem_id);
 			return true;
 		} catch (HibernateException e) {
-
+                e.printStackTrace();
 			return false;
 		}
 	}

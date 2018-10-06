@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>Add  Pant Page</title>
+<title>Edit kurta</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -20,9 +20,9 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="pantprocess"
-					method="post" modelAttribute="pant" enctype="multipart/form-data">
-					<h2>Add Pant</h2>
+				<spring:form class="form-container" action="${contextPath}/vendor/kurtaprocess"
+					method="post" modelAttribute="kurta" enctype="multipart/form-data">
+					<h2>Edit kurta</h2>
 					<div class="form-group">
 						<spring:label path="subCategory.subCategory_id">SubCategory ID</spring:label>
 						<spring:input class="form-control"

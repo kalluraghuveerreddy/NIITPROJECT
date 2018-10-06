@@ -12,6 +12,8 @@ public interface CartDaoService {
      
 
 	public Cart getCart(int customer_id);
+	
+	public boolean deleteCartByCustomerId(int cart_id);
 
 	
 

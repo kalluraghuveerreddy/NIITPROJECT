@@ -54,7 +54,7 @@
 			<div class="row">
 
 				<a
-					href="${contextPath}/vendor/editproductspecifications/${product.product_id }"><button
+					href="${contextPath}/vendor/editproductspecifications/${accessories.product_id }"><button
 						class="btn btn-danger">Edit</button></a>
 			</div>
 		</div>

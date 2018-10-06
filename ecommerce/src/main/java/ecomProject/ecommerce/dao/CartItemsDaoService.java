@@ -16,6 +16,7 @@ public interface CartItemsDaoService {
 
 	public CartItems getCartItemByCartId(int cart_id);
 
-	public boolean deleteAllCartItems(int cart_id);
+	public boolean deleteCartItems(int cartItem_id);
+	public CartItems getCartItems(int cartItems_id);
 
 }

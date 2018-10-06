@@ -26,7 +26,7 @@
 					<div class="form-group">
 						<spring:label path="subCategory.subCategory_id">SubCategory ID</spring:label>
 						<spring:input class="form-control"
-							path="subCategory.subCategory_id" type="hidden"
+							path="subCategory.subCategory_id"  type="hidden"
 							value="${subCategory_id }"  />
 					</div>
 					<div class="form-group">

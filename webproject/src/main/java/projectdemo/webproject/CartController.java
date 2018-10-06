@@ -6,12 +6,14 @@ import java.util.List;
 import java.util.Stack;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ecomProject.ecommerce.dao.AdminDaoService;
@@ -84,14 +86,14 @@ public class CartController {
 		int quantity = Integer.parseInt(request.getParameter("noOfProducts"));
 		int unitprice = productDaoService.getProduct(product_id).getProduct_price();
 		Product product = productDaoService.getProduct(product_id);
-		customer=customerDaoService.getCustomerByEmail(principal.getName());
+		customer = customerDaoService.getCustomerByEmail(principal.getName());
 
 		if (checkAvailabilityOfProducts(product_id, quantity) == true) {
 
 			cart = cartDaoService.getCart(customer.getCustomer_id());
-			
+
 			if (cart == null) {
-				
+
 				cart = new Cart();
 				cartItems = new CartItems();
 				List<CartItemId> cartItemIdList = new ArrayList<CartItemId>();
@@ -99,7 +101,7 @@ public class CartController {
 				List<NoOfProducts> noOfProductsList = noOfProductDaoService.getNoOfProducts(product_id);
 
 				for (int i = 0; i < quantity; i++) {
-					
+
 					cartItemId = new CartItemId();
 					noOfProducts = new NoOfProducts();
 					noOfProducts = noOfProductsList.get(i);
@@ -134,9 +136,9 @@ public class CartController {
 					int position = cartItemsList.indexOf(cartItems);
 					List<NoOfProducts> noOfProductsList = noOfProductDaoService.getNoOfProducts(product_id);
 					cartItemIdsList = cartItemIdDaoService.getAllCartItemId(cartItems.getCartItem_id());
-					
+
 					for (int i = 0; i < quantity; i++) {
-						
+
 						cartItemId = new CartItemId();
 						noOfProducts = new NoOfProducts();
 						noOfProducts = noOfProductsList.get(i);
@@ -160,7 +162,7 @@ public class CartController {
 					List<CartItems> cartItemsList = new ArrayList<CartItems>();
 					List<NoOfProducts> numberOfProductsList = noOfProductDaoService.getNoOfProducts(product_id);
 					for (int i = 0; i < quantity; i++) {
-						
+
 						cartItemId = new CartItemId();
 						noOfProducts = new NoOfProducts();
 						noOfProducts = numberOfProductsList.get(i);
@@ -186,13 +188,13 @@ public class CartController {
 
 		} else {
 
-			return  "redirect:/customer/customerindex";
+			return "redirect:/customer/customerindex";
 		}
 
 	}
 
 	public CartItems checkIfProductAlreadyExists(int product_id, Cart cart) {
-		
+
 		List<CartItems> cartItemsList = cart.getCartItems();
 		for (CartItems items : cartItemsList) {
 			if (items.getCartItemIds().get(0).getNoOfProducts().getProduct().getProduct_id() == product_id) {
@@ -203,37 +205,62 @@ public class CartController {
 	}
 
 	public boolean checkAvailabilityOfProducts(int product_id, int quantity) {
-		
+
 		if (noOfProductDaoService.getNoOfProducts(product_id).size() >= quantity) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	@GetMapping("/customer/cart")
-	public String displayCart(Principal principal,Model model)
-	{
-		Customer customer=customerDaoService.getCustomerByEmail(principal.getName());
-		Cart cart=cartDaoService.getCart(customer.getCustomer_id());
-		List<Product> products=new ArrayList<Product>();
-		List<CartItems> cartItems=new Stack<CartItems>();
-		cartItems= cartItemsDaoService.getAllCartItemsByCartId(cart.getCart_id());
-		List<CartItemId> cartItemId=new ArrayList<CartItemId>();
-		
-		List<String> subcategoryname=new ArrayList<String>();
-		
-		for(CartItems items:cartItems)
-		{
-			cartItemId=cartItemIdDaoService.getAllCartItemId(items.getCartItem_id());
+
+	@GetMapping("customer/cart")
+	public String displayCart(Principal principal, HttpSession session, Model model) {
+		Customer customer = customerDaoService.getCustomerByEmail(principal.getName());
+		Cart cart = cartDaoService.getCart(customer.getCustomer_id());
+
+		model.addAttribute("cart", cart);
+		/*List<Product> products = new ArrayList<Product>();
+		List<CartItems> cartItems = new Stack<CartItems>();
+		cartItems = cartItemsDaoService.getAllCartItemsByCartId(cart.getCart_id());
+		List<CartItemId> cartItemId = new ArrayList<CartItemId>();
+		List<String> subcategoryname = new ArrayList<String>();
+
+		for (CartItems items : cartItems) {
+			cartItemId = cartItemIdDaoService.getAllCartItemId(items.getCartItem_id());
+			
 			products.add(cartItemId.get(0).getNoOfProducts().getProduct());
-		    subcategoryname.add(cartItemId.get(0).getNoOfProducts().getProduct().getSubCategory().getSubCategory_name());
-		}
-		
-		model.addAttribute("product",products);
-		model.addAttribute("name",subcategoryname);
-		model.addAttribute("cartitem",cartItems);
+			
+			subcategoryname.add(cartItemId.get(0).getNoOfProducts().getProduct().getSubCategory().getSubCategory_name());
+			
+			Cart cart1 = items.getCart();
+			
+			
+
+			model.addAttribute("product", products);
+			model.addAttribute("name", subcategoryname);
+			model.addAttribute("cartitem", cartItems);
+			model.addAttribute("netPrice", cart1.getNetPrice());
+			model.addAttribute("noOfItem", cart1.getNoOfItems());*/
+			/*model.addAttribute("cart", items.getCart());
+			model.addAttribute("item", items);
+		}*/
+
 		return "cart";
-}
+	}
+
+	@GetMapping("customer/{cartItem_id}")
+	public String deleteCart(@PathVariable("cartItem_id") int cartItem_id) {
+		
+		/*List<CartItemId> cartItemIds=cartItemIdDaoService.getAllCartItemId(cartItem_id);
+		
+		for(CartItemId cartItemId:cartItemIds) {
+			cartItemIdDaoService.deleteCartItemId(cartItemId);
+		}*/
+		
+		cartItemsDaoService.deleteCartItem(cartItemsDaoService.getCartItems(cartItem_id));
+		
+		return "redirect:/customer/customerindex";
+
+	}
 
 }
