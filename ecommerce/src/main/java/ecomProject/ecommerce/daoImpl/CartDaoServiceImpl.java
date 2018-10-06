@@ -31,8 +31,8 @@ public class CartDaoServiceImpl implements CartDaoService {
 		try {
 			return (Cart) sessionFactory.getCurrentSession().createQuery("from Cart where customer_customer_id=:id")
 					.setParameter("id", customer_id).getSingleResult();
-		} catch (HibernateException e) {
-
+		} catch (Exception e) {
+              e.printStackTrace();
 			return null;
 		}
 	}

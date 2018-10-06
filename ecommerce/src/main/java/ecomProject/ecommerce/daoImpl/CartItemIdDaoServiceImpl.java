@@ -19,7 +19,7 @@ public class CartItemIdDaoServiceImpl implements CartItemIdDaoService {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public boolean addCartItemIds(CartItemId cartItemId) {
+	public boolean addCartItemId(CartItemId cartItemId) {
 		try {
 			sessionFactory.getCurrentSession().save(cartItemId);
 			return true;
@@ -29,7 +29,7 @@ public class CartItemIdDaoServiceImpl implements CartItemIdDaoService {
 	}
 
 	@Override
-	public boolean deleteCartItemIds(CartItemId cartItemId) {
+	public boolean deleteCartItemId(CartItemId cartItemId) {
 		try {
 			sessionFactory.getCurrentSession().delete(cartItemId);
 			return true;
@@ -39,7 +39,7 @@ public class CartItemIdDaoServiceImpl implements CartItemIdDaoService {
 	}
 
 	@Override
-	public boolean updateCartItemIds(CartItemId cartItemId) {
+	public boolean updateCartItemId(CartItemId cartItemId) {
 		try {
 			sessionFactory.getCurrentSession().update(cartItemId);
 			return true;
@@ -49,9 +49,9 @@ public class CartItemIdDaoServiceImpl implements CartItemIdDaoService {
 	}
 
 	@Override
-	public boolean deleteAllCartItemIds(int cartItem_id) {
+	public boolean deleteAllCartItemId(int cartItem_id) {
 		try {
-			sessionFactory.getCurrentSession().createQuery("delete from CartItemId where cartItems_cartItems_id=:id")
+			sessionFactory.getCurrentSession().createQuery("delete from CartItemId where cartItems_cartItem_id=:id")
 					.setParameter("id", cartItem_id);
 			return true;
 		} catch (HibernateException e) {
@@ -61,11 +61,11 @@ public class CartItemIdDaoServiceImpl implements CartItemIdDaoService {
 	}
 
 	@Override
-	public List<CartItemId> getAllCartItemIds(int cartItem_id) {
+	public List<CartItemId> getAllCartItemId(int cartItem_id) {
 
 		try {
 			return sessionFactory.getCurrentSession()
-					.createQuery("from CartItemIds where cartItems_cartItemsId=:id", CartItemId.class)
+					.createQuery("from CartItemId where cartItems_cartItem_id=:id", CartItemId.class)
 					.setParameter("id", cartItem_id).getResultList();
 		} catch (HibernateException e) {
 			

@@ -6,14 +6,14 @@ import ecomProject.ecommerce.model.CartItemId;
 
 public interface CartItemIdDaoService {
 
-	public boolean addCartItemIds(CartItemId cartItemId);
+	public boolean addCartItemId(CartItemId cartItemId);
 
-	public boolean deleteCartItemIds(CartItemId cartItemId);
+	public boolean deleteCartItemId(CartItemId cartItemId);
 
-	public boolean updateCartItemIds(CartItemId cartItemId);
+	public boolean updateCartItemId(CartItemId cartItemId);
 
-	public boolean deleteAllCartItemIds(int cartItem_id);
+	public boolean deleteAllCartItemId(int cartItem_id);
 
-	public List<CartItemId> getAllCartItemIds(int cartItem_id);
+	public List<CartItemId> getAllCartItemId(int cartItem_id);
 
 }

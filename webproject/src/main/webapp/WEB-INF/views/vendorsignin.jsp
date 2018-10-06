@@ -36,6 +36,7 @@
 					</div>
 
 					<button type="submit" class="btn btn-primary btn-block">Login</button>
+						<h5>not yet register? <a  class="text-danger" href="${contextPath}/vendorsignup">Sign up</a></h5>
 				</form>
 			</section>
 		</section>

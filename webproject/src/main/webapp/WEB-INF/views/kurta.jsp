@@ -1,7 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
-<title>Add  Pant Page</title>
+<title>Add Kurta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -19,9 +19,9 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="kurtaprocess"
+				<spring:form class="form-container" action="${contextPath}/vendor/kurtaprocess"
 					method="post" modelAttribute="kurta" enctype="multipart/form-data">
-					<h2>Add Pant</h2>
+					<h2>Add Kurta</h2>
 					<div class="form-group">
 						<spring:label path="subCategory.subCategory_id">SubCategory ID</spring:label>
 						<spring:input class="form-control"

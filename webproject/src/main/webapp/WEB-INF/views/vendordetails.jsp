@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page isELIgnored="false"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="springtag"%>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="contextpath.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,7 +23,7 @@
 
 </head>
 <body>
-
+<%@include file="defaultadminindex.jsp" %>
 	<h1>Deactivated</h1>
 	<table class="table">
 		<thead>
@@ -89,6 +89,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+<%@include file="footer.jsp" %>
 </body>
 </html>

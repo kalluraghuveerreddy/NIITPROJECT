@@ -53,6 +53,7 @@
 
 					</div>
 					<button type="submit" class="btn btn-primary btn-block">Register</button>
+						<h5>already have a account? <a  class="text-danger" href="${contextPath}/customersignin">Sign in</a></h5>
 				</spring:form>
 			</section>
 		</section>

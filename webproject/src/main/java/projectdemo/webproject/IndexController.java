@@ -41,5 +41,19 @@ public class IndexController {
 
 		return modelAndView;
 	}
+	@GetMapping("contact")
+	public ModelAndView opensupport(HttpSession session) {
+
+		ModelAndView modelAndView = new ModelAndView("contact");
+
+		return modelAndView;
+	}
+	@GetMapping("support")
+	public ModelAndView opencontact(HttpSession session) {
+
+		ModelAndView modelAndView = new ModelAndView("support");
+
+		return modelAndView;
+	}
 
 }

@@ -1,9 +1,19 @@
-
+<%@page isELIgnored="false"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<spring:url value="/resources/images/" var="images"></spring:url>
 <html>
 <head>
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 	<div id="demo" class="carousel slide" data-ride="carousel">
 
 		<!-- Indicators -->
@@ -16,16 +26,16 @@
 		<!-- The slideshow -->
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="${images}/samsung j8.jpg" alt="samsung" width="100%"
+				<img src="resources/images/samsung j8.jpg" alt="samsung"
+					width="100%" height="60%">
+			</div>
+			<div class="carousel-item">
+				<img src="resources/images/carousel3.png" alt="Redmi 4" width="100%"
 					height="60%">
 			</div>
 			<div class="carousel-item">
-				<img src="${images}/Redmi 4.jpeg" alt="Redmi 4" width="100"
-					height="60%">
-			</div>
-			<div class="carousel-item">
-				<img src="${images}/macbook air 2.jpg" alt="Mackbook Air"
-					width="100" height="60%">
+				<img src="resources/images/dell xps2.jpg" alt="Dell XPS"
+					width="100%" height="60%">
 			</div>
 		</div>
 

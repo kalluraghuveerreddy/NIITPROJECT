@@ -5,7 +5,7 @@
 	<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@include file="contextpath.jsp"%>
 
-<spring:url value="/resources/images/" var="images"></spring:url>
+
 <html>
 <head>
 

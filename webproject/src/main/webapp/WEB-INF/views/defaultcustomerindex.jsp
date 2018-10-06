@@ -27,13 +27,14 @@
 	</button>
 	<div class="collapse navbar-collapse  justify-content-end"
 		id="collapsibleNavbar">
+		<marquee> <h6>Welocme ${customerDetails.customer_name}</h6></marquee>
 		<ul class="navbar-nav">
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="support">Support</a></li>
+				href="${contextPath}/customer/support">Support</a></li>
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="contact">Contact us</a></li>
+				href="${contextPath}/customer/contact">Contact </a></li>
 
 
 		</ul>
@@ -101,9 +102,9 @@
 						class="dropdown-item"
 						href="${contextPath}/customer/editcustomerprofile"> Edit
 						profile</a> <a class="dropdown-item" href="#"> My orders</a> <a
-						class="dropdown-item" href="${contextPath}/index">Logout</a>
+						class="dropdown-item" href="customer/logout">Logout</a>
 				</div></li>
-			<li class="nav-item"><a class="nav-link text-white" href="#">cart</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="${contextPath}/customer/cart">cart</a></li>
 
 		</ul>
 	</div>

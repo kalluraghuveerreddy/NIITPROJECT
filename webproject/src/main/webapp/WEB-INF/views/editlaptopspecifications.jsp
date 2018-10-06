@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
+<%@include file="contextpath.jsp" %>
 <html>
 <head>
 <title>Edit laptop Page</title>
@@ -18,7 +19,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="${contextPath}/editlaptopprocess"
+				<spring:form class="form-container" action="${contextPath}/vendor/editlaptopprocess"
 					method="post" modelAttribute="laptop" >
 					
 					<h2>Edit Laptop Details</h2>

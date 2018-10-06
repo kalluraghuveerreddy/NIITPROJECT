@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
-<title>Add Shirt Page</title>
+<title>Add Shirt</title>
 
 <link rel="stylesheet" type="text/css" href="product.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">

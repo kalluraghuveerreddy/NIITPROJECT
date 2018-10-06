@@ -1,7 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html>
 <head>
-<title>Add  Air conditioner Page</title>
+<title>Edit  Airconditioner </title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -18,7 +18,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="editairconditionerprocess"
+				<spring:form class="form-container" action="${contextPath}/vendor/editairconditionerprocess"
 					method="post" modelAttribute="airconditioner" enctype="multipart/form-data">
 					<h2>Edit  Air Conditioner</h2>
 					<div class="form-group">

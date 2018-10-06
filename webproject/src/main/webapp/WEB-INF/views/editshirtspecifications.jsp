@@ -1,7 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
+<%@include file="contextpath.jsp" %>
 <html>
 <head>
-<title>Add Shirt Page</title>
+<title>Edit Shirt </title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -18,7 +19,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="shirtprocess"
+				<spring:form class="form-container" action="${contextPath}/vendor/shirtprocess"
 					method="post" modelAttribute="shirt" enctype="multipart/form-data">
 					<h2>Add Shirt</h2>
 					<div class="form-group">
@@ -35,14 +36,13 @@
 					</div>
 					<div class="form-group">
 						<spring:label path="product_id">Product Id</spring:label>
-						<spring:input class="form-control" path="product_id"
-							type="hidden" value="${shirt.product_id }"
-							/>
+						<spring:input class="form-control" path="product_id" type="hidden"
+							value="${shirt.product_id }" />
 					</div>
 					<div class="form-group">
 						<spring:label path="product_brand">Product Brand</spring:label>
 						<spring:input type="text" class="form-control"
-							path="product_brand"value="${shirt.product_brand }" />
+							path="product_brand" value="${shirt.product_brand }" />
 					</div>
 					<div class="form-group">
 						<spring:label path="product_name">product Name</spring:label>
@@ -52,7 +52,7 @@
 					<div class="form-group">
 						<spring:label path="product_price">product _price</spring:label>
 						<spring:input type="text" class="form-control"
-							path="product_price"value="${shirt.product_price }"/>
+							path="product_price" value="${shirt.product_price }" />
 					</div>
 					<div class="form-group">
 						<spring:label path="name">Name</spring:label>
@@ -75,18 +75,18 @@
 						<spring:input type="text" class="form-control" path="color"
 							value="${shirt.color }" />
 					</div>
-                    <div class="form-group">
+					<div class="form-group">
 						<spring:label path="numberOfProducts">Number Of Products</spring:label>
-						<spring:input type="text" class="form-control" path="numberOfProducts"
-							value="${shirt.numberOfProducts }"/>
+						<spring:input type="text" class="form-control"
+							path="numberOfProducts" value="${shirt.numberOfProducts }" />
 					</div>
 					<div class="form-group">
 						<spring:label path="image">Image</spring:label>
-						<spring:input type="file" class="form-control" path="image"
-						 />
+						<spring:input type="file" class="form-control" path="image" />
 					</div>
 
-					<button type="submit" class="btn btn-primary btn-block">Edit Shirt</button>
+					<button type="submit" class="btn btn-primary btn-block">Edit
+						Shirt</button>
 				</spring:form>
 			</section>
 		</section>

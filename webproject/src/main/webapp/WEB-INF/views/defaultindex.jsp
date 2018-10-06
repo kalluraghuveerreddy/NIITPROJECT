@@ -17,20 +17,21 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm bg navbar  "> <a
-		class="navbar-brand" href="/">Shoppy</a>
+		class="navbar-brand" href="${contextPath}/index">Shoppy</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="collapse navbar-collapse  justify-content-end"
 		id="collapsibleNavbar">
+		<marquee>Welocme to Shoppy </marquee>
 		<ul class="navbar-nav">
-
+             
 			<li class="nav-item"><a class="nav-link text-danger"
 				href="support">Support</a></li>
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="contact">Contact us</a></li>
+				href="contact">Contact </a></li>
 			<li class="nav-item"><a class="nav-link text-danger"
 				href="adminsignin">admin</a></li>
 
@@ -46,7 +47,7 @@
 	<div class="collapse navbar-collapse justify-content-end"
 		id="collapsibleNavbar">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link text-white" href="index">Home</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="${contextPath}/index">Home</a></li>
 			
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle  text-white" href="#"

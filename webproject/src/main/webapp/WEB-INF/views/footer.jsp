@@ -27,7 +27,7 @@
 
           <!-- Grid column -->
           <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-            <h6 class="mb-0">Get connected with us on social networks!</h6>
+            <h6 class="mb-0"><marquee>Buy in Shoppy will get 30% offers on first  3 orders </marquee></h6>
           </div>
           <!-- Grid column -->
 
@@ -116,7 +116,7 @@
             <a class="dark-grey-text" href="#!">Contact</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="#!">Register</a>
+            <a class="dark-grey-text" href="#!">Sign up</a>
           </p>
           <p>
             <a class="dark-grey-text" href="#!">Signin</a>

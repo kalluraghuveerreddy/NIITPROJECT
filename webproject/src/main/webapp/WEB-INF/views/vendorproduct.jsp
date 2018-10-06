@@ -39,11 +39,12 @@
 						alt="Card image cap">
 					<div class="card-body">
 						<h5 class="card-title">${product.product_brand }</h5>
+									<h5 class="card-title">${product.product_price }</h5>
 						<a
-							href="${contextPath}/vendor/viewcustomerproducts/${product.product_id }"><button
+							href="${contextPath}/vendor/viewvendorproducts/${product.product_id }"><button
 								class="btn btn-success">View</button></a> <a
 							href="${contextPath}/vendor/editproductspecifications/${product.product_id }"><button
-								class="btn btn-danger">edit</button></a>
+								class="btn btn-danger">Edit</button></a>
 					</div>
 				</div>
 			</c:forEach>

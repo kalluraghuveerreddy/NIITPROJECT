@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<spring:url value="/resources/images/" var="images"></spring:url>
-<%@include file ="contextpath.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="contextpath.jsp"%>
+
+
 <html>
 <head>
-<meta charset="utf-8">
+
+<title>shoppy</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -16,101 +20,177 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
 </head>
 
 <body>
 
-	<nav class="navbar navbar-expand-sm bg navbar  "> <a
-		class="navbar-brand" href="${contextPath}/admin/adminindex">Shoppy</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse  justify-content-end"
-		id="collapsibleNavbar">
-		<ul class="navbar-nav">
+	<%@include file="defaultadminindex.jsp"%>
+	<%@include file="carouselindex.jsp"%>
 
-			<li class="nav-item"><a class="nav-link text-danger"
-				href="support">Support</a></li>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>Shoppy</h1>
+			<p>Shoppy is a leading online shopping mall.</p>
+		</div>
 
-			<li class="nav-item"><a class="nav-link text-danger"
-				href="contact">Contact us</a></li>
-
-
-		</ul>
-	</nav>
-
-	<nav class="navbar navbar-expand-md bg-info navbar-info sticky-top ">
-
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse justify-content-end"
-		id="collapsibleNavbar">
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link text-white" href="${contextPath}/admin/adminindex">Home</a></li>
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle  text-white" href="#"
-				id="navbardrop" data-toggle="dropdown"> Electronics </a>
-				<div class="dropdown-menu">
-					<c:forEach items="${electronics}" var="electronic">
-						<a class="dropdown-item"
-							href="${contextPath}/adminproducts/${electronic.subCategory_id}">${electronic.subCategory_name}</a>
-					</c:forEach>
-				</div></li>
-
-
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
-				data-toggle="dropdown"> Men </a>
-				<div class="dropdown-menu">
-					<c:forEach items="${mens}" var="men">
-						<a class="dropdown-item"
-							href="${contextPath}/adminproducts/${men.subCategory_id}">${men.subCategory_name}</a>
-					</c:forEach>
-				</div></li>
-
-
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
-				data-toggle="dropdown"> Women </a>
-				<div class="dropdown-menu">
-					<c:forEach items="${womens}" var="women">
-						<a class="dropdown-item"
-							href="${contextPath}/adminproducts/${women.subCategory_id}">${women.subCategory_name}</a>
-					</c:forEach>
-				</div></li>
-
-
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
-				data-toggle="dropdown"> Home Appliances</a>
-				<div class="dropdown-menu">
-					<c:forEach items="${homeAppliances}" var="homeappliance">
-						<a class="dropdown-item"
-							href="${contextPath}/adminproducts/${homeappliance.subCategory_id}">${homeappliance.subCategory_name}</a>
-					</c:forEach>
-				</div></li>
-
-			<li class="nav-item"><a class="nav-link  text-white"
-				href="vendordetails">Vendors</a></li>
-
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle  text-white" href="#"
-				id="navbardrop" data-toggle="dropdown"> My Account</a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="${contextPath}/admin/adminprofile">My profile</a> <a
-						class="dropdown-item" href="${contextPath}/admin/editadminprofile"> Edit Profile</a>
-				</div></li>
-
-		</ul>
 	</div>
-	</nav>
-   <%@include file="carouselindex.jsp"%>
 
-	<%-- <%@include file="footer.jsp"%> --%>
+	<!-- Footer -->
+	<footer class="page-footer font-small blue-grey lighten-5">
+
+		<div style="background-color: #21d192;">
+			<div class="container">
+
+				<!-- Grid row-->
+				<div class="row py-4 d-flex align-items-center">
+
+					<!-- Grid column -->
+					<div
+						class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+						<h6 class="mb-0">
+							<marquee>Buy in Shoppy will get 30% offers on first 3
+								orders </marquee>
+						</h6>
+					</div>
+					<!-- Grid column -->
+
+					<!-- Grid column -->
+					<div class="col-md-6 col-lg-7 text-center text-md-right">
+
+						<!-- Facebook -->
+						<a class="fb-ic"> <i class="fa fa-facebook white-text mr-4">
+						</i>
+						</a>
+						<!-- Twitter -->
+						<a class="tw-ic"> <i class="fa fa-twitter white-text mr-4">
+						</i>
+						</a>
+						<!-- Google +-->
+						<a class="gplus-ic"> <i
+							class="fa fa-google-plus white-text mr-4"> </i>
+						</a>
+						<!--Linkedin -->
+						<a class="li-ic"> <i class="fa fa-linkedin white-text mr-4">
+						</i>
+						</a>
+						<!--Instagram-->
+						<a class="ins-ic"> <i class="fa fa-instagram white-text">
+						</i>
+						</a>
+
+					</div>
+					<!-- Grid column -->
+
+				</div>
+				<!-- Grid row-->
+
+			</div>
+		</div>
+
+		<!-- Footer Links -->
+		<div class="container text-center text-md-left mt-5">
+
+			<!-- Grid row -->
+			<div class="row mt-3 dark-grey-text">
+
+				<!-- Grid column -->
+				<div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+					<!-- Content -->
+					<h6 class="text-uppercase font-weight-bold">Shoppy</h6>
+					<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto"
+						style="width: 60px;">
+					<p>Shoppy is the activity of buying or selling of products on
+						online services or over the Internet. .</p>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+					<!-- Links -->
+					<h6 class="text-uppercase font-weight-bold">Products</h6>
+					<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto"
+						style="width: 60px;">
+					<p>
+						<a class="dark-grey-text" href="#!">Men</a>
+					</p>
+					<p>
+						<a class="dark-grey-text" href="#!">Women</a>
+					</p>
+					<p>
+						<a class="dark-grey-text" href="#!">Home Appliances</a>
+					</p>
+					<p>
+						<a class="dark-grey-text" href="#!">Electronic</a>
+					</p>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+					<!-- Links -->
+					<h6 class="text-uppercase font-weight-bold">Useful links</h6>
+					<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto"
+						style="width: 60px;">
+					<p>
+						<a class="dark-grey-text" href="#!">Support</a>
+					</p>
+					<p>
+						<a class="dark-grey-text" href="#!">Contact</a>
+					</p>
+					<p>
+						<a class="dark-grey-text" href="#!">Sign up</a>
+					</p>
+					<p>
+						<a class="dark-grey-text" href="#!">Signin</a>
+					</p>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+					<!-- Links -->
+					<h6 class="text-uppercase font-weight-bold">Contact</h6>
+					<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto"
+						style="width: 60px;">
+					<p>
+						<i class="fa fa-home mr-3"></i> Hyderabad,India,500079
+					</p>
+					<p>
+						<i class="fa fa-envelope mr-3"></i> info@shoppy.com
+					</p>
+					<p>
+						<i class="fa fa-phone mr-3"></i> + 91 9000052634
+					</p>
+					<p>
+						<i class="fa fa-print mr-3"></i> + 918978513016
+					</p>
+
+				</div>
+				<!-- Grid column -->
+
+			</div>
+			<!-- Grid row -->
+
+		</div>
+		<!-- Footer Links -->
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center text-black-50 py-3">
+			© 2018 Copyright: <a class="dark-grey-text"
+				href="https://mdbootstrap.com/bootstrap-tutorial/"> Shoppy.com</a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
+
 
 </body>
 

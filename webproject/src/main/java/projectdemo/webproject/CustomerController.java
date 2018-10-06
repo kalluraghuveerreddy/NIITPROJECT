@@ -62,35 +62,36 @@ public class CustomerController {
 		return "customersignin";
 	}
 
-	/*@PostMapping("customerloginprocess")
-	public String loginCustomerProcess(HttpServletRequest request, HttpSession session, Model model) {
-
-		if ((customerDaoService.loginCustomer(request.getParameter("customer_email"),
-				request.getParameter("customer_password"))) != null) {
-
-			Customer customer = customerDaoService.loginCustomer(request.getParameter("customer_email"),
-					request.getParameter("customer_password"));
-
-			session.setAttribute("electronics", session.getAttribute("electronics"));
-			session.setAttribute("mens", session.getAttribute("mens"));
-			session.setAttribute("womens", session.getAttribute("womens"));
-
-			session.setAttribute("customerDetails", customer);
-
-			return "redirect:customerindex";
-
-		} else {
-
-			return "customersignin";
-		}
-	}
-*/
+	/*
+	 * @PostMapping("customerloginprocess") public String
+	 * loginCustomerProcess(HttpServletRequest request, HttpSession session, Model
+	 * model) {
+	 * 
+	 * if ((customerDaoService.loginCustomer(request.getParameter("customer_email"),
+	 * request.getParameter("customer_password"))) != null) {
+	 * 
+	 * Customer customer =
+	 * customerDaoService.loginCustomer(request.getParameter("customer_email"),
+	 * request.getParameter("customer_password"));
+	 * 
+	 * session.setAttribute("electronics", session.getAttribute("electronics"));
+	 * session.setAttribute("mens", session.getAttribute("mens"));
+	 * session.setAttribute("womens", session.getAttribute("womens"));
+	 * 
+	 * session.setAttribute("customerDetails", customer);
+	 * 
+	 * return "redirect:customerindex";
+	 * 
+	 * } else {
+	 * 
+	 * return "customersignin"; } }
+	 */
 	@GetMapping("customer/customerindex")
-	public ModelAndView openCustomerIndex(Principal principal,HttpSession session) {
-		
-		
+	public ModelAndView openCustomerIndex(Principal principal, HttpSession session) {
+
 		ModelAndView modelAndView = new ModelAndView("customerindex");
-		Customer customer=customerDaoService.getCustomerByEmail(principal.getName());
+
+		Customer customer = customerDaoService.getCustomerByEmail(principal.getName());
 		session.setAttribute("customerDetails", customer);
 		return modelAndView;
 	}
@@ -110,7 +111,17 @@ public class CustomerController {
 	public String editCustomerProfileProces(@ModelAttribute("customer") Customer customer) {
 
 		customerDaoService.updateCustomer(customer);
-		return "redirect:customer/customerindex";
+		return "redirect:/customer/customerindex";
 	}
+
+	
+    @GetMapping("customer/support")
+	public String support() {
+		return "support";
+	}
+    @GetMapping("customer/contact")
+   	public String contact() {
+   		return "contact";
+   	}
 
 }

@@ -28,7 +28,7 @@
 			default-target-url="/admin/adminindex" username-parameter="email"
 			password-parameter="password"
 			authentication-failure-url="/adminsignin" />
-		<logout logout-url="/logout" logout-success-url="/index" />
+		<logout logout-url="/admin/logout" logout-success-url="/index" />
 		<csrf disabled="true" />
 
 	</http>
@@ -56,7 +56,7 @@
 			username-parameter="vendor_email"
 			password-parameter="vendor_password"
 			authentication-failure-url="/vendorsignin" />
-		<logout logout-url="/logout" logout-success-url="/index" />
+		<logout logout-url="vendor/logout" logout-success-url="/index" />
 		<csrf disabled="true" />
 
 	</http>
@@ -85,7 +85,7 @@
 			username-parameter="customer_email"
 			password-parameter="customer_password"
 			authentication-failure-url="/customersignin" />
-		<logout logout-url="/logout" logout-success-url="/index" />
+		<logout logout-url="customer/logout" logout-success-url="/index" />
 		<csrf disabled="true" />
 	</http>
 

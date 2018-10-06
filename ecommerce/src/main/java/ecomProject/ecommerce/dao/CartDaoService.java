@@ -9,6 +9,7 @@ public interface CartDaoService {
 	public boolean updateCart(Cart cart);
 
 	public boolean deleteCart(Cart cart);
+     
 
 	public Cart getCart(int customer_id);
 

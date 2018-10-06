@@ -87,12 +87,7 @@ public class VendorController {
 	@GetMapping("vendor/vendorindex")
 	public ModelAndView openVendorIndex(HttpSession session,Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("vendorindex");
-		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
-		session.setAttribute("books", subCategoryDaoService.getBooks());
-		session.setAttribute("homeAppliances", subCategoryDaoService.getHomeAppliances());
-		session.setAttribute("mens", subCategoryDaoService.getMen());
-		session.setAttribute("womens", subCategoryDaoService.getWomen());
-		session.setAttribute("kids", subCategoryDaoService.getKids());
+		
 		Vendor vendor=vendorDaoService.getVendorByEmail(principal.getName());
 		session.setAttribute("vendorDetails", vendor);
 		return modelAndView;
@@ -126,5 +121,12 @@ public class VendorController {
 		return "categories";
 	}
 
-
+	 @GetMapping("vendor/support")
+		public String vendorSupport() {
+			return "support";
+		}
+	    @GetMapping("vendor/contact")
+	   	public String vendorContact() {
+	   		return "contact";
+	   	}
 }

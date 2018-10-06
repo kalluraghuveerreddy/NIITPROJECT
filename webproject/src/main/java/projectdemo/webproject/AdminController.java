@@ -94,7 +94,7 @@ public class AdminController {
 
 	}
 
-	@GetMapping("admin/reject/{user_id}")
+	@GetMapping("admin/reject/{vendor_id}")
 	public String rejectUser(@PathVariable("vendor_id") int vendor_id) {
 
 		Vendor vendor = vendorDaoService.getVendorById(vendor_id);
@@ -109,4 +109,12 @@ public class AdminController {
 		vendors.put("vendorList", adminDaoService.getAllVendors());
 		return "vendordetails";
 	}
+	 @GetMapping("admin/support")
+		public String adminsupport() {
+			return "support";
+		}
+	    @GetMapping("admin/contact")
+	   	public String admincontact() {
+	   		return "contact";
+	   	}
 }

@@ -37,7 +37,7 @@
 						alt="Card image cap">
 					<div class="card-body">
 						<h5 class="card-title">${product.product_brand }</h5>
-						<a href="${contextPath}/vendor/viewcustomerproducts/${product.product_id }"><button
+						<a href="${contextPath}/vendor/viewvendorproducts/${product.product_id }"><button
 								class="btn btn-success">view</button></a> <a
 							href="${contextPath}/vendor/editproductspecifications/${product.product_id }"><button
 								class="btn btn-danger">edit</button></a>
