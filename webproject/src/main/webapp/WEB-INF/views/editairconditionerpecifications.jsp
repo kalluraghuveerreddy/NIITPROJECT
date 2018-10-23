@@ -62,9 +62,9 @@
 					
 
 					<div class="form-group">
-						<spring:label path="size">Size</spring:label>
-						<spring:input type="text" class="form-control" path="size"
-							value="${airconditioner.size}"/>
+						<spring:label path="voltage">Volatge</spring:label>
+						<spring:input type="text" class="form-control" path="voltage"
+							value="${airconditioner.voltage}"/>
 					</div>
 					<div class="form-group">
 						<spring:label path="modelNo">Model Nmber</spring:label>
@@ -72,9 +72,9 @@
 							 value="${airconditioner.modelNo}" />
 					</div>
                     <div class="form-group">
-						<spring:label path="numberOfProducts">Number Of Products</spring:label>
-						<spring:input type="text" class="form-control" path="numberOfProducts"
-							 value="${airconditioner.product_numberOfProducts}" />
+						<spring:label path="noOfProducts">Number Of Products</spring:label>
+						<spring:input type="text" class="form-control" path="noOfProducts"
+							 value="${airconditioner.noOfProducts}" />
 					</div>
 					<div class="form-group">
 						<spring:label path="image">Image</spring:label>

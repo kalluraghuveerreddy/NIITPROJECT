@@ -15,7 +15,7 @@ public class NoOfProducts {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int itemNo;
 	private boolean sold;
-	
+
 	@ManyToOne
 	private Product product;
 

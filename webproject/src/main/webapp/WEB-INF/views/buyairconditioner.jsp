@@ -50,8 +50,8 @@
 				<td>${airconditioner.voltage }</td>
 			</tr>
 			<tr>
-				<td>Color:</td>
-				<td>${airconditioner.color}</td>
+				<td>Model Number:</td>
+				<td>${airconditioner.modelNo}</td>
 			</tr>
 
 

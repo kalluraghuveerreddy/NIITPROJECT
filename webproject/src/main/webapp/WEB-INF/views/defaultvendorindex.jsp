@@ -29,10 +29,10 @@
 		<ul class="navbar-nav">
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="${contextPath}/vendor/support">Support</a></li>
+				href="${contextPath}/vendor/vendorsupport">Support</a></li>
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="${contextPath}/vendor/contact">Contact</a></li>
+				href="${contextPath}/vendor/vendorcontact">Contact</a></li>
 
 		</ul>
 	</nav>
@@ -107,7 +107,7 @@
 					<a class="dropdown-item" href="${contextPath}/vendor/vendorprofile">My
 						profile</a> <a class="dropdown-item"
 						href="${contextPath}/vendor/editvendorprofile"> Edit Profile</a> <a
-						class="dropdown-item" href="vendor/logout"> Logout</a>
+						class="dropdown-item" href="logout"> Logout</a>
 				</div></li>
 
 

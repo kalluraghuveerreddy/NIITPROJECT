@@ -31,10 +31,10 @@
 		<ul class="navbar-nav">
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="${contextPath}/customer/support">Support</a></li>
+				href="${contextPath}/customer/customersupport">Support</a></li>
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="${contextPath}/customer/contact">Contact </a></li>
+				href="${contextPath}/customer/customercontact">Contact </a></li>
 
 
 		</ul>
@@ -102,7 +102,7 @@
 						class="dropdown-item"
 						href="${contextPath}/customer/editcustomerprofile"> Edit
 						profile</a> <a class="dropdown-item" href="#"> My orders</a> <a
-						class="dropdown-item" href="customer/logout">Logout</a>
+						class="dropdown-item" href="${contextPath}/customer/logout">Logout</a>
 				</div></li>
 			<li class="nav-item"><a class="nav-link text-white" href="${contextPath}/customer/cart">cart</a></li>
 

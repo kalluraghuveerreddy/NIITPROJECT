@@ -87,12 +87,21 @@ public class CustomerController {
 	 * return "customersignin"; } }
 	 */
 	@GetMapping("customer/customerindex")
-	public ModelAndView openCustomerIndex(Principal principal, HttpSession session) {
+	public ModelAndView openCustomerIndex(Principal principal, HttpSession session,Model model) {
 
 		ModelAndView modelAndView = new ModelAndView("customerindex");
 
 		Customer customer = customerDaoService.getCustomerByEmail(principal.getName());
 		session.setAttribute("customerDetails", customer);
+		
+		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
+		session.setAttribute("books", subCategoryDaoService.getBooks());
+		session.setAttribute("homeAppliances", subCategoryDaoService.getHomeAppliances());
+		session.setAttribute("mens", subCategoryDaoService.getMen());
+		session.setAttribute("womens", subCategoryDaoService.getWomen());
+		session.setAttribute("kids", subCategoryDaoService.getKids());
+		
+		
 		return modelAndView;
 	}
 
@@ -115,13 +124,13 @@ public class CustomerController {
 	}
 
 	
-    @GetMapping("customer/support")
+    @GetMapping("customer/customersupport")
 	public String support() {
-		return "support";
+		return "customersupport";
 	}
-    @GetMapping("customer/contact")
+    @GetMapping("customer/customercontact")
    	public String contact() {
-   		return "contact";
+   		return "customercontact";
    	}
 
 }

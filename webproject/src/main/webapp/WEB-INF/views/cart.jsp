@@ -40,7 +40,17 @@
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_brand}</td>
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_name}</td>
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_price}</td>
-						<td>${cartItem.quantity}</td>
+
+					<td>
+						<form action="${contextPath}/customer/updatequantity">
+							<input type="hidden" name="cartItem_id" value="${cartItem.cartItem_id}"/>
+						<input type="number" name="quantity" value="${cartItem.quantity}"/>
+					
+						<input type="submit" value="update"/>
+						</form>
+					</td>
+
+
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_price * cartItem.quantity}</td>
 					<td><a href="${contextPath}/customer/${cartItem.cartItem_id}"><input
 							type="button" value="Delete"></a></td>

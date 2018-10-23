@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -219,47 +220,82 @@ public class CartController {
 		Cart cart = cartDaoService.getCart(customer.getCustomer_id());
 
 		model.addAttribute("cart", cart);
-		/*List<Product> products = new ArrayList<Product>();
-		List<CartItems> cartItems = new Stack<CartItems>();
-		cartItems = cartItemsDaoService.getAllCartItemsByCartId(cart.getCart_id());
-		List<CartItemId> cartItemId = new ArrayList<CartItemId>();
-		List<String> subcategoryname = new ArrayList<String>();
-
-		for (CartItems items : cartItems) {
-			cartItemId = cartItemIdDaoService.getAllCartItemId(items.getCartItem_id());
-			
-			products.add(cartItemId.get(0).getNoOfProducts().getProduct());
-			
-			subcategoryname.add(cartItemId.get(0).getNoOfProducts().getProduct().getSubCategory().getSubCategory_name());
-			
-			Cart cart1 = items.getCart();
-			
-			
-
-			model.addAttribute("product", products);
-			model.addAttribute("name", subcategoryname);
-			model.addAttribute("cartitem", cartItems);
-			model.addAttribute("netPrice", cart1.getNetPrice());
-			model.addAttribute("noOfItem", cart1.getNoOfItems());*/
-			/*model.addAttribute("cart", items.getCart());
-			model.addAttribute("item", items);
-		}*/
 
 		return "cart";
 	}
 
 	@GetMapping("customer/{cartItem_id}")
-	public String deleteCart(@PathVariable("cartItem_id") int cartItem_id) {
-		
-		/*List<CartItemId> cartItemIds=cartItemIdDaoService.getAllCartItemId(cartItem_id);
-		
-		for(CartItemId cartItemId:cartItemIds) {
-			cartItemIdDaoService.deleteCartItemId(cartItemId);
-		}*/
-		
-		cartItemsDaoService.deleteCartItem(cartItemsDaoService.getCartItems(cartItem_id));
-		
+	public String deleteCart(@PathVariable("cartItem_id") int cartItem_id, Principal principal) {
+
+
+		if (cartItemsDaoService.deleteCartItem(cartItemsDaoService.getCartItems(cartItem_id))){
+
+			Customer customer = customerDaoService.getCustomerByEmail(principal.getName());
+
+			//cartDaoService.deleteCart(cartItemsDaoService.getCartItems(cartItem_id).getCart());
+
+			return "redirect:/customer/cart";
+		}
 		return "redirect:/customer/customerindex";
+
+	}
+
+	@GetMapping("customer/updatequantity")
+	public String updateCart(HttpServletRequest request) {
+
+		int totalPrice = 0;
+		int quantityNo = 0;
+
+		int cartItems_id = Integer.parseInt(request.getParameter("cartItem_id"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+		CartItems cartItems = cartItemsDaoService.getCartItems(cartItems_id);
+		Cart cart = cartItems.getCart();
+
+		int product_id = cartItems.getCartItemIds().get(0).getNoOfProducts().getProduct().getProduct_id();
+		Product product = productDaoService.getProduct(product_id);
+		int unitprice = product.getProduct_price();
+
+		if (checkAvailabilityOfProducts(product_id, quantity)) {
+
+			cartItemsDaoService.deleteCartItem(cartItemsDaoService.getCartItems(cartItems_id));
+
+			cartItems = new CartItems();
+			List<CartItemId> cartItemIdsList = new ArrayList<CartItemId>();
+			List<CartItems> cartItemsList = new ArrayList<CartItems>();
+			List<NoOfProducts> numberOfProductsList = noOfProductDaoService.getNoOfProducts(product_id);
+			for (int i = 0; i < quantity; i++) {
+
+				cartItemId = new CartItemId();
+				noOfProducts = new NoOfProducts();
+				noOfProducts = numberOfProductsList.get(i);
+				noOfProducts.setSold(true);
+				cartItemId.setNoOfProducts(noOfProducts);
+				cartItemId.setCartItems(cartItems);
+				cartItemIdsList.add(cartItemId);
+			}
+			cartItems.setUnitPrice(unitprice);
+			cartItems.setTotalPrice(unitprice * quantity);
+			cartItems.setQuantity(quantity);
+			cartItems.setCartItemIds(cartItemIdsList);
+			cartItems.setCart(cart);
+			cartItemsList.add(cartItems);
+			cart.setCartItems(cartItemsList);
+
+			List<CartItems> cartItemList = cartItemsDaoService.getAllCartItemsByCartId(cart.getCart_id());
+			for (CartItems cartItem : cartItemList) {
+				totalPrice = totalPrice + cartItem.getTotalPrice();
+				quantityNo = quantityNo + cartItem.getQuantity();
+				cart.setNetPrice(totalPrice);
+				cart.setNoOfItems(quantityNo);
+			}
+
+			cartDaoService.updateCart(cart);
+
+			return "redirect:/customer/cart";
+		} else {
+			return "redirect:/customer/customerindex";
+		}
 
 	}
 

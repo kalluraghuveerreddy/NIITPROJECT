@@ -22,13 +22,7 @@
 		<marquee> <h6>Welcome Shoppy</h6></marquee>
 		<ul class="navbar-nav">
 
-			<li class="nav-item"><a class="nav-link text-danger"
-				href="${contextPath}/admin/support">Support</a></li>
-
-			<li class="nav-item"><a class="nav-link text-danger"
-				href="${contextPath}/admin/contact">Contact</a></li>
-
-
+		
 		</ul>
 	</nav>
 
@@ -96,7 +90,7 @@
 					<a class="dropdown-item" href="${contextPath}/admin/adminprofile">My
 						profile</a> 
 						<a class="dropdown-item"
-						href="admin/logout"> Logout</a>
+						href="${contextPath}/admin/logout"> Logout</a>
 				</div></li>
 
 		</ul>

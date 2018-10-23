@@ -5,6 +5,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <%@include file="contextpath.jsp"%>
+
+
 <html>
 <head>
 
@@ -26,7 +28,8 @@
 
 </head>
 <body>
-	<%@include file="defaultindex.jsp"%>
+
+	<%@include file="defaultcustomerindex.jsp"%>
 	<div class="body">
 		<div style="flex: 2">
 			<img alt="image" style="width: 250px"
@@ -42,13 +45,14 @@
 				<td>Name:</td>
 				<td>${refrigerator.name }</td>
 			</tr>
-			<tr>
-				<td>Capacity:</td>
-				<td>${refrigerator.capacity }</td>
-			</tr>
+			
 			<tr>
 				<td>Color:</td>
 				<td>${refrigerator.color}</td>
+			</tr>
+			<tr>
+				<td>Capacity:</td>
+				<td>${refrigerator.capacity}</td>
 			</tr>
 
 		</table>
