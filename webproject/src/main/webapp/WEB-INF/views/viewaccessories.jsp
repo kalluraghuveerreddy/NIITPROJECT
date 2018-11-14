@@ -55,7 +55,7 @@
 		<div class="container" style="margin: 30px">
 			<div class="row">
 
-				<a href="${contextPath}/buyproducts/${accessories.product_id}"><button
+				<a href="${contextPath}/customer/buyproducts/${accessories.product_id}"><button
 						class="btn btn-danger">Buy</button></a>
 			</div>
 		</div>

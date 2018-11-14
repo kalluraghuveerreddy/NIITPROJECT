@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import ecomProject.ecommerce.dao.CartItemIdDaoService;
 import ecomProject.ecommerce.model.CartItemId;
+
 @Component
 @Transactional
 public class CartItemIdDaoServiceImpl implements CartItemIdDaoService {
@@ -68,7 +69,19 @@ public class CartItemIdDaoServiceImpl implements CartItemIdDaoService {
 					.createQuery("from CartItemId where cartItems_cartItem_id=:id", CartItemId.class)
 					.setParameter("id", cartItem_id).getResultList();
 		} catch (HibernateException e) {
-			
+
+			return null;
+		}
+	}
+
+	@Override
+	public CartItemId getCartItemId(int cartItems_id) {
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery("from CartItemId where cartItems_cartItem_id=:id", CartItemId.class)
+					.setParameter("id", cartItems_id).getSingleResult();
+		} catch (HibernateException e) {
+
 			return null;
 		}
 	}

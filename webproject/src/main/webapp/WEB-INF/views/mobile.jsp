@@ -42,47 +42,56 @@
 						<spring:label path="product_brand">Product Brand</spring:label>
 						<spring:input type="text" class="form-control"
 							path="product_brand" placeholder="Enter  brand" />
+							<span style="color:red"><spring:errors path="product_brand" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="product_name">product Name</spring:label>
 						<spring:input type="text" class="form-control" path="product_name"
 							placeholder="Enter  product name" />
+							<span style="color:red"><spring:errors path="product_name" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="product_price">product _price</spring:label>
 						<spring:input type="text" class="form-control"
 							path="product_price" placeholder="Enter  price" />
+							<span style="color:red"><spring:errors path="product_price" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="ram">Ram</spring:label>
 						<spring:input type="text" class="form-control" path="ram"
 							placeholder="Enter  ram size" />
+							<span style="color:red"><spring:errors path="ram" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="name">Mobile Name</spring:label>
 						<spring:input type="text" class="form-control" path="name"
 							placeholder="Enter mobile name" />
+							<span style="color:red"><spring:errors path="name" ></spring:errors></span>
 					</div>
 
 					<div class="form-group">
 						<spring:label path="memory">Memory Size</spring:label>
 						<spring:input type="text" class="form-control" path="memory"
 							placeholder="Enter memory size" />
+							<span style="color:red"><spring:errors path="memory" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="screenSize">Screen Size</spring:label>
 						<spring:input type="text" class="form-control" path="screenSize"
 							placeholder="Enter screen size" />
+							<span style="color:red"><spring:errors path="screenSize" ></spring:errors></span>
 					</div>
                     <div class="form-group">
 						<spring:label path="numberOfProducts">Number Of Products</spring:label>
 						<spring:input type="text" class="form-control" path="numberOfProducts"
 							placeholder="Enter no of products" />
+							<span style="color:red"><spring:errors path="numberOfProducts" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="image">Image</spring:label>
 						<spring:input type="file" class="form-control" path="image"
 						 />
+						 <span style="color:red"><spring:errors path="image" ></spring:errors></span>
 					</div>
 
 					<button type="submit" class="btn btn-primary btn-block">AddMobile</button>

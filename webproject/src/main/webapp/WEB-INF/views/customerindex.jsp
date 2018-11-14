@@ -34,6 +34,27 @@
 		</div>
 
 	</div>
+	
+	<div class="container" style="margin-top: 30px">
+		<div class="row">
+
+			<c:forEach items="${productList}" var="product">
+
+				<div class="card" style="width: 15rem">
+					<img class="card-img-top"
+						src='<spring:url value="/resources/images/products/${product.product_id }.jpg"></spring:url>'
+						alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">${product.product_brand }</h5>
+						<a href="${contextPath}/customer/viewcustomerproducts/${product.product_id }"><button
+								class="btn btn-success">View</button></a> <a
+							href="${contextPath}/customer/buyproducts/${product.product_id }"><button
+								class="btn btn-danger">Buy</button></a>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 	<%@include file="footer.jsp"%>
 </body>
 </html>

@@ -13,6 +13,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,11 +27,19 @@ public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
+	
 	private int product_id;
+	@NotBlank
+	@NotNull(message="Enter the product Name")
 	private String product_name;
+	@NotBlank
+	@NotNull(message="Enter the product brand")
 	private String product_brand;
+	@NotBlank
+	@NotNull(message="Enter the product Price")
 	private int product_price;
+	@NotBlank
+	@NotNull(message="Enter the number of products")
 	private int numberOfProducts;
 	@Transient
 	private MultipartFile image;

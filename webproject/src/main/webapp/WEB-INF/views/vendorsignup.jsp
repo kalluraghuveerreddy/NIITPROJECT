@@ -28,27 +28,32 @@
 						<spring:label path="vendor_name">Name</spring:label>
 						<spring:input type="text" class="form-control" path="vendor_name"
 							placeholder="Enter  name" />
+							<span style="color:red"><spring:errors path="vendor_name" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="vendor_email">Email</spring:label>
 						<spring:input type="email" class="form-control"
 							path="vendor_email" placeholder="Enter email" />
+							<span style="color:red"><spring:errors path="vendor_email" ></spring:errors></span>
 					</div>
 
 					<div class="form-group">
 						<spring:label path="vendor_mobile">Mobile</spring:label>
 						<spring:input type="phone" class="form-control"
 							path="vendor_mobile" placeholder="Enter mobile number" />
+							<span style="color:red"><spring:errors path="vendor_mobile" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="vendor_password">Password</spring:label>
 						<spring:input type="password" class="form-control"
 							path="vendor_password" placeholder="Enter Password" />
+							<span style="color:red"><spring:errors path="vendor_password" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="company_name">Company Name</spring:label>
 						<spring:input type="text" class="form-control" path="company_name"
 							placeholder="Enter compnay name" />
+							<span style="color:red"><spring:errors path="company_name" ></spring:errors></span>
 					</div>
 
 					<button type="submit" class="btn btn-primary btn-block">Register</button>

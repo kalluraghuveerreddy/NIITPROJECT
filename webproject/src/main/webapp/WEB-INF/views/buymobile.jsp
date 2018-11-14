@@ -80,13 +80,13 @@
 					</tr>
 
 					<tr>
-						<td><input type="submit" value="Buy now"></td>
+						<td><input type="submit" value="Add to cart"></td>
 					</tr>
 				</tbody>
 			</table>
 		</form>
 
 	</div>
-	<%@include file="footer.jsp"%>
+	<%-- <%@include file="footer.jsp"%> --%>
 </body>
 </html>

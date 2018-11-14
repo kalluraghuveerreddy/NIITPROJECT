@@ -20,12 +20,14 @@
 <body>
 
 	<%@include file="defaultcustomerindex.jsp"%>
-	<h2 class="text-danger ">cart</h2>
-	<br>
-	<table class="table">
+	
+	<h3>Order Details</h3>
+	<p>================</p>
+     
+     <table class="table">
 		<thead>
 			<tr>
-				<th>Brand</th>
+				<th>Type</th>
 				<th>Name</th>
 				<th>Unit Price</th>
 				<th>Quantity</th>
@@ -40,44 +42,22 @@
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_brand}</td>
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_name}</td>
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_price}</td>
-
-					<td>
-						<form action="${contextPath}/customer/updatequantity">
-							<input type="hidden" name="cartItem_id"
-								value="${cartItem.cartItem_id}" /> <input type="number"
-								name="quantity" value="${cartItem.quantity}" /> <input
-								type="submit" value="update" />
-						</form>
-					</td>
-
-
+					<td>${cartItem.quantity}</td>
 					<td>${cartItem.cartItemIds[0].noOfProducts.product.product_price * cartItem.quantity}</td>
-					<td><a href="${contextPath}/customer/${cartItem.cartItem_id}"><input
-							type="button" value="Delete"></a></td>
+					
 
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<h2>Total Amount</h2>: ${cart.netPrice}
+   
 
-	<div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Number Of Items</th>
-					<th>Total Amount</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>${cart.noOfItems}</td>
-					<td>${cart.netPrice}</td>
-					<td><a href="${contextPath}/customer/ordernow"><input
-							type="button" value="Buy Now"></a></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<%@include file="footer.jsp"%>
+	<p>================</p>
+
+	<h2>Thanks For Shopping in Shoppy ...................................Ordered Successfully !!!!!!!!!!!</h2>
+	<p>================</p>
+
 </body>
 </html>

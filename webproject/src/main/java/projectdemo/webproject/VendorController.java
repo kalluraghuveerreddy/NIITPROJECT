@@ -5,11 +5,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,13 +48,17 @@ public class VendorController {
 	}
 
 	@PostMapping("vendorregisterprocess")
-	public String singupVendorProcess(@ModelAttribute("vendor") Vendor vendor) {
+	public String singupVendorProcess(@Valid @ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult) {
 
-		if ((vendorDaoService.getVendorByEmail(vendor.getVendor_email())) != null) {
-			return "vendorsignup";
+		if (!bindingResult.hasErrors()) {
+			if ((vendorDaoService.getVendorByEmail(vendor.getVendor_email())) != null) {
+				return "vendorsignup";
+			} else {
+				vendorDaoService.registerVendor(vendor);
+				return "redirect:index";
+			}
 		} else {
-			vendorDaoService.registerVendor(vendor);
-			return "redirect:index";
+			return "vendorsignup";
 		}
 	}
 
@@ -61,50 +67,50 @@ public class VendorController {
 		return "vendorsignin";
 	}
 
-	/*@PostMapping("vendorloginprocess")
-	public String loginVendor(HttpServletRequest request, HttpSession session, Model model) {
-
-		if ((vendorDaoService.loginVendor(request.getParameter("vendor_email"),
-				request.getParameter("vendor_password"))) != null) {
-
-			Vendor vendor = vendorDaoService.loginVendor(request.getParameter("vendor_email"),
-					request.getParameter("vendor_password"));
-
-			session.setAttribute("vendorDetails", vendor);
-
-			session.setAttribute("electronics", session.getAttribute("electronics"));
-			session.setAttribute("mens", session.getAttribute("mens"));
-			session.setAttribute("womens", session.getAttribute("womens"));
-
-			return "redirect:vendorindex";
-
-		} else {
-
-			return "vendorsignin";
-		}
-	}*/
+	/*
+	 * @PostMapping("vendorloginprocess") public String
+	 * loginVendor(HttpServletRequest request, HttpSession session, Model model) {
+	 * 
+	 * if ((vendorDaoService.loginVendor(request.getParameter("vendor_email"),
+	 * request.getParameter("vendor_password"))) != null) {
+	 * 
+	 * Vendor vendor =
+	 * vendorDaoService.loginVendor(request.getParameter("vendor_email"),
+	 * request.getParameter("vendor_password"));
+	 * 
+	 * session.setAttribute("vendorDetails", vendor);
+	 * 
+	 * session.setAttribute("electronics", session.getAttribute("electronics"));
+	 * session.setAttribute("mens", session.getAttribute("mens"));
+	 * session.setAttribute("womens", session.getAttribute("womens"));
+	 * 
+	 * return "redirect:vendorindex";
+	 * 
+	 * } else {
+	 * 
+	 * return "vendorsignin"; } }
+	 */
 
 	@GetMapping("vendor/vendorindex")
-	public ModelAndView openVendorIndex(HttpSession session,Principal principal,Model model) {
+	public ModelAndView openVendorIndex(HttpSession session, Principal principal, Model model) {
 		ModelAndView modelAndView = new ModelAndView("vendorindex");
-		
-		Vendor vendor=vendorDaoService.getVendorByEmail(principal.getName());
+
+		Vendor vendor = vendorDaoService.getVendorByEmail(principal.getName());
 		session.setAttribute("vendorDetails", vendor);
-		
+
 		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
 		session.setAttribute("books", subCategoryDaoService.getBooks());
 		session.setAttribute("homeAppliances", subCategoryDaoService.getHomeAppliances());
 		session.setAttribute("mens", subCategoryDaoService.getMen());
 		session.setAttribute("womens", subCategoryDaoService.getWomen());
 		session.setAttribute("kids", subCategoryDaoService.getKids());
-		
-		
+
 		return modelAndView;
 	}
 
 	@GetMapping(value = { "vendor/editvendorprofile" })
 	public String editVendorprofile(HttpSession session, Model model) {
-	
+
 		model.addAttribute("vendor", session.getAttribute("vendorDetails"));
 		return "editvendorprofile";
 	}
@@ -116,13 +122,12 @@ public class VendorController {
 		return "redirect:/vendor/vendorindex";
 	}
 
-	
 	@GetMapping("vendor/vendorprofile")
 	public String getVendorDetails() {
-		
+
 		return "vendorprofile";
 	}
-	
+
 	@GetMapping("vendor/categories")
 	public String getCategories(Map<String, Object> categories) {
 		categories.put("categoryList", categoryDaoService.getCategories());
@@ -130,12 +135,13 @@ public class VendorController {
 		return "categories";
 	}
 
-	 @GetMapping("vendor/vendorsupport")
-		public String vendorSupport() {
-			return "vendorsupport";
-		}
-	    @GetMapping("vendor/vendorcontact")
-	   	public String vendorContact() {
-	   		return "vendorcontact";
-	   	}
+	@GetMapping("vendor/vendorsupport")
+	public String vendorSupport() {
+		return "vendorsupport";
+	}
+
+	@GetMapping("vendor/vendorcontact")
+	public String vendorContact() {
+		return "vendorcontact";
+	}
 }

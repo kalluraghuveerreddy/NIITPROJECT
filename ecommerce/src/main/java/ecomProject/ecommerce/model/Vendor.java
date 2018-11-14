@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
@@ -19,12 +21,22 @@ public class Vendor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int vendor_id;
+	@NotNull(message = "Enter the Name")
+	@NotBlank(message = "Name Should not be blank")
 	private String vendor_name;
 	@Column(unique = true)
+	@NotNull(message = "Enter the Email")
+	@NotBlank(message = "Email Should not be blank")
 	private String vendor_email;
 	@Column(unique = true)
+	@NotNull(message = "Enter the Mobile")
+	@NotBlank(message = "Mobile Should not be blank")
 	private String vendor_mobile;
+	@NotNull(message = "Enter the Password")
+	@NotBlank(message = "Password Should not be blank")
 	private String vendor_password;
+	@NotNull(message = "Enter the Company Name")
+	@NotBlank(message = "Company Name Should not be blank")
 	private String company_name;
 	@Column(nullable = false)
 	private boolean status;

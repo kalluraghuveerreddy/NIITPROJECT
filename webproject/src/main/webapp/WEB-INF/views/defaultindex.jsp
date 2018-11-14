@@ -26,12 +26,12 @@
 		id="collapsibleNavbar">
 		<marquee>Welocme to Shoppy </marquee>
 		<ul class="navbar-nav">
-             
-			<li class="nav-item"><a class="nav-link text-danger"
-				href="support">Support</a></li>
 
 			<li class="nav-item"><a class="nav-link text-danger"
-				href="contact">Contact </a></li>
+				href="${contextPath}/support">Support</a></li>
+
+			<li class="nav-item"><a class="nav-link text-danger"
+				href="${contextPath}/contact">Contact </a></li>
 			<li class="nav-item"><a class="nav-link text-danger"
 				href="adminsignin">admin</a></li>
 
@@ -46,9 +46,12 @@
 	</button>
 	<div class="collapse navbar-collapse justify-content-end"
 		id="collapsibleNavbar">
+
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link text-white" href="${contextPath}/index">Home</a></li>
-			
+
+			<li class="nav-item"><a class="nav-link text-white"
+				href="${contextPath}/index">Home</a></li>
+
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle  text-white" href="#"
 				id="navbardrop" data-toggle="dropdown"> Electronics </a>
@@ -92,6 +95,13 @@
 					</c:forEach>
 				</div></li>
 
+			<li class="nav-item"><form class="form-inline"
+					action="${contextPath}/search" method="post">
+					<input class="form-control mr-sm-2" type="text" name="searchItem"
+						placeholder="Search">
+					<button class="btn btn-success" type="submit">Search</button>
+				</form></li>
+
 			<li class="nav-item"><a class="nav-link text-white"
 				href="${contextPath}/customersignup">Sign up</a></li>
 			<li class="nav-item"><a class="nav-link text-white"
@@ -101,8 +111,9 @@
 				class="nav-link dropdown-toggle  text-white" href="#"
 				id="navbardrop" data-toggle="dropdown"> Sell on Shoppy </a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="${contextPath}/vendorsignup">Sign up</a> <a
-						class="dropdown-item" href="${contextPath}/vendorsignin">Sign in</a>
+					<a class="dropdown-item" href="${contextPath}/vendorsignup">Sign
+						up</a> <a class="dropdown-item" href="${contextPath}/vendorsignin">Sign
+						in</a>
 
 				</div></li>
 

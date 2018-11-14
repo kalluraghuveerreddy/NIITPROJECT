@@ -1,6 +1,7 @@
 package ecomProject.ecommerce.model.products;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
@@ -11,13 +12,21 @@ import ecomProject.ecommerce.model.Product;
 @Component
 public class Pant extends Product {
 	
-    @NotNull(message="Quality type should be Provide Here")
+
+	@NotBlank
+	@NotNull(message="Enter the quality type")
 	private String qualityType;
-    @NotNull
+
+	@NotBlank
+	@NotNull(message="Enter the pant Name")
 	private String name;
-    @NotNull
+
+	@NotBlank
+	@NotNull(message="Enter the pant size")
 	private String size;
-    @NotNull
+
+	@NotBlank
+	@NotNull(message="Enter the pant color")
 	private String color;
 
 	public String getQualityType() {

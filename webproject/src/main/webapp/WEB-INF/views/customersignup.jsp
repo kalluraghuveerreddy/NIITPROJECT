@@ -31,12 +31,14 @@
 						<spring:label path="customer_name">Name</spring:label>
 						<spring:input type="text" class="form-control"
 							path="customer_name" placeholder="Enter  name" />
+							<span style="color:red"><spring:errors path="customer_name" ></spring:errors></span>
 
 					</div>
 					<div class="form-group">
 						<spring:label path="customer_email">Email</spring:label>
 						<spring:input type="email" class="form-control"
 							path="customer_email" placeholder="Enter email" />
+							<span style="color:red"><spring:errors path="customer_email" ></spring:errors></span>
 
 					</div>
 
@@ -44,12 +46,14 @@
 						<spring:label path="customer_mobile">Mobile</spring:label>
 						<spring:input type="phone" class="form-control"
 							path="customer_mobile" placeholder="Enter mobile number" />
+							<span style="color:red"><spring:errors path="customer_mobile" ></spring:errors></span>
 
 					</div>
 					<div class="form-group">
 						<spring:label path="customer_password">Password</spring:label>
 						<spring:input type="password" class="form-control"
 							path="customer_password" placeholder="Enter Password" />
+							<span style="color:red"><spring:errors path="customer_password" ></spring:errors></span>
 
 					</div>
 					<button type="submit" class="btn btn-primary btn-block">Register</button>

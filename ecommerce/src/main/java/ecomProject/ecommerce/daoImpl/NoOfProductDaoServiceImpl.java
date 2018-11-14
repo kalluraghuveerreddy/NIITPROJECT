@@ -42,13 +42,44 @@ public class NoOfProductDaoServiceImpl implements NoOfProductDaoService {
 	}
 
 	@Override
-	public NoOfProducts  getNoOfProductsByNoOfproductsId(int item_no) {
+	public NoOfProducts getNoOfProductsByNoOfproductsId(int item_no) {
 		try {
-			return (NoOfProducts) sessionFactory.getCurrentSession()
-					.createQuery("from NoOfProducts where item_no=:id").setParameter("id", item_no)
-					.getSingleResult();
+			return (NoOfProducts) sessionFactory.getCurrentSession().createQuery("from NoOfProducts where item_no=:id")
+					.setParameter("id", item_no).getSingleResult();
 		} catch (HibernateException e) {
-			
+
+			return null;
+		}
+	}
+
+	@Override
+	public boolean update(NoOfProducts noOfProducts) {
+		try {
+			sessionFactory.getCurrentSession().update(noOfProducts);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean delete(NoOfProducts noOfProducts) {
+		try {
+			sessionFactory.getCurrentSession().delete(noOfProducts);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public List<NoOfProducts> getAllNoOfProducts(int product_id) {
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery("from NoOfProducts where product_product_id=:id ")
+					.setParameter("id", product_id).getResultList();
+		} catch (Exception e) {
+
 			return null;
 		}
 	}

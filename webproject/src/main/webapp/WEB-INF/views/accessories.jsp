@@ -43,22 +43,26 @@
 						<spring:label path="product_brand">Product Brand</spring:label>
 						<spring:input type="text" class="form-control"
 							path="product_brand" placeholder="Enter  brand" />
+									<span style="color:red"><spring:errors path="product_brand" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="product_name">product Name</spring:label>
 						<spring:input type="text" class="form-control" path="product_name"
 							placeholder="Enter  product name" />
+									<span style="color:red"><spring:errors path="product_brand" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="product_price">product _price</spring:label>
 						<spring:input type="text" class="form-control"
 							path="product_price" placeholder="Enter  price" />
+									<span style="color:red"><spring:errors path="product_price" ></spring:errors></span>
 					</div>
 					
 					<div class="form-group">
 						<spring:label path="name">Accessories Name</spring:label>
 						<spring:input type="text" class="form-control" path="name"
 							placeholder="Enter mobile name" />
+									<span style="color:red"><spring:errors path="name" ></spring:errors></span>
 					</div>
 
 
@@ -66,10 +70,12 @@
 						<spring:label path="numberOfProducts">Number Of Products</spring:label>
 						<spring:input type="text" class="form-control"
 							path="numberOfProducts" placeholder="Enter no of products" />
+									<span style="color:red"><spring:errors path="numberOfProducts" ></spring:errors></span>
 					</div>
 					<div class="form-group">
 						<spring:label path="image">Image</spring:label>
 						<spring:input type="file" class="form-control" path="image" />
+								<span style="color:red"><spring:errors path="image" ></spring:errors></span>
 					</div>
 
 					<button type="submit" class="btn btn-primary btn-block">Add Accessories</button>

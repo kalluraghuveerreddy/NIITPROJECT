@@ -110,7 +110,8 @@
 	</div>
 	</nav>
 
-	<div class="container">
+
+<div class="container">
 		<div class="jumbotron">
 			<h1>Contact us</h1>
 			<h4>Hyderabad</h4>
@@ -120,6 +121,7 @@
 		</div>
 
 	</div>
-	<%@include file="footer.jsp"%>
+
+	
 </body>
 </html>

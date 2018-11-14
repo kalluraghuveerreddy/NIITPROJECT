@@ -15,5 +15,7 @@ public interface CartItemIdDaoService {
 	public boolean deleteAllCartItemId(int cartItem_id);
 
 	public List<CartItemId> getAllCartItemId(int cartItem_id);
+	
+	public CartItemId getCartItemId(int cartItems_id);
 
 }

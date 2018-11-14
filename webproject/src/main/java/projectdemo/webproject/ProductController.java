@@ -12,9 +12,12 @@ import java.util.Map;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -96,9 +99,8 @@ public class ProductController {
 				.getSubCategoryId(Integer.parseInt(request.getParameter("subCategory_id")));
 		model.addAttribute("subCategory_id", subCategory.getSubCategory_id());
 
-	
 		/* Vendor vendor = (Vendor) session.getAttribute("vendorDetails"); */
-		
+
 		Vendor vendor = vendorDaoService.getVendorByEmail(principal.getName());
 		session.setAttribute("vendor_id", vendor.getVendor_id());
 
@@ -141,18 +143,22 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/laptopprocess")
-	public String addLaptopProcess(@ModelAttribute("laptop") Laptop laptop, HttpSession session,
-			HttpServletRequest request) {
+	public String addLaptopProcess(@Valid @ModelAttribute("laptop") Laptop laptop, BindingResult bindingResult,
+			HttpSession session, HttpServletRequest request) {
+		if (!bindingResult.hasErrors()) {
 
-		List<NoOfProducts> noOfProducts = listOfProducts(laptop);
+			List<NoOfProducts> noOfProducts = listOfProducts(laptop);
 
-		System.out.println(laptop);
-		laptop.setNoOfProducts(noOfProducts);
+			System.out.println(laptop);
+			laptop.setNoOfProducts(noOfProducts);
 
-		if (laptopDaoService.addLaptop(laptop)) {
+			if (laptopDaoService.addLaptop(laptop)) {
 
-			ImageUpload.uploadImage(laptop, request);
-			return "redirect:/vendor/vendorindex";
+				ImageUpload.uploadImage(laptop, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "laptop";
+			}
 		} else {
 			return "laptop";
 		}
@@ -170,16 +176,21 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/mobileprocess")
-	public String addMobileProcess(@ModelAttribute("mobile") Mobile mobile, HttpServletRequest request) {
+	public String addMobileProcess(@Valid @ModelAttribute("mobile") Mobile mobile, BindingResult bindingResult,
+			HttpServletRequest request) {
 
-		List<NoOfProducts> noOfProducts = listOfProducts(mobile);
+		if (!bindingResult.hasErrors()) {
+			List<NoOfProducts> noOfProducts = listOfProducts(mobile);
 
-		mobile.setNoOfProducts(noOfProducts);
+			mobile.setNoOfProducts(noOfProducts);
 
-		if (mobileDaoService.addMobile(mobile)) {
+			if (mobileDaoService.addMobile(mobile)) {
 
-			ImageUpload.uploadImage(mobile, request);
-			return "redirect:/vendor/vendorindex";
+				ImageUpload.uploadImage(mobile, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "mobile";
+			}
 		} else {
 			return "mobile";
 		}
@@ -187,16 +198,21 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/pantprocess")
-	public String addPantProcess(@ModelAttribute("pant") Pant pant, HttpSession session, HttpServletRequest request) {
+	public String addPantProcess(@Valid @ModelAttribute("pant") Pant pant, BindingResult bindingResult,
+			HttpSession session, HttpServletRequest request) {
 
-		List<NoOfProducts> noOfProducts = listOfProducts(pant);
+		if (!bindingResult.hasErrors()) {
+			List<NoOfProducts> noOfProducts = listOfProducts(pant);
 
-		pant.setNoOfProducts(noOfProducts);
+			pant.setNoOfProducts(noOfProducts);
 
-		if (pantDaoService.add(pant)) {
+			if (pantDaoService.add(pant)) {
 
-			ImageUpload.uploadImage(pant, request);
-			return "redirect:/vendor/vendorindex";
+				ImageUpload.uploadImage(pant, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "pant";
+			}
 		} else {
 			return "pant";
 		}
@@ -204,17 +220,22 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/shirtprocess")
-	public String addShirtProcess(@ModelAttribute("shirt") Shirt shirt, HttpSession session,
-			HttpServletRequest request) {
+	public String addShirtProcess(@Valid @ModelAttribute("shirt") Shirt shirt, BindingResult bindingResult,
+			HttpSession session, HttpServletRequest request) {
 
-		List<NoOfProducts> noOfProducts = listOfProducts(shirt);
+		if (!bindingResult.hasErrors()) {
 
-		shirt.setNoOfProducts(noOfProducts);
+			List<NoOfProducts> noOfProducts = listOfProducts(shirt);
 
-		if (shirtDaoService.add(shirt)) {
+			shirt.setNoOfProducts(noOfProducts);
 
-			ImageUpload.uploadImage(shirt, request);
-			return "redirect:/vendor/vendorindex";
+			if (shirtDaoService.add(shirt)) {
+
+				ImageUpload.uploadImage(shirt, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "shirt";
+			}
 		} else {
 			return "shirt";
 		}
@@ -222,17 +243,21 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/kurtaprocess")
-	public String addKurtaProcess(@ModelAttribute("kurta") Kurta kurta, HttpSession session,
-			HttpServletRequest request) {
+	public String addKurtaProcess(@Valid @ModelAttribute("kurta") Kurta kurta, BindingResult bindingResult,
+			HttpSession session, HttpServletRequest request) {
 
-		List<NoOfProducts> noOfProducts = listOfProducts(kurta);
+		if (!bindingResult.hasErrors()) {
+			List<NoOfProducts> noOfProducts = listOfProducts(kurta);
 
-		kurta.setNoOfProducts(noOfProducts);
+			kurta.setNoOfProducts(noOfProducts);
 
-		if (kurtaDaoService.add(kurta)) {
+			if (kurtaDaoService.add(kurta)) {
 
-			ImageUpload.uploadImage(kurta, request);
-			return "redirect:/vendor/vendorindex";
+				ImageUpload.uploadImage(kurta, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "kurta";
+			}
 		} else {
 			return "kurta";
 		}
@@ -240,34 +265,41 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/airconditionerprocess")
-	public String addKurtaProcess(@ModelAttribute("airconditioner") AirConditioner airConditioner, HttpSession session,
-			HttpServletRequest request) {
+	public String addKurtaProcess(@Valid @ModelAttribute("airconditioner") AirConditioner airConditioner,
+			BindingResult bindingResult, HttpSession session, HttpServletRequest request) {
+		if (!bindingResult.hasErrors()) {
+			List<NoOfProducts> noOfProducts = listOfProducts(airConditioner);
 
-		List<NoOfProducts> noOfProducts = listOfProducts(airConditioner);
+			airConditioner.setNoOfProducts(noOfProducts);
 
-		airConditioner.setNoOfProducts(noOfProducts);
+			if (airConditionerDaoService.add(airConditioner)) {
 
-		if (airConditionerDaoService.add(airConditioner)) {
-
-			ImageUpload.uploadImage(airConditioner, request);
-			return "redirect:/vendor/vendorindex";
+				ImageUpload.uploadImage(airConditioner, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "airConditioner";
+			}
 		} else {
 			return "airConditioner";
 		}
 
 	}
+
 	@PostMapping("vendor/accessoriesprocess")
-	public String addKurtaProcess(@ModelAttribute("accessories") Accessories accessories, HttpSession session,
-			HttpServletRequest request) {
+	public String addKurtaProcess(@Valid @ModelAttribute("accessories") Accessories accessories,
+			BindingResult bindingResult, HttpSession session, HttpServletRequest request) {
+		if (!bindingResult.hasErrors()) {
+			List<NoOfProducts> noOfProducts = listOfProducts(accessories);
 
-		List<NoOfProducts> noOfProducts = listOfProducts(accessories);
+			accessories.setNoOfProducts(noOfProducts);
 
-		accessories.setNoOfProducts(noOfProducts);
+			if (accessoriesDaoService.add(accessories)) {
 
-		if (accessoriesDaoService.add(accessories)) {
-
-			ImageUpload.uploadImage(accessories, request);
-			return "redirect:/vendor/vendorindex";
+				ImageUpload.uploadImage(accessories, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "accessories";
+			}
 		} else {
 			return "accessories";
 		}
@@ -275,16 +307,19 @@ public class ProductController {
 	}
 
 	@PostMapping("vendor/refrigeratorprocess")
-	public String addRefrigeratorProcess(@ModelAttribute("refrigerator") Refrigerator refrigerator,
-			HttpServletRequest request) {
+	public String addRefrigeratorProcess(@Valid @ModelAttribute("refrigerator") Refrigerator refrigerator,
+			BindingResult bindingResult, HttpServletRequest request) {
+		if (!bindingResult.hasErrors()) {
+			List<NoOfProducts> noOfProducts = listOfProducts(refrigerator);
 
-		List<NoOfProducts> noOfProducts = listOfProducts(refrigerator);
+			refrigerator.setNoOfProducts(noOfProducts);
+			if (refrigeratorDaoService.addRefrigerator(refrigerator)) {
 
-		refrigerator.setNoOfProducts(noOfProducts);
-		if (refrigeratorDaoService.addRefrigerator(refrigerator)) {
-
-			ImageUpload.uploadImage(refrigerator, request);
-			return "redirect:/vendor/vendorindex";
+				ImageUpload.uploadImage(refrigerator, request);
+				return "redirect:/vendor/vendorindex";
+			} else {
+				return "refrigerator";
+			}
 		} else {
 			return "refrigerator";
 		}
@@ -364,7 +399,7 @@ public class ProductController {
 			return "custviewrefrigerator";
 		case "Shirt":
 			model.addAttribute("shirt", shirtDaoService.getShirts(product_id));
-			return "custviewshirt";
+			return "custviewshirts";
 		case "Pant":
 			model.addAttribute("pant", pantDaoService.getPants(product_id));
 			return "custviewpant";
@@ -456,7 +491,7 @@ public class ProductController {
 		}
 	}
 
-	@GetMapping("buyproducts/{product_id}")
+	@GetMapping("customer/buyproducts/{product_id}")
 	public String viewAndBuyCustomerProducts(@PathVariable("product_id") int product_id, Model model) {
 
 		String name = subCategoryDaoService.getSubCategoryId(productDaoService.getSubCategoryId(product_id))
@@ -594,8 +629,10 @@ public class ProductController {
 		pantDaoService.update(pant);
 		return "redirect:/vendor/vendorindex";
 	}
+
 	@PostMapping("vendor/editaccessoriesprocess")
-	public String editLaptopProductDetails(@ModelAttribute("accessories")Accessories accessories, HttpServletRequest request) {
+	public String editLaptopProductDetails(@ModelAttribute("accessories") Accessories accessories,
+			HttpServletRequest request) {
 		if (!accessories.getImage().isEmpty()) {
 			ImageUpload.uploadImage(accessories, request);
 		}

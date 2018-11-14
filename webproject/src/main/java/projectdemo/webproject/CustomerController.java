@@ -1,14 +1,17 @@
 package projectdemo.webproject;
 
 import java.security.Principal;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ecomProject.ecommerce.dao.AdminDaoService;
 import ecomProject.ecommerce.dao.CategoryDaoService;
 import ecomProject.ecommerce.dao.CustomerDaoService;
+import ecomProject.ecommerce.dao.ProductDaoService;
 import ecomProject.ecommerce.dao.SubCategoryDaoService;
 import ecomProject.ecommerce.dao.VendorDaoService;
 import ecomProject.ecommerce.model.Customer;
@@ -37,6 +41,9 @@ public class CustomerController {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Autowired
+	private ProductDaoService productDaoService;
+
 	@GetMapping(value = { "customersignup" })
 	public String signupCustomer(Model model) {
 		model.addAttribute("customer", new Customer());
@@ -45,14 +52,19 @@ public class CustomerController {
 	}
 
 	@PostMapping("customerregisterprocess")
-	public String singupVendorProcess(@ModelAttribute("customer") Customer customer) {
+	public String singupCustomerProcess(@Valid @ModelAttribute("customer") Customer customer,
+			BindingResult bindingResult) {
 
-		if ((customerDaoService.getCustomerByEmail(customer.getCustomer_email())) != null) {
+		if (!bindingResult.hasErrors()) {
+			if ((customerDaoService.getCustomerByEmail(customer.getCustomer_email())) != null) {
 
-			return "customersignup";
+				return "customersignup";
+			} else {
+				customerDaoService.registerCustomer(customer);
+				return "redirect:index";
+			}
 		} else {
-			customerDaoService.registerCustomer(customer);
-			return "redirect:index";
+			return "customersignup";
 		}
 	}
 
@@ -87,21 +99,22 @@ public class CustomerController {
 	 * return "customersignin"; } }
 	 */
 	@GetMapping("customer/customerindex")
-	public ModelAndView openCustomerIndex(Principal principal, HttpSession session,Model model) {
+	public ModelAndView openCustomerIndex(Principal principal, HttpSession session, Model model,
+			Map<String, Object> products) {
 
-		ModelAndView modelAndView = new ModelAndView("customerindex");
+		products.put("productList", productDaoService.getAllProducts());
 
 		Customer customer = customerDaoService.getCustomerByEmail(principal.getName());
 		session.setAttribute("customerDetails", customer);
-		
+
 		session.setAttribute("electronics", subCategoryDaoService.getElectronics());
 		session.setAttribute("books", subCategoryDaoService.getBooks());
 		session.setAttribute("homeAppliances", subCategoryDaoService.getHomeAppliances());
 		session.setAttribute("mens", subCategoryDaoService.getMen());
 		session.setAttribute("womens", subCategoryDaoService.getWomen());
 		session.setAttribute("kids", subCategoryDaoService.getKids());
-		
-		
+
+		ModelAndView modelAndView = new ModelAndView("customerindex");
 		return modelAndView;
 	}
 
@@ -123,14 +136,14 @@ public class CustomerController {
 		return "redirect:/customer/customerindex";
 	}
 
-	
-    @GetMapping("customer/customersupport")
+	@GetMapping("customer/customersupport")
 	public String support() {
 		return "customersupport";
 	}
-    @GetMapping("customer/customercontact")
-   	public String contact() {
-   		return "customercontact";
-   	}
+
+	@GetMapping("customer/customercontact")
+	public String contact() {
+		return "customercontact";
+	}
 
 }

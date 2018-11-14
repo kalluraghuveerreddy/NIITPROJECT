@@ -70,7 +70,7 @@
 		<div class="container" style="margin: 30px">
 			<div class="row">
 
-				<a href="${contextPath}/buyproducts/${mobile.product_id}"><button
+				<a href="${contextPath}/customer/buyproducts/${mobile.product_id}"><button
 						class="btn btn-danger">Buy</button></a>
 			</div>
 		</div>

@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
@@ -20,22 +22,27 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customer_id;
+	@NotNull(message = "Enter the Name")
+	@NotBlank(message = "Name Should not be blank")
 	private String customer_name;
+	@NotNull(message = "Enter the Email")
+	@NotBlank(message = "Email Should not be blank")
 	@Column(unique = true)
 	private String customer_email;
+	@NotNull(message = "Enter the Password")
+	@NotBlank(message = "Password Should not be blank")
 	private String customer_password;
+	@NotNull(message = "Enter the Mobile")
+	@NotBlank(message = "Mobile Should not be blank")
 	@Column(unique = true)
 	private String customer_mobile;
-	
-	private boolean status=true;
-	private final String role="customer";
-	
-	
-	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
+
+	private boolean status = true;
+	private final String role = "customer";
+
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private Set<CustomerAddress> customerAddress;
 
-	
-	
 	public int getCustomer_id() {
 		return customer_id;
 	}

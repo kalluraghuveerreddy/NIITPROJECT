@@ -83,7 +83,17 @@
 		<logout logout-url="/customer/logout" logout-success-url="/index" />
 		<csrf disabled="true" />
 	</http>
-
+	
+	<http pattern="/customerregisterprocess" security="none"></http>
+	<http pattern="/vendorregisterprocess" security="none"></http>
+	<http pattern="/vendor/mobileprocess" security="none"></http>
+	<http pattern="/vendor/laptopprocess" security="none"></http>
+	<http pattern="/vendor/pantprocess" security="none"></http>
+	<http pattern="/vendor/regrigeratorprocess" security="none"></http>
+	<http pattern="/vendor/shirtprocess" security="none"></http>
+	<http pattern="/vendor/airconditionerprocess" security="none"></http>
+	<http pattern="/vendor/kurtaprocess" security="none"></http>
+	
 	<authentication-manager id="customerauthmanager">
 		<authentication-provider>
 			<password-encoder ref="passwordEncoder"></password-encoder>

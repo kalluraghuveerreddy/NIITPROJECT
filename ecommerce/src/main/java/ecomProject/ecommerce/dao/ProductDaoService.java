@@ -13,6 +13,8 @@ public interface ProductDaoService {
 	public int getSubCategoryId(int product_id);
 	public List<Product> getProducts(int subCategory_id);
 	public Product getProduct(int product_id);
+	public List<Product> getAllProducts();
+	public List<Product> getProducts(String product_name);
 	
 	
 

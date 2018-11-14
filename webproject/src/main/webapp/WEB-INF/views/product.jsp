@@ -38,11 +38,11 @@
 						alt="Card image cap">
 					<div class="card-body">
 						<h5 class="card-title">${product.product_brand }</h5>
-						<h5 class="card-title">${product.product_price }</h5>
+					<h5 class="card-title">Rs. ${product.product_price }</h5>
 						<a href="${contextPath}/viewproducts/${product.product_id }"><button
 								class="btn btn-success">View</button></a>
-								<a href="${contextPath}/buyproducts/${product.product_id}"><button
-								class="btn btn-danger">Buy</button></a>
+								<a href="${contextPath}/customer/buyproducts/${product.product_id}"><button
+								class="btn btn-danger">Add to cart</button></a>
 					</div>
 				</div>
 			</c:forEach>

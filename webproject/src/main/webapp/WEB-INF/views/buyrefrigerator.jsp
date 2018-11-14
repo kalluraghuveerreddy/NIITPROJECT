@@ -64,7 +64,7 @@
 					<tr>
 						<td>Product Id</td>
 						<td><input type="hidden" name="product_id"
-							value="${refrigerator.product_id }" /></td>
+							value="${refrigerator.product_id}" /></td>
 					</tr>
 					<tr>
 						<td>Enter number of products</td>
@@ -79,6 +79,6 @@
 		</form>
 
 	</div>
-	<%@include file="footer.jsp"%>
+	<%-- <%@include file="footer.jsp"%> --%>
 </body>
 </html>
